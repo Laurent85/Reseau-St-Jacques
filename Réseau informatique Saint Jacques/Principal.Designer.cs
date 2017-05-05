@@ -1,6 +1,6 @@
 ﻿namespace Réseau_informatique_Saint_Jacques
 {
-    partial class Form1
+    partial class Principal
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -91,7 +91,7 @@
             this.Nombre_heures.Size = new System.Drawing.Size(100, 20);
             this.Nombre_heures.TabIndex = 6;
             // 
-            // Form1
+            // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,8 +103,8 @@
             this.Controls.Add(this.Liste_salles);
             this.Controls.Add(this.Salles);
             this.Controls.Add(this.Tables);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Principal";
+            this.Text = "Réseau informatique St Jacques";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
