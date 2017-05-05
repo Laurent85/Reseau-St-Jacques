@@ -59,6 +59,16 @@ namespace Réseau_informatique_Saint_Jacques
             Liste_salles.DisplayMember = "Salle";
             Liste_salles.ValueMember = "Salle";
         }
+        private void Listbox_Périphériques()
+        {            
+            string requete = "SELECT Périphérique FROM SW_SR1_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_2 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_3 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_4 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR3_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR3_2 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR4_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR5_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_Laurent WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' ORDER BY Périphérique UNION SELECT Modèle FROM Imprimantes WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "' UNION SELECT Modèle FROM Vidéoprojecteurs WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) +"'";
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
+            DataTable source = new DataTable();            
+            dAdapter.Fill(source);
+            Liste_périphériques.DataSource = source;
+            Liste_périphériques.DisplayMember = "Périphérique";
+            Liste_périphériques.ValueMember = "Périphérique";
+        }
 
         private void Combobox_Videoprojecteurs()
         {
@@ -123,6 +133,7 @@ namespace Réseau_informatique_Saint_Jacques
             Textbox_Videoprojecteur();
             Textbox_Date_Videoprojecteur();
             Textbox_Heure_Videoprojecteur();
+            Listbox_Périphériques();
         }
     }
 }
