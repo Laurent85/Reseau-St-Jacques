@@ -22,6 +22,7 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_imprimantes();
             Listbox_Salles();
             Combobox_Videoprojecteurs();
+            Combobox_ordinateurs();
         }
 
         private void Combobox_imprimantes()
@@ -33,6 +34,16 @@ namespace Réseau_informatique_Saint_Jacques
             Salles.DataSource = source;
             Salles.DisplayMember = "Modèle";
             Salles.ValueMember = "Modèle";
+        }
+        private void Combobox_ordinateurs()
+        {
+            string requete = "SELECT DISTINCT Ordinateur FROM Ordinateurs WHERE Ordinateur <> '' ORDER BY Ordinateur";
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
+            DataTable source = new DataTable();
+            dAdapter.Fill(source);
+            Ordinateurs.DataSource = source;
+            Ordinateurs.DisplayMember = "Ordinateur";
+            Ordinateurs.ValueMember = "Ordinateur";
         }
 
         private void Combobox_tables()
@@ -51,7 +62,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Listbox_Salles()
         {
-            string requete = "SELECT Salle FROM Salles ORDER BY Salle";
+            string requete = "SELECT DISTINCT Salle FROM Ordinateurs ORDER BY Salle";
             OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
             DataTable source = new DataTable();
             dAdapter.Fill(source);

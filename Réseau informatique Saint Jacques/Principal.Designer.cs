@@ -36,6 +36,7 @@
             this.Date_releve = new System.Windows.Forms.TextBox();
             this.Nombre_heures = new System.Windows.Forms.TextBox();
             this.Liste_périphériques = new System.Windows.Forms.ListBox();
+            this.Ordinateurs = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Tables
@@ -103,11 +104,20 @@
             this.Liste_périphériques.Size = new System.Drawing.Size(139, 563);
             this.Liste_périphériques.TabIndex = 7;
             // 
+            // Ordinateurs
+            // 
+            this.Ordinateurs.FormattingEnabled = true;
+            this.Ordinateurs.Location = new System.Drawing.Point(1085, 123);
+            this.Ordinateurs.Name = "Ordinateurs";
+            this.Ordinateurs.Size = new System.Drawing.Size(121, 21);
+            this.Ordinateurs.TabIndex = 8;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 648);
+            this.Controls.Add(this.Ordinateurs);
             this.Controls.Add(this.Liste_périphériques);
             this.Controls.Add(this.Nombre_heures);
             this.Controls.Add(this.Date_releve);
@@ -134,6 +144,7 @@
         private System.Windows.Forms.TextBox Date_releve;
         private System.Windows.Forms.TextBox Nombre_heures;
         private System.Windows.Forms.ListBox Liste_périphériques;
+        private System.Windows.Forms.ComboBox Ordinateurs;
     }
 }
 
