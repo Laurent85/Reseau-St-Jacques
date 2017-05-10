@@ -30,13 +30,14 @@
         {
             this.Tables = new System.Windows.Forms.ComboBox();
             this.Salles = new System.Windows.Forms.ComboBox();
-            this.Liste_salles = new System.Windows.Forms.ListBox();
+            this.Liste_départ = new System.Windows.Forms.ListBox();
             this.Videoprojecteurs = new System.Windows.Forms.ComboBox();
             this.Videoprojecteur = new System.Windows.Forms.TextBox();
             this.Date_releve = new System.Windows.Forms.TextBox();
             this.Nombre_heures = new System.Windows.Forms.TextBox();
             this.Liste_périphériques = new System.Windows.Forms.ListBox();
             this.Ordinateurs = new System.Windows.Forms.ComboBox();
+            this.Choix_colonne = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Tables
@@ -55,14 +56,14 @@
             this.Salles.Size = new System.Drawing.Size(121, 21);
             this.Salles.TabIndex = 1;
             // 
-            // Liste_salles
+            // Liste_départ
             // 
-            this.Liste_salles.FormattingEnabled = true;
-            this.Liste_salles.Location = new System.Drawing.Point(59, 53);
-            this.Liste_salles.Name = "Liste_salles";
-            this.Liste_salles.Size = new System.Drawing.Size(139, 563);
-            this.Liste_salles.TabIndex = 2;
-            this.Liste_salles.SelectedIndexChanged += new System.EventHandler(this.Liste_salles_SelectedIndexChanged);
+            this.Liste_départ.FormattingEnabled = true;
+            this.Liste_départ.Location = new System.Drawing.Point(59, 53);
+            this.Liste_départ.Name = "Liste_départ";
+            this.Liste_départ.Size = new System.Drawing.Size(139, 563);
+            this.Liste_départ.TabIndex = 2;
+            this.Liste_départ.SelectedIndexChanged += new System.EventHandler(this.Liste_salles_SelectedIndexChanged);
             // 
             // Videoprojecteurs
             // 
@@ -112,18 +113,31 @@
             this.Ordinateurs.Size = new System.Drawing.Size(121, 21);
             this.Ordinateurs.TabIndex = 8;
             // 
+            // Choix_colonne
+            // 
+            this.Choix_colonne.FormattingEnabled = true;
+            this.Choix_colonne.Items.AddRange(new object[] {
+            "Ordinateur",
+            "Salle",
+            "Adresse_MAC"});
+            this.Choix_colonne.Location = new System.Drawing.Point(378, 13);
+            this.Choix_colonne.Name = "Choix_colonne";
+            this.Choix_colonne.Size = new System.Drawing.Size(121, 21);
+            this.Choix_colonne.TabIndex = 9;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 648);
+            this.Controls.Add(this.Choix_colonne);
             this.Controls.Add(this.Ordinateurs);
             this.Controls.Add(this.Liste_périphériques);
             this.Controls.Add(this.Nombre_heures);
             this.Controls.Add(this.Date_releve);
             this.Controls.Add(this.Videoprojecteur);
             this.Controls.Add(this.Videoprojecteurs);
-            this.Controls.Add(this.Liste_salles);
+            this.Controls.Add(this.Liste_départ);
             this.Controls.Add(this.Salles);
             this.Controls.Add(this.Tables);
             this.Name = "Principal";
@@ -138,13 +152,14 @@
 
         private System.Windows.Forms.ComboBox Tables;
         private System.Windows.Forms.ComboBox Salles;
-        private System.Windows.Forms.ListBox Liste_salles;
+        private System.Windows.Forms.ListBox Liste_départ;
         private System.Windows.Forms.ComboBox Videoprojecteurs;
         private System.Windows.Forms.TextBox Videoprojecteur;
         private System.Windows.Forms.TextBox Date_releve;
         private System.Windows.Forms.TextBox Nombre_heures;
         private System.Windows.Forms.ListBox Liste_périphériques;
         private System.Windows.Forms.ComboBox Ordinateurs;
+        private System.Windows.Forms.ComboBox Choix_colonne;
     }
 }
 

@@ -20,30 +20,31 @@ namespace Réseau_informatique_Saint_Jacques
         {
             Combobox_tables();
             Combobox_imprimantes();
-            Listbox_Salles();
+            //Listbox_Départ_Condition("Périphérique", "Brassage", "Type", "Ordinateur");
+            Listbox_Départ("Salle", "Brassage");
             Combobox_Videoprojecteurs();
             Combobox_ordinateurs();
         }
 
         private void Combobox_imprimantes()
         {
-            string requete = "SELECT DISTINCT Modèle FROM Imprimantes ORDER BY Modèle";
+            string requete = "SELECT DISTINCT Imprimante FROM Brassage WHERE Imprimante <> '' ORDER BY Imprimante";
             OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
             DataTable source = new DataTable();
             dAdapter.Fill(source);
             Salles.DataSource = source;
-            Salles.DisplayMember = "Modèle";
-            Salles.ValueMember = "Modèle";
+            Salles.DisplayMember = "Imprimante";
+            Salles.ValueMember = "Imprimante";
         }
         private void Combobox_ordinateurs()
         {
-            string requete = "SELECT DISTINCT Ordinateur FROM Ordinateurs WHERE Ordinateur <> '' ORDER BY Ordinateur";
+            string requete = "SELECT DISTINCT Périphérique FROM Brassage WHERE Type = 'Ordinateur' AND Périphérique <> ''ORDER BY Périphérique";
             OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
             DataTable source = new DataTable();
             dAdapter.Fill(source);
             Ordinateurs.DataSource = source;
-            Ordinateurs.DisplayMember = "Ordinateur";
-            Ordinateurs.ValueMember = "Ordinateur";
+            Ordinateurs.DisplayMember = "Périphérique";
+            Ordinateurs.ValueMember = "Périphérique";
         }
 
         private void Combobox_tables()
@@ -60,39 +61,26 @@ namespace Réseau_informatique_Saint_Jacques
             Tables.SelectedIndex = 0;
         }
 
-        private void Listbox_Salles()
+        private void Listbox_Départ_Condition(string colonne, string table, string colonne1, string condition)
         {
-            string requete = "SELECT DISTINCT Salle FROM Ordinateurs ORDER BY Salle";
+            string requete = "SELECT DISTINCT " + colonne + " FROM " + table + " WHERE " +  colonne + " <> '' AND " + colonne1 + " = '" + condition + "' ORDER BY " + colonne + "";
             OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
             DataTable source = new DataTable();
             dAdapter.Fill(source);
-            Liste_salles.DataSource = source;
-            Liste_salles.DisplayMember = "Salle";
-            Liste_salles.ValueMember = "Salle";
+            Liste_départ.DataSource = source;
+            Liste_départ.DisplayMember = colonne;
+            Liste_départ.ValueMember = colonne;
         }
 
-        private void Listbox_Périphériques()
+        private void Listbox_Départ(string colonne, string table)
         {
-            string requete = "SELECT Périphérique FROM SW_SR1_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_2 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_3 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR2_4 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' AND Périphérique <> '' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR3_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR3_2 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR4_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_SR5_1 WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' ORDER BY Périphérique UNION SELECT Périphérique FROM SW_Laurent WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' UNION SELECT Modèle FROM Imprimantes WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem)
-                + "' UNION SELECT Modèle FROM Vidéoprojecteurs WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "'";
-            //string requete = "SELECT Périphérique FROM MSysObjects WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "'";
+            string requete = "SELECT DISTINCT " + colonne + " FROM " + table + " WHERE " + colonne + " <> '' ORDER BY " + colonne + "";
             OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
             DataTable source = new DataTable();
             dAdapter.Fill(source);
-
-            Liste_périphériques.DataSource = source;
-            Liste_périphériques.DisplayMember = "Périphérique";
-            Liste_périphériques.ValueMember = "Périphérique";
+            Liste_départ.DataSource = source;
+            Liste_départ.DisplayMember = colonne;
+            Liste_départ.ValueMember = colonne;
         }
 
         private void Combobox_Videoprojecteurs()
@@ -109,7 +97,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Textbox_Videoprojecteur()
         {
             OleDbConnection database = new OleDbConnection(connectionString);
-            string requete = "SELECT Modèle FROM Vidéoprojecteurs WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "'";
+            string requete = "SELECT Vidéoprojecteur FROM Brassage WHERE Salle = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
             database.Open();
             OleDbCommand command = new OleDbCommand(requete, database);
             OleDbDataReader reader = command.ExecuteReader();
@@ -124,7 +112,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Textbox_Heure_Videoprojecteur()
         {
             OleDbConnection database = new OleDbConnection(connectionString);
-            string requete = "SELECT Heures_Lampe FROM Vidéoprojecteurs WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "'";
+            string requete = "SELECT Heures_Lampe FROM Brassage WHERE Salle = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
             database.Open();
             OleDbCommand command = new OleDbCommand(requete, database);
             OleDbDataReader reader = command.ExecuteReader();
@@ -139,7 +127,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Textbox_Date_Videoprojecteur()
         {
             OleDbConnection database = new OleDbConnection(connectionString);
-            string requete = "SELECT Date_Relevé FROM Vidéoprojecteurs WHERE Salle = '" + Liste_salles.GetItemText(Liste_salles.SelectedItem) + "'";
+            string requete = "SELECT Date_Relevé FROM Brassage WHERE Salle = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
             database.Open();
             OleDbCommand command = new OleDbCommand(requete, database);
             OleDbDataReader reader = command.ExecuteReader();
@@ -157,9 +145,8 @@ namespace Réseau_informatique_Saint_Jacques
         {
             Textbox_Videoprojecteur();
             Textbox_Date_Videoprojecteur();
-            Textbox_Heure_Videoprojecteur();
-            Listbox_Périphériques();
-            //Corriger_Listbox_Périphériques();
+            Textbox_Heure_Videoprojecteur();         
+            
         }
     }
 }
