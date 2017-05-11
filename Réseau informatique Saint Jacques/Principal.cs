@@ -13,17 +13,19 @@ namespace Réseau_informatique_Saint_Jacques
         public Principal()
         {
             InitializeComponent();
-            Textbox_Videoprojecteur();
+            //Textbox_Videoprojecteur();
         }
 
         private void Form1_Load(object sender, System.EventArgs e)
         {
+            Choix_colonne.SelectedItem = "Périphérique";
             Combobox_tables();
             Combobox_imprimantes();
             //Listbox_Départ_Condition("Périphérique", "Brassage", "Type", "Ordinateur");
-            Listbox_Départ("Salle", "Brassage");
+            Listbox_Départ(Choix_colonne.SelectedItem.ToString(), "Brassage");
             Combobox_Videoprojecteurs();
             Combobox_ordinateurs();
+            
         }
 
         private void Combobox_imprimantes()
@@ -36,6 +38,7 @@ namespace Réseau_informatique_Saint_Jacques
             Salles.DisplayMember = "Imprimante";
             Salles.ValueMember = "Imprimante";
         }
+
         private void Combobox_ordinateurs()
         {
             string requete = "SELECT DISTINCT Périphérique FROM Brassage WHERE Type = 'Ordinateur' AND Périphérique <> ''ORDER BY Périphérique";
@@ -61,15 +64,33 @@ namespace Réseau_informatique_Saint_Jacques
             Tables.SelectedIndex = 0;
         }
 
+        private void Combobox_Videoprojecteurs()
+        {
+            string requete = "SELECT DISTINCT Modèle FROM Vidéoprojecteurs ORDER BY Modèle";
+            OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
+            DataTable source = new DataTable();
+            dAdapter.Fill(source);
+            Videoprojecteurs.DataSource = source;
+            Videoprojecteurs.DisplayMember = "Modèle";
+            Videoprojecteurs.ValueMember = "Modèle";
+        }
+
         private void Listbox_Départ_Condition(string colonne, string table, string colonne1, string condition)
         {
-            string requete = "SELECT DISTINCT " + colonne + " FROM " + table + " WHERE " +  colonne + " <> '' AND " + colonne1 + " = '" + condition + "' ORDER BY " + colonne + "";
+            string requete = "SELECT DISTINCT " + colonne + " FROM " + table + " WHERE " + colonne + " <> '' AND " + colonne1 + " = '" + condition + "' ORDER BY " + colonne + "";
             OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
             DataTable source = new DataTable();
             dAdapter.Fill(source);
             Liste_départ.DataSource = source;
             Liste_départ.DisplayMember = colonne;
             Liste_départ.ValueMember = colonne;
+        }
+
+        private void Liste_salles_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            Textbox_Videoprojecteur();
+            Textbox_Date_Videoprojecteur();
+            Textbox_Heure_Videoprojecteur();
         }
 
         private void Listbox_Départ(string colonne, string table)
@@ -81,17 +102,6 @@ namespace Réseau_informatique_Saint_Jacques
             Liste_départ.DataSource = source;
             Liste_départ.DisplayMember = colonne;
             Liste_départ.ValueMember = colonne;
-        }
-
-        private void Combobox_Videoprojecteurs()
-        {
-            string requete = "SELECT DISTINCT Modèle FROM Vidéoprojecteurs ORDER BY Modèle";
-            OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
-            DataTable source = new DataTable();
-            dAdapter.Fill(source);
-            Videoprojecteurs.DataSource = source;
-            Videoprojecteurs.DisplayMember = "Modèle";
-            Videoprojecteurs.ValueMember = "Modèle";
         }
 
         private void Textbox_Videoprojecteur()
@@ -141,12 +151,10 @@ namespace Réseau_informatique_Saint_Jacques
             database.Close();
         }
 
-        private void Liste_salles_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void Choix_colonne_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Textbox_Videoprojecteur();
-            Textbox_Date_Videoprojecteur();
-            Textbox_Heure_Videoprojecteur();         
-            
+            Listbox_Départ(Choix_colonne.SelectedItem.ToString(), "Brassage");
+
         }
     }
 }

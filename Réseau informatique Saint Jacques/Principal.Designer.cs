@@ -117,13 +117,17 @@
             // 
             this.Choix_colonne.FormattingEnabled = true;
             this.Choix_colonne.Items.AddRange(new object[] {
-            "Ordinateur",
+            "Périphérique",
             "Salle",
-            "Adresse_MAC"});
+            "Adresse ip",
+            "Vidéoprojecteur",
+            "Bandeau",
+            "Port"});
             this.Choix_colonne.Location = new System.Drawing.Point(378, 13);
             this.Choix_colonne.Name = "Choix_colonne";
             this.Choix_colonne.Size = new System.Drawing.Size(121, 21);
             this.Choix_colonne.TabIndex = 9;
+            this.Choix_colonne.SelectedIndexChanged += new System.EventHandler(this.Choix_colonne_SelectedIndexChanged);
             // 
             // Principal
             // 

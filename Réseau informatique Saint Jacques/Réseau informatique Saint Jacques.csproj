@@ -62,6 +62,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reseau_St_JacquesDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Reseau_St_JacquesDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reseau_St_JacquesDataSet1.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +98,17 @@
     </None>
     <None Include="Reseau_St_JacquesDataSet.xss">
       <DependentUpon>Reseau_St_JacquesDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Reseau_St_JacquesDataSet1.xsc">
+      <DependentUpon>Reseau_St_JacquesDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Reseau_St_JacquesDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Reseau_St_JacquesDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Reseau_St_JacquesDataSet1.xss">
+      <DependentUpon>Reseau_St_JacquesDataSet1.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
