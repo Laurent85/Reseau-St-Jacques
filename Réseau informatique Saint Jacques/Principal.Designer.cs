@@ -76,7 +76,7 @@
             this.Liste_départ.FormattingEnabled = true;
             this.Liste_départ.Location = new System.Drawing.Point(59, 53);
             this.Liste_départ.Name = "Liste_départ";
-            this.Liste_départ.Size = new System.Drawing.Size(139, 563);
+            this.Liste_départ.Size = new System.Drawing.Size(139, 667);
             this.Liste_départ.TabIndex = 2;
             this.Liste_départ.SelectedIndexChanged += new System.EventHandler(this.Liste_salles_SelectedIndexChanged);
             // 
@@ -90,7 +90,7 @@
             // 
             // Date_relevé
             // 
-            this.Date_relevé.Location = new System.Drawing.Point(886, 209);
+            this.Date_relevé.Location = new System.Drawing.Point(580, 80);
             this.Date_relevé.Name = "Date_relevé";
             this.Date_relevé.Size = new System.Drawing.Size(100, 20);
             this.Date_relevé.TabIndex = 5;
@@ -98,7 +98,7 @@
             // 
             // Heures_Lampe
             // 
-            this.Heures_Lampe.Location = new System.Drawing.Point(886, 246);
+            this.Heures_Lampe.Location = new System.Drawing.Point(718, 80);
             this.Heures_Lampe.Name = "Heures_Lampe";
             this.Heures_Lampe.Size = new System.Drawing.Size(100, 20);
             this.Heures_Lampe.TabIndex = 6;
@@ -109,7 +109,7 @@
             this.Liste_périphériques.FormattingEnabled = true;
             this.Liste_périphériques.Location = new System.Drawing.Point(233, 53);
             this.Liste_périphériques.Name = "Liste_périphériques";
-            this.Liste_périphériques.Size = new System.Drawing.Size(139, 563);
+            this.Liste_périphériques.Size = new System.Drawing.Size(139, 43);
             this.Liste_périphériques.TabIndex = 7;
             // 
             // Ordinateurs
@@ -131,7 +131,7 @@
             // 
             // Switch
             // 
-            this.Switch.Location = new System.Drawing.Point(479, 173);
+            this.Switch.Location = new System.Drawing.Point(233, 102);
             this.Switch.Name = "Switch";
             this.Switch.Size = new System.Drawing.Size(100, 20);
             this.Switch.TabIndex = 10;
@@ -139,7 +139,7 @@
             // 
             // Port
             // 
-            this.Port.Location = new System.Drawing.Point(479, 209);
+            this.Port.Location = new System.Drawing.Point(339, 102);
             this.Port.Name = "Port";
             this.Port.Size = new System.Drawing.Size(100, 20);
             this.Port.TabIndex = 11;
@@ -147,7 +147,7 @@
             // 
             // Salle
             // 
-            this.Salle.Location = new System.Drawing.Point(479, 246);
+            this.Salle.Location = new System.Drawing.Point(445, 102);
             this.Salle.Name = "Salle";
             this.Salle.Size = new System.Drawing.Size(100, 20);
             this.Salle.TabIndex = 12;
@@ -155,7 +155,7 @@
             // 
             // Bandeau
             // 
-            this.Bandeau.Location = new System.Drawing.Point(479, 283);
+            this.Bandeau.Location = new System.Drawing.Point(551, 102);
             this.Bandeau.Name = "Bandeau";
             this.Bandeau.Size = new System.Drawing.Size(100, 20);
             this.Bandeau.TabIndex = 13;
@@ -163,7 +163,7 @@
             // 
             // VLAN
             // 
-            this.VLAN.Location = new System.Drawing.Point(479, 319);
+            this.VLAN.Location = new System.Drawing.Point(657, 102);
             this.VLAN.Name = "VLAN";
             this.VLAN.Size = new System.Drawing.Size(100, 20);
             this.VLAN.TabIndex = 14;
@@ -171,7 +171,7 @@
             // 
             // Périphérique
             // 
-            this.Périphérique.Location = new System.Drawing.Point(479, 358);
+            this.Périphérique.Location = new System.Drawing.Point(763, 102);
             this.Périphérique.Name = "Périphérique";
             this.Périphérique.Size = new System.Drawing.Size(100, 20);
             this.Périphérique.TabIndex = 15;
@@ -179,7 +179,7 @@
             // 
             // Modèle_périphérique
             // 
-            this.Modèle_périphérique.Location = new System.Drawing.Point(479, 396);
+            this.Modèle_périphérique.Location = new System.Drawing.Point(869, 102);
             this.Modèle_périphérique.Name = "Modèle_périphérique";
             this.Modèle_périphérique.Size = new System.Drawing.Size(100, 20);
             this.Modèle_périphérique.TabIndex = 16;
@@ -187,7 +187,7 @@
             // 
             // Type
             // 
-            this.Type.Location = new System.Drawing.Point(479, 433);
+            this.Type.Location = new System.Drawing.Point(975, 102);
             this.Type.Name = "Type";
             this.Type.Size = new System.Drawing.Size(100, 20);
             this.Type.TabIndex = 17;
@@ -195,7 +195,7 @@
             // 
             // Adresse_ip
             // 
-            this.Adresse_ip.Location = new System.Drawing.Point(479, 472);
+            this.Adresse_ip.Location = new System.Drawing.Point(1081, 102);
             this.Adresse_ip.Name = "Adresse_ip";
             this.Adresse_ip.Size = new System.Drawing.Size(100, 20);
             this.Adresse_ip.TabIndex = 18;
@@ -203,7 +203,7 @@
             // 
             // Imprimante
             // 
-            this.Imprimante.Location = new System.Drawing.Point(479, 508);
+            this.Imprimante.Location = new System.Drawing.Point(233, 128);
             this.Imprimante.Name = "Imprimante";
             this.Imprimante.Size = new System.Drawing.Size(100, 20);
             this.Imprimante.TabIndex = 19;
@@ -211,7 +211,7 @@
             // 
             // Port_imprimante
             // 
-            this.Port_imprimante.Location = new System.Drawing.Point(479, 545);
+            this.Port_imprimante.Location = new System.Drawing.Point(339, 128);
             this.Port_imprimante.Name = "Port_imprimante";
             this.Port_imprimante.Size = new System.Drawing.Size(100, 20);
             this.Port_imprimante.TabIndex = 20;
@@ -219,7 +219,7 @@
             // 
             // Type_imprimante
             // 
-            this.Type_imprimante.Location = new System.Drawing.Point(479, 583);
+            this.Type_imprimante.Location = new System.Drawing.Point(445, 128);
             this.Type_imprimante.Name = "Type_imprimante";
             this.Type_imprimante.Size = new System.Drawing.Size(100, 20);
             this.Type_imprimante.TabIndex = 21;
@@ -227,14 +227,14 @@
             // 
             // Vidéoprojecteur
             // 
-            this.Vidéoprojecteur.Location = new System.Drawing.Point(886, 172);
+            this.Vidéoprojecteur.Location = new System.Drawing.Point(430, 80);
             this.Vidéoprojecteur.Name = "Vidéoprojecteur";
             this.Vidéoprojecteur.Size = new System.Drawing.Size(100, 20);
             this.Vidéoprojecteur.TabIndex = 22;
             // 
             // Observations
             // 
-            this.Observations.Location = new System.Drawing.Point(886, 282);
+            this.Observations.Location = new System.Drawing.Point(869, 80);
             this.Observations.Name = "Observations";
             this.Observations.Size = new System.Drawing.Size(100, 20);
             this.Observations.TabIndex = 23;
@@ -242,7 +242,7 @@
             // 
             // Modèle_Lampe
             // 
-            this.Modèle_Lampe.Location = new System.Drawing.Point(886, 319);
+            this.Modèle_Lampe.Location = new System.Drawing.Point(1020, 80);
             this.Modèle_Lampe.Name = "Modèle_Lampe";
             this.Modèle_Lampe.Size = new System.Drawing.Size(100, 20);
             this.Modèle_Lampe.TabIndex = 24;
@@ -250,16 +250,16 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(614, 371);
+            this.panel1.Location = new System.Drawing.Point(233, 154);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(696, 452);
+            this.panel1.Size = new System.Drawing.Size(1051, 565);
             this.panel1.TabIndex = 25;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 835);
+            this.ClientSize = new System.Drawing.Size(1322, 750);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Modèle_Lampe);
             this.Controls.Add(this.Observations);
