@@ -52,7 +52,9 @@
             this.Vidéoprojecteur = new System.Windows.Forms.TextBox();
             this.Observations = new System.Windows.Forms.TextBox();
             this.Modèle_Lampe = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.Panel_Brassage = new System.Windows.Forms.Panel();
+            this.Panel_Vidéoprojecteurs = new System.Windows.Forms.Panel();
+            this.Panel_Imprimantes = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // Tables
@@ -248,19 +250,38 @@
             this.Modèle_Lampe.TabIndex = 24;
             this.Modèle_Lampe.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // panel1
+            // Panel_Brassage
             // 
-            this.panel1.Location = new System.Drawing.Point(233, 154);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1051, 565);
-            this.panel1.TabIndex = 25;
+            this.Panel_Brassage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel_Brassage.Location = new System.Drawing.Point(233, 154);
+            this.Panel_Brassage.Name = "Panel_Brassage";
+            this.Panel_Brassage.Size = new System.Drawing.Size(724, 565);
+            this.Panel_Brassage.TabIndex = 25;
+            // 
+            // Panel_Vidéoprojecteurs
+            // 
+            this.Panel_Vidéoprojecteurs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel_Vidéoprojecteurs.Location = new System.Drawing.Point(975, 154);
+            this.Panel_Vidéoprojecteurs.Name = "Panel_Vidéoprojecteurs";
+            this.Panel_Vidéoprojecteurs.Size = new System.Drawing.Size(335, 266);
+            this.Panel_Vidéoprojecteurs.TabIndex = 26;
+            // 
+            // Panel_Imprimantes
+            // 
+            this.Panel_Imprimantes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel_Imprimantes.Location = new System.Drawing.Point(975, 453);
+            this.Panel_Imprimantes.Name = "Panel_Imprimantes";
+            this.Panel_Imprimantes.Size = new System.Drawing.Size(335, 266);
+            this.Panel_Imprimantes.TabIndex = 27;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 750);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.Panel_Imprimantes);
+            this.Controls.Add(this.Panel_Vidéoprojecteurs);
+            this.Controls.Add(this.Panel_Brassage);
             this.Controls.Add(this.Modèle_Lampe);
             this.Controls.Add(this.Observations);
             this.Controls.Add(this.Vidéoprojecteur);
@@ -319,7 +340,9 @@
         private System.Windows.Forms.TextBox Vidéoprojecteur;
         private System.Windows.Forms.TextBox Observations;
         private System.Windows.Forms.TextBox Modèle_Lampe;
-        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Panel Panel_Brassage;
+        private System.Windows.Forms.Panel Panel_Vidéoprojecteurs;
+        private System.Windows.Forms.Panel Panel_Imprimantes;
     }
 }
 
