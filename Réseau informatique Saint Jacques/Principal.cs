@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Réseau_informatique_Saint_Jacques
 {
@@ -10,46 +11,21 @@ namespace Réseau_informatique_Saint_Jacques
         private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Reseau St Jacques.accdb";
         private int n = 0;
         private int droite = 0;
+        private int droite_titre = 0;
         private int bas = 1;
-        public string titi;
+        public static string Valeur_passée;
 
         public Principal()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, System.EventArgs e)
+        private void Principal_Load(object sender, System.EventArgs e)
         {
             Combobox_Colonnes();
             Choix_colonne.SelectedItem = "Salle";
-            Combobox_tables();
-            Combobox_imprimantes();
-            Listbox_Départ(Choix_colonne.SelectedItem.ToString(), "Brassage");
-            Combobox_Videoprojecteurs();
-            Combobox_ordinateurs();
-        }
-
-        private void Combobox_imprimantes()
-        {
-            string requete = "SELECT DISTINCT Imprimante FROM Brassage WHERE Imprimante <> '' ORDER BY Imprimante";
-            OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
-            DataTable source = new DataTable();
-            dAdapter.Fill(source);
-            Salles.DataSource = source;
-            Salles.DisplayMember = "Imprimante";
-            Salles.ValueMember = "Imprimante";
-        }
-
-        private void Combobox_ordinateurs()
-        {
-            string requete = "SELECT DISTINCT Périphérique FROM Brassage WHERE Type = 'Ordinateur' AND Périphérique <> ''ORDER BY Périphérique";
-            OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
-            DataTable source = new DataTable();
-            dAdapter.Fill(source);
-            Ordinateurs.DataSource = source;
-            Ordinateurs.DisplayMember = "Périphérique";
-            Ordinateurs.ValueMember = "Périphérique";
-        }
+            Combobox_tables();            
+        }       
 
         private void Combobox_tables()
         {
@@ -76,32 +52,7 @@ namespace Réseau_informatique_Saint_Jacques
                 Choix_colonne.Items.Add(item.ColumnName);
                 Choix_colonne.Sorted = true;
             }
-        }
-
-        private void Effacer_Textbox()
-        {
-            string requete = "SELECT * FROM BRASSAGE";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
-            DataTable result = new DataTable();
-            adapter.Fill(result);
-
-            foreach (DataColumn item in result.Columns)
-            {
-                if (item.ColumnName != "ID")
-                    this.Controls[item.ColumnName].Text = "";
-            }
-        }
-
-        private void Combobox_Videoprojecteurs()
-        {
-            string requete = "SELECT DISTINCT Modèle FROM Vidéoprojecteurs ORDER BY Modèle";
-            OleDbDataAdapter dAdapter = new OleDbDataAdapter(requete, connectionString);
-            DataTable source = new DataTable();
-            dAdapter.Fill(source);
-            Videoprojecteurs.DataSource = source;
-            Videoprojecteurs.DisplayMember = "Modèle";
-            Videoprojecteurs.ValueMember = "Modèle";
-        }
+        }        
 
         private void Listbox_Départ_Condition(string colonne, string table, string colonne1, string condition)
         {
@@ -115,32 +66,40 @@ namespace Réseau_informatique_Saint_Jacques
         }
 
         private void Liste_salles_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            Effacer_Textbox();
+        {            
             Supprimer_Textbox();            
-            droite = droite + 50;bas = 1;
-            Textbox_brassage("Switch");            
+            droite = droite + 20; bas = 1;
+            Bouton_titres_brassage("ID");
+            Bouton_brassage("ID");
+            droite = droite + 50; bas = 1;
+            Bouton_titres_brassage("Switch");
+            Bouton_brassage("Switch");
             droite = droite + 100; bas = 1;
-            Textbox_brassage("Bandeau");            
+            Bouton_titres_brassage("Bandeau");
+            Bouton_brassage("Bandeau");
             droite = droite + 100; bas = 1;
-            Textbox_brassage("Port");            
+            Bouton_titres_brassage("Port");
+            Bouton_brassage("Port");
             droite = droite + 100; bas = 1;
-            Textbox_brassage("VLAN");           
+            Bouton_titres_brassage("VLAN");
+            Bouton_brassage("VLAN");
             droite = droite + 100; bas = 1;
-            Textbox_brassage("Périphérique");            
-            droite = droite + 120; bas = 1;
-            Textbox_brassage("Adresse_ip");
+            Bouton_titres_brassage("Périphérique");
+            Bouton_brassage("Périphérique");
+            droite = droite + 140; bas = 1;
+            Bouton_titres_brassage("adresse_ip");
+            Bouton_brassage("Adresse_ip");
             droite = 20; bas = 1;
-            Textbox_Vidéoprojecteurs("Vidéoprojecteur");
-            Textbox_Vidéoprojecteurs("Date_Relevé");
-            Textbox_Vidéoprojecteurs("Heures_Lampe");
-            Textbox_Vidéoprojecteurs("Observations");
+            Bouton_Vidéoprojecteurs("Vidéoprojecteur");
+            Bouton_Vidéoprojecteurs("Date_Relevé");
+            Bouton_Vidéoprojecteurs("Heures_Lampe");
+            Bouton_Vidéoprojecteurs("Observations");
             droite = 20; bas = 1;
-            Textbox_Imprimantes("imprimante");
-            droite = droite + 110; bas = 1;
-            Textbox_Imprimantes("Port_imprimante");
-            droite = droite + 80; bas = 1;
-            Textbox_Imprimantes("Type_imprimante");
+            Bouton_Imprimantes("imprimante");
+            droite = droite + 115; bas = 1;
+            Bouton_Imprimantes("Port_imprimante");
+            droite = droite + 85; bas = 1;
+            Bouton_Imprimantes("Type_imprimante");
         }
 
         private void Listbox_Départ(string colonne, string table)
@@ -153,14 +112,18 @@ namespace Réseau_informatique_Saint_Jacques
             Liste_départ.DisplayMember = colonne;
             Liste_départ.ValueMember = colonne;
         }
-        void Bouton_Click(object sender, EventArgs e)
+
+        private void Bouton_Click(object sender, EventArgs e)
         {
-            titi = ((Button)Panel_Brassage.Controls["Switch0"]).Text;
+            var Bouton_brassage = (Button)sender;
+
+            Valeur_passée = ((Button)Panel_Brassage.Controls[Bouton_brassage.Name]).Text;
             Modifications modifications = new Modifications();
+
             modifications.Show();
         }
 
-        private void Textbox_brassage(string colonne)
+        private void Bouton_brassage(string colonne)
         {
             OleDbConnection database = new OleDbConnection(connectionString);
             string requete = "SELECT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
@@ -169,31 +132,68 @@ namespace Réseau_informatique_Saint_Jacques
             OleDbDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
-            {                
-                {
-                    if (colonne == "Date_Relevé") { this.Controls[colonne].Text = Convert.ToDateTime(reader[0].ToString()).ToString("d/MM/yyyy"); }
-                    this.Controls[colonne].Text = reader[0].ToString();
-                    Button[] Bouton = new Button[500];
+            {
+                {                    
+                    Button[] Bouton = new Button[2000];
                     Bouton[n] = new Button();
                     Bouton[n].Name = colonne.ToString() + n.ToString();
-                    Bouton[n].Click += new EventHandler(Bouton_Click);
-                    Bouton[n].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                    Bouton[n].BackColor = System.Drawing.Color.LavenderBlush;
                     Bouton[n].AutoSize = true;
-                    Bouton[n].Top = 25*bas;
-                    Bouton[n].Left = droite;                    
+                    if (Bouton[n].Name.Contains("ID")) { Bouton[n].Click += new EventHandler(Bouton_Click); Bouton[n].Size = new Size(20, 20); }
+                    Bouton[n].TextAlign = ContentAlignment.MiddleCenter;
+                    Bouton[n].BackColor = Color.LavenderBlush;
+                    ToolTip ToolTip1 = new ToolTip();
+                    if (Bouton[n].Name.Contains("Switch")) { ToolTip1.SetToolTip(Bouton[n], "Hello"); }                    
+                    Bouton[n].Top = 25 * bas;
+                    Bouton[n].Left = droite;
                     Bouton[n].Text = reader[0].ToString();
                     if (Bouton[n].Text == "") { Bouton[n].Visible = false; }
                     Panel_Brassage.AutoScroll = true;
                     this.Panel_Brassage.Controls.Add(Bouton[n]);
+
                     n++;
-                    bas++;                    
+                    bas++;
                 }
             }
             reader.Close();
             database.Close();
         }
-        private void Textbox_Vidéoprojecteurs(string colonne)
+
+        private void Bouton_titres_brassage(string colonne)
+        {
+            OleDbConnection database = new OleDbConnection(connectionString);
+            string requete = "SELECT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
+            database.Open();
+            OleDbCommand command = new OleDbCommand(requete, database);
+            OleDbDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                {                    
+                    Button Bouton = new Button();
+                    Bouton = new Button();
+                    Bouton.Name = colonne.ToString();
+                    Bouton.AutoSize = true;
+                    Bouton.FlatStyle = FlatStyle.Flat;
+                    Bouton.FlatAppearance.BorderSize = 1;
+                    Bouton.FlatAppearance.BorderColor = Color.Blue;              
+                    Bouton.TextAlign = ContentAlignment.MiddleCenter;
+                    if (Bouton.Name.Contains("ID")) {Bouton.Size = new Size(20, 20); }
+                    //Bouton.BackColor = Color.Red;
+                    Bouton.ForeColor = Color.Black;
+                    Bouton.Font = new Font(Bouton.Font, FontStyle.Bold);
+                    Bouton.Top = 10;
+                    Bouton.Left = droite;
+                    Bouton.Text = colonne.ToString();
+                    if (Bouton.Text == "") { Bouton.Visible = false; }
+                    Panel_titres.AutoScroll = true;
+                    this.Panel_titres.Controls.Add(Bouton);                    
+                }
+            }
+            reader.Close();
+            database.Close();
+        }
+
+        private void Bouton_Vidéoprojecteurs(string colonne)
         {
             OleDbConnection database = new OleDbConnection(connectionString);
             string requete = "SELECT DISTINCT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
@@ -203,22 +203,20 @@ namespace Réseau_informatique_Saint_Jacques
 
             while (reader.Read())
             {
-                {
-                    if ((colonne == "Date_Relevé") && (reader[0].ToString() != "")) { this.Controls[colonne].Text = Convert.ToDateTime(reader[0].ToString()).ToString("d/MM/yyyy"); }
-                    this.Controls[colonne].Text = reader[0].ToString();
-                    Button[] Bouton = new Button[500];
+                {                    
+                    Button[] Bouton = new Button[2000];
                     if (reader[0].ToString() != "")
-                    {                        
+                    {
                         Bouton[n] = new Button();
                         Bouton[n].Name = colonne.ToString() + n.ToString();
-                        Bouton[n].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                        Bouton[n].BackColor = System.Drawing.Color.LavenderBlush;
+                        Bouton[n].TextAlign = ContentAlignment.MiddleCenter;
+                        Bouton[n].BackColor = Color.LavenderBlush;
                         Bouton[n].AutoSize = true;
                         Bouton[n].Top = 25 * bas;
                         Bouton[n].Left = droite;
                         Bouton[n].Text = reader[0].ToString();
                         Panel_Vidéoprojecteurs.AutoScroll = true;
-                        this.Panel_Vidéoprojecteurs.Controls.Add(Bouton[n]);                        
+                        this.Panel_Vidéoprojecteurs.Controls.Add(Bouton[n]);
                         n++;
                         bas++;
                     }
@@ -227,26 +225,25 @@ namespace Réseau_informatique_Saint_Jacques
             reader.Close();
             database.Close();
         }
-        private void Textbox_Imprimantes(string colonne)
+
+        private void Bouton_Imprimantes(string colonne)
         {
             OleDbConnection database = new OleDbConnection(connectionString);
-            string requete = "SELECT DISTINCT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
+            string requete = "SELECT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
             database.Open();
             OleDbCommand command = new OleDbCommand(requete, database);
             OleDbDataReader reader = command.ExecuteReader();
 
             while (reader.Read())
             {
-                {
-                    if ((colonne == "Date_Relevé") && (reader[0].ToString() != "")) { this.Controls[colonne].Text = Convert.ToDateTime(reader[0].ToString()).ToString("d/MM/yyyy"); }
-                    this.Controls[colonne].Text = reader[0].ToString();
-                    Button[] Bouton = new Button[500];
+                {                    
+                    Button[] Bouton = new Button[2000];
                     if (reader[0].ToString() != "")
                     {
                         Bouton[n] = new Button();
                         Bouton[n].Name = colonne.ToString() + n.ToString();
-                        Bouton[n].TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-                        Bouton[n].BackColor = System.Drawing.Color.LavenderBlush;
+                        Bouton[n].TextAlign = ContentAlignment.MiddleCenter;
+                        Bouton[n].BackColor = Color.LavenderBlush;
                         Bouton[n].AutoSize = true;
                         Bouton[n].Top = 25 * bas;
                         Bouton[n].Left = droite;
@@ -265,6 +262,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Supprimer_Textbox()
         {
             Panel_Brassage.Controls.Clear();
+            Panel_titres.Controls.Clear();
             Panel_Vidéoprojecteurs.Controls.Clear();
             Panel_Imprimantes.Controls.Clear();
             n = 0;
@@ -272,25 +270,14 @@ namespace Réseau_informatique_Saint_Jacques
             bas = 1;
         }
 
-        private void Textbox_Date_Videoprojecteur()
+        public string Transfert
         {
-            OleDbConnection database = new OleDbConnection(connectionString);
-            string requete = "SELECT Date_Relevé FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
-            database.Open();
-            OleDbCommand command = new OleDbCommand(requete, database);
-            OleDbDataReader reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                if ((reader[0].ToString().Length) > 0)
-                    Date_relevé.Text = Convert.ToDateTime(reader[0].ToString()).ToString("d/MM/yyyy");
-            }
-            reader.Close();
-            database.Close();
+            get { return Valeur_passée; }
         }
 
         private void Choix_colonne_SelectedIndexChanged(object sender, EventArgs e)
         {
             Listbox_Départ(Choix_colonne.SelectedItem.ToString(), "Brassage");
-        }
+        }        
     }
 }
