@@ -89,9 +89,9 @@
             // 
             // Panel_titres
             // 
-            this.Panel_titres.Location = new System.Drawing.Point(233, 113);
+            this.Panel_titres.Location = new System.Drawing.Point(235, 156);
             this.Panel_titres.Name = "Panel_titres";
-            this.Panel_titres.Size = new System.Drawing.Size(724, 35);
+            this.Panel_titres.Size = new System.Drawing.Size(722, 35);
             this.Panel_titres.TabIndex = 28;
             // 
             // Principal

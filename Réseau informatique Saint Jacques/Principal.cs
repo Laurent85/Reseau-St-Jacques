@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
@@ -24,8 +24,8 @@ namespace Réseau_informatique_Saint_Jacques
         {
             Combobox_Colonnes();
             Choix_colonne.SelectedItem = "Salle";
-            Combobox_tables();            
-        }       
+            Combobox_tables();
+        }
 
         private void Combobox_tables()
         {
@@ -52,7 +52,7 @@ namespace Réseau_informatique_Saint_Jacques
                 Choix_colonne.Items.Add(item.ColumnName);
                 Choix_colonne.Sorted = true;
             }
-        }        
+        }
 
         private void Listbox_Départ_Condition(string colonne, string table, string colonne1, string condition)
         {
@@ -66,30 +66,30 @@ namespace Réseau_informatique_Saint_Jacques
         }
 
         private void Liste_salles_SelectedIndexChanged(object sender, System.EventArgs e)
-        {            
-            Supprimer_Textbox();            
-            droite = droite + 20; bas = 1;
+        {
+            Supprimer_Textbox();
+            droite = droite + 20; bas = 2;
             Bouton_titres_brassage("ID");
             Bouton_brassage("ID");
-            droite = droite + 50; bas = 1;
+            droite = droite + 50; bas = 2;
             Bouton_titres_brassage("Switch");
             Bouton_brassage("Switch");
-            droite = droite + 100; bas = 1;
+            droite = droite + 100; bas = 2;
             Bouton_titres_brassage("Bandeau");
             Bouton_brassage("Bandeau");
-            droite = droite + 100; bas = 1;
+            droite = droite + 100; bas = 2;
             Bouton_titres_brassage("Port");
             Bouton_brassage("Port");
-            droite = droite + 100; bas = 1;
+            droite = droite + 100; bas = 2;
             Bouton_titres_brassage("VLAN");
             Bouton_brassage("VLAN");
-            droite = droite + 100; bas = 1;
+            droite = droite + 100; bas = 2;
             Bouton_titres_brassage("Périphérique");
             Bouton_brassage("Périphérique");
-            droite = droite + 140; bas = 1;
+            droite = droite + 140; bas = 2;
             Bouton_titres_brassage("adresse_ip");
             Bouton_brassage("Adresse_ip");
-            droite = 20; bas = 1;
+            droite = 108; bas = 1;
             Bouton_Vidéoprojecteurs("Vidéoprojecteur");
             Bouton_Vidéoprojecteurs("Date_Relevé");
             Bouton_Vidéoprojecteurs("Heures_Lampe");
@@ -133,7 +133,7 @@ namespace Réseau_informatique_Saint_Jacques
 
             while (reader.Read())
             {
-                {                    
+                {
                     Button[] Bouton = new Button[2000];
                     Bouton[n] = new Button();
                     Bouton[n].Name = colonne.ToString() + n.ToString();
@@ -142,7 +142,7 @@ namespace Réseau_informatique_Saint_Jacques
                     Bouton[n].TextAlign = ContentAlignment.MiddleCenter;
                     Bouton[n].BackColor = Color.LavenderBlush;
                     ToolTip ToolTip1 = new ToolTip();
-                    if (Bouton[n].Name.Contains("Switch")) { ToolTip1.SetToolTip(Bouton[n], "Hello"); }                    
+                    if (Bouton[n].Name.Contains("Switch")) { ToolTip1.SetToolTip(Bouton[n], "Hello"); }
                     Bouton[n].Top = 25 * bas;
                     Bouton[n].Left = droite;
                     Bouton[n].Text = reader[0].ToString();
@@ -168,16 +168,16 @@ namespace Réseau_informatique_Saint_Jacques
 
             if (reader.Read())
             {
-                {                    
+                {
                     Button Bouton = new Button();
                     Bouton = new Button();
                     Bouton.Name = colonne.ToString();
                     Bouton.AutoSize = true;
                     Bouton.FlatStyle = FlatStyle.Flat;
                     Bouton.FlatAppearance.BorderSize = 1;
-                    Bouton.FlatAppearance.BorderColor = Color.Blue;              
+                    Bouton.FlatAppearance.BorderColor = Color.Blue;
                     Bouton.TextAlign = ContentAlignment.MiddleCenter;
-                    if (Bouton.Name.Contains("ID")) {Bouton.Size = new Size(20, 20); }
+                    if (Bouton.Name.Contains("ID")) { Bouton.Size = new Size(20, 20); }
                     //Bouton.BackColor = Color.Red;
                     Bouton.ForeColor = Color.Black;
                     Bouton.Font = new Font(Bouton.Font, FontStyle.Bold);
@@ -186,7 +186,42 @@ namespace Réseau_informatique_Saint_Jacques
                     Bouton.Text = colonne.ToString();
                     if (Bouton.Text == "") { Bouton.Visible = false; }
                     Panel_titres.AutoScroll = true;
-                    this.Panel_titres.Controls.Add(Bouton);                    
+                    this.Panel_titres.Controls.Add(Bouton);
+                }
+            }
+            reader.Close();
+            database.Close();
+        }
+
+        private void Bouton_titres_vidéoprojecteur(string colonne)
+        {
+            OleDbConnection database = new OleDbConnection(connectionString);
+            string requete = "SELECT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
+            database.Open();
+            OleDbCommand command = new OleDbCommand(requete, database);
+            OleDbDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                {
+                    Button Bouton = new Button();
+                    Bouton = new Button();
+                    Bouton.Name = colonne.ToString();
+                    Bouton.AutoSize = true;
+                    Bouton.FlatStyle = FlatStyle.Flat;
+                    Bouton.FlatAppearance.BorderSize = 1;
+                    Bouton.FlatAppearance.BorderColor = Color.Blue;
+                    Bouton.TextAlign = ContentAlignment.MiddleCenter;
+                    if (Bouton.Name.Contains("ID")) { Bouton.Size = new Size(20, 20); }
+                    //Bouton.BackColor = Color.Red;
+                    Bouton.ForeColor = Color.Black;
+                    Bouton.Font = new Font(Bouton.Font, FontStyle.Bold);
+                    Bouton.Top = 10;
+                    Bouton.Left = droite;
+                    Bouton.Text = colonne.ToString();
+                    if (Bouton.Text == "") { Bouton.Visible = false; }
+                    Panel_titres.AutoScroll = true;
+                    this.Panel_titres.Controls.Add(Bouton);
                 }
             }
             reader.Close();
@@ -203,7 +238,7 @@ namespace Réseau_informatique_Saint_Jacques
 
             while (reader.Read())
             {
-                {                    
+                {
                     Button[] Bouton = new Button[2000];
                     if (reader[0].ToString() != "")
                     {
@@ -236,7 +271,7 @@ namespace Réseau_informatique_Saint_Jacques
 
             while (reader.Read())
             {
-                {                    
+                {
                     Button[] Bouton = new Button[2000];
                     if (reader[0].ToString() != "")
                     {
@@ -278,6 +313,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Choix_colonne_SelectedIndexChanged(object sender, EventArgs e)
         {
             Listbox_Départ(Choix_colonne.SelectedItem.ToString(), "Brassage");
-        }        
+        }
+        
     }
 }
