@@ -34,7 +34,9 @@
             this.Panel_Brassage = new System.Windows.Forms.Panel();
             this.Panel_Vidéoprojecteurs = new System.Windows.Forms.Panel();
             this.Panel_Imprimantes = new System.Windows.Forms.Panel();
-            this.Panel_titres = new System.Windows.Forms.Panel();
+            this.Panel_titres_brassage = new System.Windows.Forms.Panel();
+            this.Panel_titres_vidéoprojecteur = new System.Windows.Forms.Panel();
+            this.Panel_Vidéoprojecteurs.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tables
@@ -74,6 +76,7 @@
             // Panel_Vidéoprojecteurs
             // 
             this.Panel_Vidéoprojecteurs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel_Vidéoprojecteurs.Controls.Add(this.Panel_titres_vidéoprojecteur);
             this.Panel_Vidéoprojecteurs.Location = new System.Drawing.Point(975, 154);
             this.Panel_Vidéoprojecteurs.Name = "Panel_Vidéoprojecteurs";
             this.Panel_Vidéoprojecteurs.Size = new System.Drawing.Size(335, 266);
@@ -87,19 +90,26 @@
             this.Panel_Imprimantes.Size = new System.Drawing.Size(335, 266);
             this.Panel_Imprimantes.TabIndex = 27;
             // 
-            // Panel_titres
+            // Panel_titres_brassage
             // 
-            this.Panel_titres.Location = new System.Drawing.Point(235, 156);
-            this.Panel_titres.Name = "Panel_titres";
-            this.Panel_titres.Size = new System.Drawing.Size(722, 35);
-            this.Panel_titres.TabIndex = 28;
+            this.Panel_titres_brassage.Location = new System.Drawing.Point(235, 156);
+            this.Panel_titres_brassage.Name = "Panel_titres_brassage";
+            this.Panel_titres_brassage.Size = new System.Drawing.Size(722, 35);
+            this.Panel_titres_brassage.TabIndex = 28;
+            // 
+            // Panel_titres_vidéoprojecteur
+            // 
+            this.Panel_titres_vidéoprojecteur.Location = new System.Drawing.Point(3, 3);
+            this.Panel_titres_vidéoprojecteur.Name = "Panel_titres_vidéoprojecteur";
+            this.Panel_titres_vidéoprojecteur.Size = new System.Drawing.Size(151, 256);
+            this.Panel_titres_vidéoprojecteur.TabIndex = 29;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 750);
-            this.Controls.Add(this.Panel_titres);
+            this.Controls.Add(this.Panel_titres_brassage);
             this.Controls.Add(this.Panel_Imprimantes);
             this.Controls.Add(this.Panel_Vidéoprojecteurs);
             this.Controls.Add(this.Panel_Brassage);
@@ -109,6 +119,7 @@
             this.Name = "Principal";
             this.Text = "Réseau informatique St Jacques";
             this.Load += new System.EventHandler(this.Principal_Load);
+            this.Panel_Vidéoprojecteurs.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -121,7 +132,8 @@
         public System.Windows.Forms.Panel Panel_Brassage;
         private System.Windows.Forms.Panel Panel_Vidéoprojecteurs;
         private System.Windows.Forms.Panel Panel_Imprimantes;
-        private System.Windows.Forms.Panel Panel_titres;
+        private System.Windows.Forms.Panel Panel_titres_brassage;
+        private System.Windows.Forms.Panel Panel_titres_vidéoprojecteur;
     }
 }
 

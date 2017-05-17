@@ -89,8 +89,10 @@ namespace Réseau_informatique_Saint_Jacques
             droite = droite + 140; bas = 2;
             Bouton_titres_brassage("adresse_ip");
             Bouton_brassage("Adresse_ip");
-            droite = 108; bas = 1;
+            droite = 190; bas = 1;
             Bouton_Vidéoprojecteurs("Vidéoprojecteur");
+            droite_titre = 10;         
+            Bouton_titres_vidéoprojecteur("Vidéoprojecteur");
             Bouton_Vidéoprojecteurs("Date_Relevé");
             Bouton_Vidéoprojecteurs("Heures_Lampe");
             Bouton_Vidéoprojecteurs("Observations");
@@ -185,8 +187,8 @@ namespace Réseau_informatique_Saint_Jacques
                     Bouton.Left = droite;
                     Bouton.Text = colonne.ToString();
                     if (Bouton.Text == "") { Bouton.Visible = false; }
-                    Panel_titres.AutoScroll = true;
-                    this.Panel_titres.Controls.Add(Bouton);
+                    Panel_titres_brassage.AutoScroll = true;
+                    this.Panel_titres_brassage.Controls.Add(Bouton);
                 }
             }
             reader.Close();
@@ -216,12 +218,12 @@ namespace Réseau_informatique_Saint_Jacques
                     //Bouton.BackColor = Color.Red;
                     Bouton.ForeColor = Color.Black;
                     Bouton.Font = new Font(Bouton.Font, FontStyle.Bold);
-                    Bouton.Top = 10;
-                    Bouton.Left = droite;
+                    Bouton.Top = 28 * bas;
+                    Bouton.Left = droite_titre;
                     Bouton.Text = colonne.ToString();
-                    if (Bouton.Text == "") { Bouton.Visible = false; }
-                    Panel_titres.AutoScroll = true;
-                    this.Panel_titres.Controls.Add(Bouton);
+                    //if (Bouton.Text == "") { Bouton.Visible = false; }
+                    Panel_titres_vidéoprojecteur.AutoScroll = true;
+                    Panel_titres_vidéoprojecteur.Controls.Add(Bouton);
                 }
             }
             reader.Close();
@@ -247,7 +249,7 @@ namespace Réseau_informatique_Saint_Jacques
                         Bouton[n].TextAlign = ContentAlignment.MiddleCenter;
                         Bouton[n].BackColor = Color.LavenderBlush;
                         Bouton[n].AutoSize = true;
-                        Bouton[n].Top = 25 * bas;
+                        Bouton[n].Top = 28 * bas;
                         Bouton[n].Left = droite;
                         Bouton[n].Text = reader[0].ToString();
                         Panel_Vidéoprojecteurs.AutoScroll = true;
@@ -297,8 +299,9 @@ namespace Réseau_informatique_Saint_Jacques
         private void Supprimer_Textbox()
         {
             Panel_Brassage.Controls.Clear();
-            Panel_titres.Controls.Clear();
+            Panel_titres_brassage.Controls.Clear();
             Panel_Vidéoprojecteurs.Controls.Clear();
+            Panel_titres_vidéoprojecteur.Controls.Clear();
             Panel_Imprimantes.Controls.Clear();
             n = 0;
             droite = 0;
