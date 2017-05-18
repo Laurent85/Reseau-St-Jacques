@@ -36,7 +36,6 @@
             this.Panel_Imprimantes = new System.Windows.Forms.Panel();
             this.Panel_titres_brassage = new System.Windows.Forms.Panel();
             this.Panel_titres_vidéoprojecteur = new System.Windows.Forms.Panel();
-            this.Panel_Vidéoprojecteurs.SuspendLayout();
             this.SuspendLayout();
             // 
             // Tables
@@ -76,7 +75,6 @@
             // Panel_Vidéoprojecteurs
             // 
             this.Panel_Vidéoprojecteurs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Panel_Vidéoprojecteurs.Controls.Add(this.Panel_titres_vidéoprojecteur);
             this.Panel_Vidéoprojecteurs.Location = new System.Drawing.Point(975, 154);
             this.Panel_Vidéoprojecteurs.Name = "Panel_Vidéoprojecteurs";
             this.Panel_Vidéoprojecteurs.Size = new System.Drawing.Size(335, 266);
@@ -99,9 +97,9 @@
             // 
             // Panel_titres_vidéoprojecteur
             // 
-            this.Panel_titres_vidéoprojecteur.Location = new System.Drawing.Point(3, 3);
+            this.Panel_titres_vidéoprojecteur.Location = new System.Drawing.Point(978, 157);
             this.Panel_titres_vidéoprojecteur.Name = "Panel_titres_vidéoprojecteur";
-            this.Panel_titres_vidéoprojecteur.Size = new System.Drawing.Size(151, 256);
+            this.Panel_titres_vidéoprojecteur.Size = new System.Drawing.Size(151, 254);
             this.Panel_titres_vidéoprojecteur.TabIndex = 29;
             // 
             // Principal
@@ -109,6 +107,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 750);
+            this.Controls.Add(this.Panel_titres_vidéoprojecteur);
             this.Controls.Add(this.Panel_titres_brassage);
             this.Controls.Add(this.Panel_Imprimantes);
             this.Controls.Add(this.Panel_Vidéoprojecteurs);
@@ -119,7 +118,6 @@
             this.Name = "Principal";
             this.Text = "Réseau informatique St Jacques";
             this.Load += new System.EventHandler(this.Principal_Load);
-            this.Panel_Vidéoprojecteurs.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

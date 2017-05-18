@@ -89,13 +89,23 @@ namespace Réseau_informatique_Saint_Jacques
             droite = droite + 140; bas = 2;
             Bouton_titres_brassage("adresse_ip");
             Bouton_brassage("Adresse_ip");
-            droite = 190; bas = 1;
+            droite = 160; bas = 1;
             Bouton_Vidéoprojecteurs("Vidéoprojecteur");
-            droite_titre = 10;         
+            droite_titre = 15; bas = 27;         
             Bouton_titres_vidéoprojecteur("Vidéoprojecteur");
+            bas = 2;
             Bouton_Vidéoprojecteurs("Date_Relevé");
+            droite_titre = 15; bas = 55;
+            Bouton_titres_vidéoprojecteur("Date_Relevé");
+            bas = 3;
             Bouton_Vidéoprojecteurs("Heures_Lampe");
+            droite_titre = 15; bas = 82;
+            Bouton_titres_vidéoprojecteur("Heures_Lampe");
+            bas = 4;
             Bouton_Vidéoprojecteurs("Observations");
+            droite_titre = 15; bas = 109;
+            Bouton_titres_vidéoprojecteur("Observations");
+            
             droite = 20; bas = 1;
             Bouton_Imprimantes("imprimante");
             droite = droite + 115; bas = 1;
@@ -218,7 +228,7 @@ namespace Réseau_informatique_Saint_Jacques
                     //Bouton.BackColor = Color.Red;
                     Bouton.ForeColor = Color.Black;
                     Bouton.Font = new Font(Bouton.Font, FontStyle.Bold);
-                    Bouton.Top = 28 * bas;
+                    Bouton.Top = bas;
                     Bouton.Left = droite_titre;
                     Bouton.Text = colonne.ToString();
                     //if (Bouton.Text == "") { Bouton.Visible = false; }
