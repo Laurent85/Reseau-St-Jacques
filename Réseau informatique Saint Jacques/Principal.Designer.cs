@@ -36,6 +36,7 @@
             this.Panel_Imprimantes = new System.Windows.Forms.Panel();
             this.Panel_titres_brassage = new System.Windows.Forms.Panel();
             this.Panel_titres_vidéoprojecteur = new System.Windows.Forms.Panel();
+            this.Panel_titres_imprimantes = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // Tables
@@ -102,11 +103,19 @@
             this.Panel_titres_vidéoprojecteur.Size = new System.Drawing.Size(151, 254);
             this.Panel_titres_vidéoprojecteur.TabIndex = 29;
             // 
+            // Panel_titres_imprimantes
+            // 
+            this.Panel_titres_imprimantes.Location = new System.Drawing.Point(978, 456);
+            this.Panel_titres_imprimantes.Name = "Panel_titres_imprimantes";
+            this.Panel_titres_imprimantes.Size = new System.Drawing.Size(327, 35);
+            this.Panel_titres_imprimantes.TabIndex = 29;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 750);
+            this.Controls.Add(this.Panel_titres_imprimantes);
             this.Controls.Add(this.Panel_titres_vidéoprojecteur);
             this.Controls.Add(this.Panel_titres_brassage);
             this.Controls.Add(this.Panel_Imprimantes);
@@ -132,6 +141,7 @@
         private System.Windows.Forms.Panel Panel_Imprimantes;
         private System.Windows.Forms.Panel Panel_titres_brassage;
         private System.Windows.Forms.Panel Panel_titres_vidéoprojecteur;
+        private System.Windows.Forms.Panel Panel_titres_imprimantes;
     }
 }
 

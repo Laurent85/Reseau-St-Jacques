@@ -105,12 +105,14 @@ namespace Réseau_informatique_Saint_Jacques
             Bouton_Vidéoprojecteurs("Observations");
             droite_titre = 15; bas = 109;
             Bouton_titres_vidéoprojecteur("Observations");
-            
-            droite = 20; bas = 1;
+
+            droite = 0;
+            droite = droite + 40; bas = 2;
+            Bouton_titres_imprimantes("Imprimante");
             Bouton_Imprimantes("imprimante");
-            droite = droite + 115; bas = 1;
+            droite = droite + 115; bas = 2;
             Bouton_Imprimantes("Port_imprimante");
-            droite = droite + 85; bas = 1;
+            droite = droite + 85; bas = 2;
             Bouton_Imprimantes("Type_imprimante");
         }
 
@@ -234,6 +236,41 @@ namespace Réseau_informatique_Saint_Jacques
                     //if (Bouton.Text == "") { Bouton.Visible = false; }
                     Panel_titres_vidéoprojecteur.AutoScroll = true;
                     Panel_titres_vidéoprojecteur.Controls.Add(Bouton);
+                }
+            }
+            reader.Close();
+            database.Close();
+        }
+
+        private void Bouton_titres_imprimantes(string colonne)
+        {
+            OleDbConnection database = new OleDbConnection(connectionString);
+            string requete = "SELECT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
+            database.Open();
+            OleDbCommand command = new OleDbCommand(requete, database);
+            OleDbDataReader reader = command.ExecuteReader();
+
+            if (reader.Read())
+            {
+                {
+                    Button Bouton = new Button();
+                    Bouton = new Button();
+                    Bouton.Name = colonne.ToString();
+                    Bouton.AutoSize = true;
+                    Bouton.FlatStyle = FlatStyle.Flat;
+                    Bouton.FlatAppearance.BorderSize = 1;
+                    Bouton.FlatAppearance.BorderColor = Color.Blue;
+                    Bouton.TextAlign = ContentAlignment.MiddleCenter;
+                    if (Bouton.Name.Contains("ID")) { Bouton.Size = new Size(20, 20); }
+                    //Bouton.BackColor = Color.Red;
+                    Bouton.ForeColor = Color.Black;
+                    Bouton.Font = new Font(Bouton.Font, FontStyle.Bold);
+                    Bouton.Top = 10;
+                    Bouton.Left = droite;
+                    Bouton.Text = colonne.ToString();
+                    //if (Bouton.Text == "") { Bouton.Visible = false; }
+                    Panel_titres_imprimantes.AutoScroll = true;
+                    Panel_titres_imprimantes.Controls.Add(Bouton);
                 }
             }
             reader.Close();
