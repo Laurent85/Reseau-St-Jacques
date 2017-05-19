@@ -41,6 +41,7 @@ namespace Réseau_informatique_Saint_Jacques
             Textbox_brassage("Heures_Lampe");
             Textbox_brassage("Observations");
             Textbox_brassage("Modèle_Lampe");
+            Textbox_brassage("Infos_diverses");
             Label_brassage("Switch");
             Label_brassage("Port");
             Label_brassage("Salle");
@@ -58,6 +59,7 @@ namespace Réseau_informatique_Saint_Jacques
             Label_brassage("Heures_Lampe");
             Label_brassage("Observations");
             Label_brassage("Modèle_Lampe");
+            Label_brassage("Infos_diverses");
         }
 
         private void Textbox_brassage(string colonne)
@@ -75,6 +77,7 @@ namespace Réseau_informatique_Saint_Jacques
                     Textbox.Name = colonne.ToString();
                     Textbox.BackColor = Color.LavenderBlush;
                     Textbox.AutoSize = true;
+                    if (Textbox.Name == "Infos_diverses") { Textbox.Multiline = true; Textbox.Text = "a\r\nb"; }
                     Textbox.Top = bas;
                     Textbox.Left = droite;
                     Textbox.Text = reader[0].ToString();
@@ -117,7 +120,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Modifier_champs()
         {
-            foreach (Control txt in Panel_Brassage.Controls)
+            foreach (Control txt in principal.Controls)
             {
                 if (txt is TextBox)
                 {
