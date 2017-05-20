@@ -7,7 +7,7 @@ namespace Réseau_informatique_Saint_Jacques
 {
     public partial class Modifications : Form
     {
-        private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Reseau St Jacques.accdb";
+        private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private Principal principal = new Principal();
         private int n = 0;
         private int droite = 120;
@@ -77,7 +77,7 @@ namespace Réseau_informatique_Saint_Jacques
                     Textbox.Name = colonne.ToString();
                     Textbox.BackColor = Color.LavenderBlush;
                     Textbox.AutoSize = true;
-                    if (Textbox.Name == "Infos_diverses") { Textbox.Multiline = true; Textbox.Text = "a\r\nb"; }
+                    //if (Textbox.Name == "Infos_diverses") {  }
                     Textbox.Top = bas;
                     Textbox.Left = droite;
                     Textbox.Text = reader[0].ToString();
@@ -120,7 +120,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Modifier_champs()
         {
-            foreach (Control txt in principal.Controls)
+            foreach (Control txt in Panel_Brassage.Controls)
             {
                 if (txt is TextBox)
                 {
@@ -128,7 +128,8 @@ namespace Réseau_informatique_Saint_Jacques
                     {
                         OleDbConnection con = new OleDbConnection(connectionString);
                         con.Open();
-                        OleDbCommand cmd = new OleDbCommand("UPDATE Brassage SET " + txt.Name + " = '" + txt.Text + "'  WHERE ID = " + principal.Transfert + "", con);
+                        OleDbCommand cmd = new OleDbCommand("UPDATE Brassage SET " + txt.Name + " = '" + txt.Text.ToString() + "'  WHERE ID = " + principal.Transfert + "", con);
+
                         cmd.ExecuteNonQuery();
                         //lbl_msg.Text = "Record Updated Successfully.";
                         con.Close();

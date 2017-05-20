@@ -52,9 +52,9 @@
             // 
             // Panel_Brassage
             // 
-            this.Panel_Brassage.Location = new System.Drawing.Point(98, 101);
+            this.Panel_Brassage.Location = new System.Drawing.Point(98, 82);
             this.Panel_Brassage.Name = "Panel_Brassage";
-            this.Panel_Brassage.Size = new System.Drawing.Size(281, 437);
+            this.Panel_Brassage.Size = new System.Drawing.Size(281, 470);
             this.Panel_Brassage.TabIndex = 3;
             // 
             // Modifications

@@ -8,7 +8,7 @@ namespace Réseau_informatique_Saint_Jacques
 {
     public partial class Principal : Form
     {
-        private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Reseau St Jacques.accdb";
+        private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private int n = 0;
         private int droite = 0;
         private int droite_titre = 0;
@@ -96,7 +96,7 @@ namespace Réseau_informatique_Saint_Jacques
 
             droite = 160; bas = 12;
             Bouton_Vidéoprojecteurs("Vidéoprojecteur");
-            droite_titre = 20; bas = 10;         
+            droite_titre = 20; bas = 10;
             Bouton_titres_vidéoprojecteur("Vidéoprojecteur");
             bas = 43;
             Bouton_Vidéoprojecteurs("Date_Relevé");
@@ -113,7 +113,7 @@ namespace Réseau_informatique_Saint_Jacques
 
             droite = 20; bas = 2;
             droite_titre = 30; bas_titre = 10;
-            Bouton_titres_imprimantes("Imprimante");            
+            Bouton_titres_imprimantes("Imprimante");
             Bouton_Imprimantes("imprimante");
             droite = droite + 115; bas = 2;
             droite_titre = 150; bas_titre = 10;
@@ -375,6 +375,5 @@ namespace Réseau_informatique_Saint_Jacques
         {
             Listbox_Départ(Choix_colonne.SelectedItem.ToString(), "Brassage");
         }
-        
     }
 }
