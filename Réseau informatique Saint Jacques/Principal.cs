@@ -69,6 +69,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Liste_salles_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             Supprimer_Textbox();
+            Infos_diverses();
             droite = droite + 20; bas = 2;
             Bouton_titres_brassage("ID");
             Bouton_brassage("ID");
@@ -149,7 +150,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Bouton_brassage(string colonne)
         {
             OleDbConnection database = new OleDbConnection(connectionString);
-            string requete = "SELECT " + colonne + " FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
+            string requete = "SELECT " + colonne + "," + "Bandeau FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
             database.Open();
             OleDbCommand command = new OleDbCommand(requete, database);
             OleDbDataReader reader = command.ExecuteReader();
@@ -163,15 +164,20 @@ namespace Réseau_informatique_Saint_Jacques
                     Bouton[n].AutoSize = true;
                     if (Bouton[n].Name.Contains("ID")) { Bouton[n].Click += new EventHandler(Bouton_Click); Bouton[n].Size = new Size(20, 20); }
                     Bouton[n].TextAlign = ContentAlignment.MiddleCenter;
+                    
                     Bouton[n].BackColor = Color.LavenderBlush;
                     ToolTip ToolTip1 = new ToolTip();
                     if (Bouton[n].Name.Contains("Switch")) { ToolTip1.SetToolTip(Bouton[n], "Hello"); }
                     Bouton[n].Top = 25 * bas;
-                    Bouton[n].Left = droite;
+                    Bouton[n].Left= droite;
                     Bouton[n].Text = reader[0].ToString();
                     if (Bouton[n].Text == "") { Bouton[n].Visible = false; }
                     Panel_Brassage.AutoScroll = true;
                     this.Panel_Brassage.Controls.Add(Bouton[n]);
+                    if ((reader[1].ToString() != "nc") && (Bouton[n].Name.Contains("Port")))
+                    {
+                        Bouton[n].BackColor = Color.LightGreen;
+                    }
 
                     n++;
                     bas++;
@@ -353,14 +359,43 @@ namespace Réseau_informatique_Saint_Jacques
             database.Close();
         }
 
+        private void Infos_diverses()
+        {
+            OleDbConnection database = new OleDbConnection(connectionString);
+            string requete = "SELECT Infos_diverses,Périphérique FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
+            
+            database.Open();
+            OleDbCommand command = new OleDbCommand(requete, database);            
+            OleDbDataReader reader = command.ExecuteReader();
+            
+
+            while (reader.Read())
+            {
+                if (reader[0].ToString() != "")
+                {
+                    
+                    infos1_diverses.Text += reader[1].ToString();
+                    infos1_diverses.Text += Environment.NewLine;                    
+                    infos1_diverses.Text += "----------------------";
+                    infos1_diverses.Text += Environment.NewLine;
+                    infos1_diverses.Text += reader[0].ToString();
+                    infos1_diverses.Text += Environment.NewLine;
+                    infos1_diverses.Text += Environment.NewLine;
+                    
+                }
+                
+            }
+            reader.Close();
+            database.Close();
+        }
+
         private void Supprimer_Textbox()
         {
-            Panel_Brassage.Controls.Clear();
-            //Panel_titres_brassage.Controls.Clear();
-            Panel_Vidéoprojecteurs.Controls.Clear();
-            //Panel_titres_vidéoprojecteur.Controls.Clear();
+            Panel_Brassage.Controls.Clear();            
+            Panel_Vidéoprojecteurs.Controls.Clear();            
             Panel_Imprimantes.Controls.Clear();
             Panel_infos_diverses.Controls.Clear();
+            infos1_diverses.Text = "";
             n = 0;
             droite = 0;
             bas = 1;

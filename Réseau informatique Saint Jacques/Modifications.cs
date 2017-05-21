@@ -77,9 +77,13 @@ namespace Réseau_informatique_Saint_Jacques
                     Textbox.Name = colonne.ToString();
                     Textbox.BackColor = Color.LavenderBlush;
                     Textbox.AutoSize = true;
-                    //if (Textbox.Name == "Infos_diverses") {  }
-                    Textbox.Top = bas;
-                    Textbox.Left = droite;
+                    if (Textbox.Name == "Infos_diverses") { Textbox.Multiline = true; Textbox.Top = 50; Textbox.Left = 400; Textbox.Size = new Size(200, 200) ; }
+                    else
+                    {
+                        Textbox.Top = bas;
+                        Textbox.Left = droite;
+                    }
+                    
                     Textbox.Text = reader[0].ToString();
                     Panel_Brassage.AutoScroll = true;
                     this.Panel_Brassage.Controls.Add(Textbox);

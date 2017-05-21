@@ -39,10 +39,11 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Visible = false;
             // 
             // Valider_modifications
             // 
-            this.Valider_modifications.Location = new System.Drawing.Point(475, 193);
+            this.Valider_modifications.Location = new System.Drawing.Point(423, 27);
             this.Valider_modifications.Name = "Valider_modifications";
             this.Valider_modifications.Size = new System.Drawing.Size(130, 23);
             this.Valider_modifications.TabIndex = 4;
@@ -52,9 +53,9 @@
             // 
             // Panel_Brassage
             // 
-            this.Panel_Brassage.Location = new System.Drawing.Point(98, 82);
+            this.Panel_Brassage.Location = new System.Drawing.Point(46, 82);
             this.Panel_Brassage.Name = "Panel_Brassage";
-            this.Panel_Brassage.Size = new System.Drawing.Size(281, 470);
+            this.Panel_Brassage.Size = new System.Drawing.Size(619, 470);
             this.Panel_Brassage.TabIndex = 3;
             // 
             // Modifications

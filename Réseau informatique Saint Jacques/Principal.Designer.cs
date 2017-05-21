@@ -38,20 +38,23 @@
             this.Panel_titres_vidéoprojecteur = new System.Windows.Forms.Panel();
             this.Panel_titres_imprimantes = new System.Windows.Forms.Panel();
             this.Panel_infos_diverses = new System.Windows.Forms.Panel();
-            this.infos_diverses = new System.Windows.Forms.TextBox();
-            this.Panel_infos_diverses.SuspendLayout();
+            this.infos1_diverses = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // Tables
             // 
             this.Tables.FormattingEnabled = true;
-            this.Tables.Location = new System.Drawing.Point(233, 26);
+            this.Tables.Location = new System.Drawing.Point(59, -1);
             this.Tables.Name = "Tables";
-            this.Tables.Size = new System.Drawing.Size(121, 21);
+            this.Tables.Size = new System.Drawing.Size(139, 21);
             this.Tables.TabIndex = 0;
+            this.Tables.Visible = false;
             // 
             // Liste_départ
             // 
+            this.Liste_départ.BackColor = System.Drawing.Color.Khaki;
+            this.Liste_départ.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Liste_départ.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.Liste_départ.FormattingEnabled = true;
             this.Liste_départ.Location = new System.Drawing.Point(59, 53);
             this.Liste_départ.Name = "Liste_départ";
@@ -61,15 +64,19 @@
             // 
             // Choix_colonne
             // 
+            this.Choix_colonne.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.Choix_colonne.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Choix_colonne.ForeColor = System.Drawing.Color.Fuchsia;
             this.Choix_colonne.FormattingEnabled = true;
-            this.Choix_colonne.Location = new System.Drawing.Point(77, 26);
+            this.Choix_colonne.Location = new System.Drawing.Point(59, 26);
             this.Choix_colonne.Name = "Choix_colonne";
-            this.Choix_colonne.Size = new System.Drawing.Size(121, 21);
+            this.Choix_colonne.Size = new System.Drawing.Size(139, 21);
             this.Choix_colonne.TabIndex = 9;
             this.Choix_colonne.SelectedIndexChanged += new System.EventHandler(this.Choix_colonne_SelectedIndexChanged);
             // 
             // Panel_Brassage
             // 
+            this.Panel_Brassage.BackColor = System.Drawing.Color.Khaki;
             this.Panel_Brassage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Panel_Brassage.Location = new System.Drawing.Point(233, 154);
             this.Panel_Brassage.Name = "Panel_Brassage";
@@ -78,6 +85,7 @@
             // 
             // Panel_Vidéoprojecteurs
             // 
+            this.Panel_Vidéoprojecteurs.BackColor = System.Drawing.Color.Khaki;
             this.Panel_Vidéoprojecteurs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Panel_Vidéoprojecteurs.Location = new System.Drawing.Point(1002, 154);
             this.Panel_Vidéoprojecteurs.Name = "Panel_Vidéoprojecteurs";
@@ -86,6 +94,7 @@
             // 
             // Panel_Imprimantes
             // 
+            this.Panel_Imprimantes.BackColor = System.Drawing.Color.Khaki;
             this.Panel_Imprimantes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Panel_Imprimantes.Location = new System.Drawing.Point(1002, 350);
             this.Panel_Imprimantes.Name = "Panel_Imprimantes";
@@ -94,6 +103,7 @@
             // 
             // Panel_titres_brassage
             // 
+            this.Panel_titres_brassage.BackColor = System.Drawing.Color.Khaki;
             this.Panel_titres_brassage.Location = new System.Drawing.Point(235, 156);
             this.Panel_titres_brassage.Name = "Panel_titres_brassage";
             this.Panel_titres_brassage.Size = new System.Drawing.Size(751, 35);
@@ -101,6 +111,7 @@
             // 
             // Panel_titres_vidéoprojecteur
             // 
+            this.Panel_titres_vidéoprojecteur.BackColor = System.Drawing.Color.Khaki;
             this.Panel_titres_vidéoprojecteur.Location = new System.Drawing.Point(1005, 157);
             this.Panel_titres_vidéoprojecteur.Name = "Panel_titres_vidéoprojecteur";
             this.Panel_titres_vidéoprojecteur.Size = new System.Drawing.Size(146, 152);
@@ -108,6 +119,7 @@
             // 
             // Panel_titres_imprimantes
             // 
+            this.Panel_titres_imprimantes.BackColor = System.Drawing.Color.Khaki;
             this.Panel_titres_imprimantes.Location = new System.Drawing.Point(1005, 353);
             this.Panel_titres_imprimantes.Name = "Panel_titres_imprimantes";
             this.Panel_titres_imprimantes.Size = new System.Drawing.Size(300, 35);
@@ -116,25 +128,29 @@
             // Panel_infos_diverses
             // 
             this.Panel_infos_diverses.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Panel_infos_diverses.Controls.Add(this.infos_diverses);
             this.Panel_infos_diverses.Location = new System.Drawing.Point(1002, 545);
             this.Panel_infos_diverses.Name = "Panel_infos_diverses";
             this.Panel_infos_diverses.Size = new System.Drawing.Size(308, 174);
             this.Panel_infos_diverses.TabIndex = 28;
             // 
-            // infos_diverses
+            // infos1_diverses
             // 
-            this.infos_diverses.Location = new System.Drawing.Point(3, 3);
-            this.infos_diverses.Multiline = true;
-            this.infos_diverses.Name = "infos_diverses";
-            this.infos_diverses.Size = new System.Drawing.Size(298, 164);
-            this.infos_diverses.TabIndex = 0;
+            this.infos1_diverses.BackColor = System.Drawing.Color.Khaki;
+            this.infos1_diverses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infos1_diverses.ForeColor = System.Drawing.Color.Brown;
+            this.infos1_diverses.Location = new System.Drawing.Point(1005, 548);
+            this.infos1_diverses.Name = "infos1_diverses";
+            this.infos1_diverses.Size = new System.Drawing.Size(300, 166);
+            this.infos1_diverses.TabIndex = 0;
+            this.infos1_diverses.Text = "";
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1322, 750);
+            this.Controls.Add(this.infos1_diverses);
             this.Controls.Add(this.Panel_infos_diverses);
             this.Controls.Add(this.Panel_titres_imprimantes);
             this.Controls.Add(this.Panel_titres_vidéoprojecteur);
@@ -148,8 +164,6 @@
             this.Name = "Principal";
             this.Text = "Réseau informatique St Jacques";
             this.Load += new System.EventHandler(this.Principal_Load);
-            this.Panel_infos_diverses.ResumeLayout(false);
-            this.Panel_infos_diverses.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -166,7 +180,7 @@
         private System.Windows.Forms.Panel Panel_titres_vidéoprojecteur;
         private System.Windows.Forms.Panel Panel_titres_imprimantes;
         private System.Windows.Forms.Panel Panel_infos_diverses;
-        private System.Windows.Forms.TextBox infos_diverses;
+        private System.Windows.Forms.RichTextBox infos1_diverses;
     }
 }
 
