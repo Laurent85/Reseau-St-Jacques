@@ -178,6 +178,10 @@ namespace Réseau_informatique_Saint_Jacques
                     {
                         Bouton[n].BackColor = Color.LightGreen;
                     }
+                    if ((reader[1].ToString() == "nc") && (Bouton[n].Name.Contains("Port")))
+                    {
+                        Bouton[n].BackColor = Color.DimGray;
+                    }
 
                     n++;
                     bas++;
