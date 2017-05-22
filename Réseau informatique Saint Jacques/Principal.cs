@@ -15,6 +15,7 @@ namespace Réseau_informatique_Saint_Jacques
         private int bas_titre = 0;
         private int bas = 1;
         public static string Valeur_passée;
+        public static string Valeur_test;
 
         public Principal()
         {
@@ -66,7 +67,7 @@ namespace Réseau_informatique_Saint_Jacques
             Liste_départ.ValueMember = colonne;
         }
 
-        private void Liste_salles_SelectedIndexChanged(object sender, System.EventArgs e)
+        public void Liste_salles_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             Supprimer_Textbox();
             Infos_diverses();
@@ -142,6 +143,7 @@ namespace Réseau_informatique_Saint_Jacques
             var Bouton_brassage = (Button)sender;
 
             Valeur_passée = ((Button)Panel_Brassage.Controls[Bouton_brassage.Name]).Text;
+            Valeur_test = "1";
             Modifications modifications = new Modifications();
 
             modifications.Show();
@@ -169,7 +171,7 @@ namespace Réseau_informatique_Saint_Jacques
                     ToolTip ToolTip1 = new ToolTip();
                     if (Bouton[n].Name.Contains("Switch")) { ToolTip1.SetToolTip(Bouton[n], "Hello"); }
                     Bouton[n].Top = 25 * bas;
-                    Bouton[n].Left= droite;
+                    Bouton[n].Left= droite;                    
                     Bouton[n].Text = reader[0].ToString();
                     if (Bouton[n].Text == "") { Bouton[n].Visible = false; }
                     Panel_Brassage.AutoScroll = true;
@@ -177,10 +179,11 @@ namespace Réseau_informatique_Saint_Jacques
                     if ((reader[1].ToString() != "nc") && (Bouton[n].Name.Contains("Port")))
                     {
                         Bouton[n].BackColor = Color.LightGreen;
+                        Bouton[n].Font = new Font(Bouton[n].Font, FontStyle.Bold);
                     }
                     if ((reader[1].ToString() == "nc") && (Bouton[n].Name.Contains("Port")))
                     {
-                        Bouton[n].BackColor = Color.DimGray;
+                        Bouton[n].BackColor = Color.LightGray;                        
                     }
 
                     n++;
@@ -210,13 +213,14 @@ namespace Réseau_informatique_Saint_Jacques
                     Bouton.FlatAppearance.BorderSize = 1;
                     Bouton.FlatAppearance.BorderColor = Color.Blue;
                     Bouton.TextAlign = ContentAlignment.MiddleCenter;
-                    if (Bouton.Name.Contains("ID")) { Bouton.Size = new Size(20, 20); }
+                    if (Bouton.Name.Contains("ID")) { Bouton.Size = new Size(20, 20);}
                     //Bouton.BackColor = Color.Red;
                     Bouton.ForeColor = Color.Black;
                     Bouton.Font = new Font(Bouton.Font, FontStyle.Bold);
                     Bouton.Top = 10;
                     Bouton.Left = droite;
-                    Bouton.Text = colonne.ToString();
+                    if (Bouton.Name.Contains("ID")) { Bouton.Left = 2; Bouton.Text = "Modifier"; }
+                        else Bouton.Text = colonne.ToString();
                     if (Bouton.Text == "") { Bouton.Visible = false; }
                     Panel_titres_brassage.AutoScroll = true;
                     this.Panel_titres_brassage.Controls.Add(Bouton);
@@ -409,10 +413,22 @@ namespace Réseau_informatique_Saint_Jacques
         {
             get { return Valeur_passée; }
         }
+        public string Transfert_Test
+        {
+            get { return Valeur_test; }
+        }
 
         private void Choix_colonne_SelectedIndexChanged(object sender, EventArgs e)
         {
             Listbox_Départ(Choix_colonne.SelectedItem.ToString(), "Brassage");
+        }
+
+        private void btn_Ajouter_Entrée_Click(object sender, EventArgs e)
+        {
+            Valeur_passée = "1";
+            Valeur_test = "0";
+            Modifications modifications = new Modifications();
+            modifications.Show();
         }
     }
 }

@@ -39,6 +39,7 @@
             this.Panel_titres_imprimantes = new System.Windows.Forms.Panel();
             this.Panel_infos_diverses = new System.Windows.Forms.Panel();
             this.infos1_diverses = new System.Windows.Forms.RichTextBox();
+            this.btn_Ajouter_Entrée = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Tables
@@ -144,12 +145,23 @@
             this.infos1_diverses.TabIndex = 0;
             this.infos1_diverses.Text = "";
             // 
+            // btn_Ajouter_Entrée
+            // 
+            this.btn_Ajouter_Entrée.Location = new System.Drawing.Point(273, 23);
+            this.btn_Ajouter_Entrée.Name = "btn_Ajouter_Entrée";
+            this.btn_Ajouter_Entrée.Size = new System.Drawing.Size(98, 23);
+            this.btn_Ajouter_Entrée.TabIndex = 30;
+            this.btn_Ajouter_Entrée.Text = "Ajouter une ligne";
+            this.btn_Ajouter_Entrée.UseVisualStyleBackColor = true;
+            this.btn_Ajouter_Entrée.Click += new System.EventHandler(this.btn_Ajouter_Entrée_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1322, 750);
+            this.Controls.Add(this.btn_Ajouter_Entrée);
             this.Controls.Add(this.infos1_diverses);
             this.Controls.Add(this.Panel_infos_diverses);
             this.Controls.Add(this.Panel_titres_imprimantes);
@@ -171,7 +183,6 @@
         #endregion
 
         private System.Windows.Forms.ComboBox Tables;
-        private System.Windows.Forms.ListBox Liste_départ;
         private System.Windows.Forms.ComboBox Choix_colonne;
         public System.Windows.Forms.Panel Panel_Brassage;
         private System.Windows.Forms.Panel Panel_Vidéoprojecteurs;
@@ -181,6 +192,8 @@
         private System.Windows.Forms.Panel Panel_titres_imprimantes;
         private System.Windows.Forms.Panel Panel_infos_diverses;
         private System.Windows.Forms.RichTextBox infos1_diverses;
+        private System.Windows.Forms.Button btn_Ajouter_Entrée;
+        public System.Windows.Forms.ListBox Liste_départ;
     }
 }
 
