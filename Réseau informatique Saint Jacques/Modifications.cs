@@ -25,7 +25,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             if (principal.Transfert_Test == "1") { Valider_modifications.Visible = true;  Valider_Saisie.Visible = false; }
             if (principal.Transfert_Test == "0") { Valider_modifications.Visible = false; Valider_Saisie.Visible = true; }
-            textBox1.Text = principal.Transfert;
+            textBox_id.Text = principal.Transfert;
             string requete = "SELECT * FROM BRASSAGE";
             OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
             DataTable result = new DataTable();            
@@ -52,14 +52,18 @@ namespace Réseau_informatique_Saint_Jacques
                     TextBox Textbox = new TextBox();
                     Textbox.Name = colonne.ToString();
                     Textbox.BackColor = Color.LavenderBlush;
-                    Textbox.AutoSize = true;
+                    Textbox.AutoSize = true;                    
                     if (Textbox.Name == "Infos_diverses") { Textbox.Multiline = true; Textbox.Top = 50; Textbox.Left = 400; Textbox.Size = new Size(200, 200) ; }
                     else
                     {
                         Textbox.Top = bas;
                         Textbox.Left = droite;
                     }
-                    if (principal.Transfert_Test == "0") { Textbox.Text = ""; }
+                    if (principal.Transfert_Test == "0")
+                    {
+                        if ((colonne == "Switch") || (colonne == "Salle")) { Textbox.Text = reader[0].ToString(); }                      
+                        else { Textbox.Text = ""; }                       
+                    }
                     if (principal.Transfert_Test == "1") { Textbox.Text = reader[0].ToString(); }                   
                     Panel_Brassage.AutoScroll = true;
                     this.Panel_Brassage.Controls.Add(Textbox);
@@ -148,7 +152,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Valider_Saisie_Click(object sender, EventArgs e)
         {
-            
+           
             int identity = 0;
             string query2 = "Select @@Identity";
             OleDbConnection con2 = new OleDbConnection(connectionString);

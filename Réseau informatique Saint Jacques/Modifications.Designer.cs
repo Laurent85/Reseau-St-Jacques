@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_id = new System.Windows.Forms.TextBox();
             this.Valider_modifications = new System.Windows.Forms.Button();
             this.Panel_Brassage = new System.Windows.Forms.Panel();
             this.Valider_Saisie = new System.Windows.Forms.Button();
             this.Suppression_ligne = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBox_id
             // 
-            this.textBox1.Location = new System.Drawing.Point(279, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.Visible = false;
+            this.textBox_id.Location = new System.Drawing.Point(279, 56);
+            this.textBox_id.Name = "textBox_id";
+            this.textBox_id.Size = new System.Drawing.Size(100, 20);
+            this.textBox_id.TabIndex = 0;
+            this.textBox_id.Visible = false;
             // 
             // Valider_modifications
             // 
@@ -89,7 +89,7 @@
             this.Controls.Add(this.Valider_Saisie);
             this.Controls.Add(this.Valider_modifications);
             this.Controls.Add(this.Panel_Brassage);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_id);
             this.Name = "Modifications";
             this.Text = "Modifications";
             this.Load += new System.EventHandler(this.Modifications_Load);
@@ -100,7 +100,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_id;
         private System.Windows.Forms.Button Valider_modifications;
         private System.Windows.Forms.Panel Panel_Brassage;
         private System.Windows.Forms.Button Valider_Saisie;

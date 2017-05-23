@@ -16,6 +16,7 @@ namespace Réseau_informatique_Saint_Jacques
         private int bas = 1;
         public static string Valeur_passée;
         public static string Valeur_test;
+        public static string mémo_id;
 
         public Principal()
         {
@@ -145,7 +146,10 @@ namespace Réseau_informatique_Saint_Jacques
             Valeur_passée = ((Button)Panel_Brassage.Controls[Bouton_brassage.Name]).Text;
             Valeur_test = "1";
             Modifications modifications = new Modifications();
-
+            modifications.Closed += delegate
+            {
+                Liste_salles_SelectedIndexChanged(sender, e);
+            };
             modifications.Show();
         }
 
@@ -164,12 +168,63 @@ namespace Réseau_informatique_Saint_Jacques
                     Bouton[n] = new Button();
                     Bouton[n].Name = colonne.ToString() + n.ToString();
                     Bouton[n].AutoSize = true;
-                    if (Bouton[n].Name.Contains("ID")) { Bouton[n].Click += new EventHandler(Bouton_Click); Bouton[n].Size = new Size(20, 20); }
+                    if (Bouton[n].Name.Contains("ID")) { Bouton[n].Click += new EventHandler(Bouton_Click); Bouton[n].Size = new Size(20, 20); mémo_id = reader[0].ToString(); }
                     Bouton[n].TextAlign = ContentAlignment.MiddleCenter;
                     
                     Bouton[n].BackColor = Color.LavenderBlush;
                     ToolTip ToolTip1 = new ToolTip();
-                    if (Bouton[n].Name.Contains("Switch")) { ToolTip1.SetToolTip(Bouton[n], "Hello"); }
+                    //if (Bouton[n].Name.Contains("Switch")) { ToolTip1.SetToolTip(Bouton[n], "Hello"); }
+                    if (Bouton[n].Name.Contains("Switch"))
+                    {
+                        switch (reader[0].ToString())
+                        {
+                            case "SW_SR1_1":
+                                Titre.Text = "Switch 48 Local Internet : 172.16.7.251";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(27, 12, "http://172.16.7.251");                                
+                                break;
+                            case "SW_SR2_1":
+                                Titre.Text = "Switch 1_24 Bureau Informatique : 172.16.7.254";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(34, 12, "http://172.16.7.254");                                                             
+                                break;
+                            case "SW_SR2_2":
+                                Titre.Text = "Switch 2_24 Bureau Informatique : 172.16.7.254";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(34, 12, "http://172.16.7.254");
+                                break;
+                            case "SW_SR2_3":
+                                Titre.Text = "Switch 1_48 Bureau Informatique : 172.16.7.253";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(34, 12, "http://172.16.7.253");
+                                break;
+                            case "SW_SR2_4":
+                                Titre.Text = "Switch 2_48 Bureau Informatique : 172.16.7.253";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(34, 12, "http://172.16.7.253");
+                                break;
+                            case "SW_SR3_1":
+                                Titre.Text = "Switch 1_48 Salle Informatique : 172.16.7.254";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(33, 12, "http://172.16.7.252");
+                                break;
+                            case "SW_SR3_2":
+                                Titre.Text = "Switch 2_48 Salle Informatique : 172.16.7.254";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(33, 12, "http://172.16.7.252");
+                                break;
+                            case "SW_SR4_1":
+                                Titre.Text = "Switch 48 Bureau Vie Scolaire : 172.16.7.244";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(32, 12, "http://172.16.7.244");
+                                break;
+                            case "SW_SR5_1":
+                                Titre.Text = "Switch 48 Salle de Sport : 172.16.7.245";
+                                Titre.Links.Clear();
+                                Titre.Links.Add(27, 12, "http://172.16.7.245");
+                                break;
+                        }
+                    }
                     Bouton[n].Top = 25 * bas;
                     Bouton[n].Left= droite;                    
                     Bouton[n].Text = reader[0].ToString();
@@ -404,6 +459,7 @@ namespace Réseau_informatique_Saint_Jacques
             Panel_Imprimantes.Controls.Clear();
             Panel_infos_diverses.Controls.Clear();
             infos1_diverses.Text = "";
+            Titre.Text = "";            
             n = 0;
             droite = 0;
             bas = 1;
@@ -424,11 +480,25 @@ namespace Réseau_informatique_Saint_Jacques
         }
 
         private void btn_Ajouter_Entrée_Click(object sender, EventArgs e)
-        {
-            Valeur_passée = "1";
+        {            
+            Valeur_passée = mémo_id;
             Valeur_test = "0";
             Modifications modifications = new Modifications();
+            modifications.Closed += delegate
+            {
+                Liste_salles_SelectedIndexChanged(sender, e);
+            };
             modifications.Show();
+        }
+
+        private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (Titre.Text.Contains("172.16.7.251")) { System.Diagnostics.Process.Start("http://172.16.7.251"); }
+            if (Titre.Text.Contains("172.16.7.252")) { System.Diagnostics.Process.Start("http://172.16.7.252"); }
+            if (Titre.Text.Contains("172.16.7.253")) { System.Diagnostics.Process.Start("http://172.16.7.253"); }
+            if (Titre.Text.Contains("172.16.7.254")) { System.Diagnostics.Process.Start("http://172.16.7.254"); }
+            if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
+            if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }            
         }
     }
 }

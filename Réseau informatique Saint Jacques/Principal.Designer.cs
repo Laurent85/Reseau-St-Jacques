@@ -40,6 +40,7 @@
             this.Panel_infos_diverses = new System.Windows.Forms.Panel();
             this.infos1_diverses = new System.Windows.Forms.RichTextBox();
             this.btn_Ajouter_Entrée = new System.Windows.Forms.Button();
+            this.Titre = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // Tables
@@ -155,12 +156,26 @@
             this.btn_Ajouter_Entrée.UseVisualStyleBackColor = true;
             this.btn_Ajouter_Entrée.Click += new System.EventHandler(this.btn_Ajouter_Entrée_Click);
             // 
+            // Titre
+            // 
+            this.Titre.AutoSize = true;
+            this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Titre.Location = new System.Drawing.Point(404, 98);
+            this.Titre.Name = "Titre";
+            this.Titre.Size = new System.Drawing.Size(118, 31);
+            this.Titre.TabIndex = 32;
+            this.Titre.TabStop = true;
+            this.Titre.Text = "linkLabel1";
+            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1322, 750);
+            this.Controls.Add(this.Titre);
             this.Controls.Add(this.btn_Ajouter_Entrée);
             this.Controls.Add(this.infos1_diverses);
             this.Controls.Add(this.Panel_infos_diverses);
@@ -177,6 +192,7 @@
             this.Text = "Réseau informatique St Jacques";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -194,6 +210,7 @@
         private System.Windows.Forms.RichTextBox infos1_diverses;
         private System.Windows.Forms.Button btn_Ajouter_Entrée;
         public System.Windows.Forms.ListBox Liste_départ;
+        private System.Windows.Forms.LinkLabel Titre;
     }
 }
 
