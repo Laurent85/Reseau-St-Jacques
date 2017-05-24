@@ -154,7 +154,7 @@
             this.btn_Ajouter_Entrée.TabIndex = 30;
             this.btn_Ajouter_Entrée.Text = "Ajouter une ligne";
             this.btn_Ajouter_Entrée.UseVisualStyleBackColor = true;
-            this.btn_Ajouter_Entrée.Click += new System.EventHandler(this.btn_Ajouter_Entrée_Click);
+            this.btn_Ajouter_Entrée.Click += new System.EventHandler(this.Bouton_Ajouter_Entrée_Click);
             // 
             // Titre
             // 

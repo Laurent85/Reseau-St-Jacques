@@ -125,23 +125,6 @@ namespace Réseau_informatique_Saint_Jacques
                 }
             }
         }
-        private void Supprimer_ligne()
-        {            
-                    try
-                    {
-                        OleDbConnection con = new OleDbConnection(connectionString);
-                        con.Open();
-                        OleDbCommand cmd = new OleDbCommand("DELETE FROM Brassage WHERE ID = " + principal.Transfert + "", con);
-
-                        cmd.ExecuteNonQuery();
-                        //lbl_msg.Text = "Record Updated Successfully.";
-                        con.Close();
-                    }
-                    catch
-                    {
-                        //lbl_msg.Text = "Error Occured.";
-                    }             
-        }
 
         private void Valider_modifications_Click(object sender, EventArgs e)
         {
@@ -186,6 +169,23 @@ namespace Réseau_informatique_Saint_Jacques
             }
             MessageBox.Show("Saisie validée avec succès");
             this.Close();
+        }
+        private void Supprimer_ligne()
+        {            
+                    try
+                    {
+                        OleDbConnection con = new OleDbConnection(connectionString);
+                        con.Open();
+                        OleDbCommand cmd = new OleDbCommand("DELETE FROM Brassage WHERE ID = " + principal.Transfert + "", con);
+
+                        cmd.ExecuteNonQuery();
+                        //lbl_msg.Text = "Record Updated Successfully.";
+                        con.Close();
+                    }
+                    catch
+                    {
+                        //lbl_msg.Text = "Error Occured.";
+                    }             
         }
 
         private void Suppression_ligne_Click(object sender, EventArgs e)
