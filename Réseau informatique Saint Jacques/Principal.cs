@@ -156,7 +156,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Bouton_brassage(string colonne)
         {
             OleDbConnection database = new OleDbConnection(connectionString);
-            string requete = "SELECT " + colonne + "," + "Bandeau FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "'";
+            string requete = "SELECT " + colonne + "," + "Bandeau FROM Brassage WHERE " + Choix_colonne.SelectedItem.ToString() + " = '" + Liste_départ.GetItemText(Liste_départ.SelectedItem) + "' ORDER BY Bandeau";
             database.Open();
             OleDbCommand command = new OleDbCommand(requete, database);
             OleDbDataReader reader = command.ExecuteReader();
