@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Réseau_informatique_Saint_Jacques
+{
+    
+public partial class Synthèse_imprimantes : Form
+    {
+        private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
+        OleDbConnection database = new OleDbConnection(connectionString);
+        public Synthèse_imprimantes()
+        {
+            InitializeComponent();
+        }       
+
+        private void Synthèse_imprimantes_Load(object sender, EventArgs e)
+        {           
+            string requete = "Select imprimante, port_imprimante, type_imprimante, Salle from Brassage where imprimante <> '' ORDER BY imprimante";
+            OleDbCommand command = new OleDbCommand(requete, database);
+            database.Open();
+            command.CommandType = CommandType.Text;
+            OleDbDataAdapter da = new OleDbDataAdapter(command);
+            DataTable résultats = new DataTable();
+            da.Fill(résultats);
+            Liste_imprimantes.DataSource = résultats;
+            database.Close();
+        }
+    }
+}

@@ -32,15 +32,18 @@
             this.Liste_départ = new System.Windows.Forms.ListBox();
             this.Choix_colonne = new System.Windows.Forms.ComboBox();
             this.Panel_Brassage = new System.Windows.Forms.Panel();
-            this.Panel_Vidéoprojecteurs = new System.Windows.Forms.Panel();
+            this.Synthèse_imprimantes = new System.Windows.Forms.Panel();
             this.Panel_Imprimantes = new System.Windows.Forms.Panel();
             this.Panel_titres_brassage = new System.Windows.Forms.Panel();
             this.Panel_titres_vidéoprojecteur = new System.Windows.Forms.Panel();
             this.Panel_titres_imprimantes = new System.Windows.Forms.Panel();
             this.Panel_infos_diverses = new System.Windows.Forms.Panel();
-            this.infos1_diverses = new System.Windows.Forms.RichTextBox();
+            this.infos_diverses = new System.Windows.Forms.RichTextBox();
             this.btn_Ajouter_Entrée = new System.Windows.Forms.Button();
             this.Titre = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Cacher_ports = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Tables
@@ -85,14 +88,14 @@
             this.Panel_Brassage.Size = new System.Drawing.Size(753, 565);
             this.Panel_Brassage.TabIndex = 25;
             // 
-            // Panel_Vidéoprojecteurs
+            // Synthèse_imprimantes
             // 
-            this.Panel_Vidéoprojecteurs.BackColor = System.Drawing.Color.Khaki;
-            this.Panel_Vidéoprojecteurs.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Panel_Vidéoprojecteurs.Location = new System.Drawing.Point(1002, 154);
-            this.Panel_Vidéoprojecteurs.Name = "Panel_Vidéoprojecteurs";
-            this.Panel_Vidéoprojecteurs.Size = new System.Drawing.Size(308, 164);
-            this.Panel_Vidéoprojecteurs.TabIndex = 26;
+            this.Synthèse_imprimantes.BackColor = System.Drawing.Color.Khaki;
+            this.Synthèse_imprimantes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Synthèse_imprimantes.Location = new System.Drawing.Point(1002, 154);
+            this.Synthèse_imprimantes.Name = "Synthèse_imprimantes";
+            this.Synthèse_imprimantes.Size = new System.Drawing.Size(308, 164);
+            this.Synthèse_imprimantes.TabIndex = 26;
             // 
             // Panel_Imprimantes
             // 
@@ -135,22 +138,22 @@
             this.Panel_infos_diverses.Size = new System.Drawing.Size(308, 174);
             this.Panel_infos_diverses.TabIndex = 28;
             // 
-            // infos1_diverses
+            // infos_diverses
             // 
-            this.infos1_diverses.BackColor = System.Drawing.Color.Khaki;
-            this.infos1_diverses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infos1_diverses.ForeColor = System.Drawing.Color.Brown;
-            this.infos1_diverses.Location = new System.Drawing.Point(1005, 548);
-            this.infos1_diverses.Name = "infos1_diverses";
-            this.infos1_diverses.Size = new System.Drawing.Size(300, 166);
-            this.infos1_diverses.TabIndex = 0;
-            this.infos1_diverses.Text = "";
+            this.infos_diverses.BackColor = System.Drawing.Color.Khaki;
+            this.infos_diverses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infos_diverses.ForeColor = System.Drawing.Color.Brown;
+            this.infos_diverses.Location = new System.Drawing.Point(1005, 548);
+            this.infos_diverses.Name = "infos_diverses";
+            this.infos_diverses.Size = new System.Drawing.Size(300, 166);
+            this.infos_diverses.TabIndex = 0;
+            this.infos_diverses.Text = "";
             // 
             // btn_Ajouter_Entrée
             // 
-            this.btn_Ajouter_Entrée.Location = new System.Drawing.Point(273, 23);
+            this.btn_Ajouter_Entrée.Location = new System.Drawing.Point(233, 83);
             this.btn_Ajouter_Entrée.Name = "btn_Ajouter_Entrée";
-            this.btn_Ajouter_Entrée.Size = new System.Drawing.Size(98, 23);
+            this.btn_Ajouter_Entrée.Size = new System.Drawing.Size(94, 23);
             this.btn_Ajouter_Entrée.TabIndex = 30;
             this.btn_Ajouter_Entrée.Text = "Ajouter une ligne";
             this.btn_Ajouter_Entrée.UseVisualStyleBackColor = true;
@@ -161,7 +164,7 @@
             this.Titre.AutoSize = true;
             this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.Titre.Location = new System.Drawing.Point(404, 98);
+            this.Titre.Location = new System.Drawing.Point(404, 83);
             this.Titre.Name = "Titre";
             this.Titre.Size = new System.Drawing.Size(118, 31);
             this.Titre.TabIndex = 32;
@@ -169,21 +172,56 @@
             this.Titre.Text = "linkLabel1";
             this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Lucida Handwriting", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Green;
+            this.label1.Location = new System.Drawing.Point(364, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(611, 36);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Réseau informatique - Saint Jacques";
+            // 
+            // Cacher_ports
+            // 
+            this.Cacher_ports.AutoSize = true;
+            this.Cacher_ports.Location = new System.Drawing.Point(235, 120);
+            this.Cacher_ports.Name = "Cacher_ports";
+            this.Cacher_ports.Size = new System.Drawing.Size(144, 17);
+            this.Cacher_ports.TabIndex = 34;
+            this.Cacher_ports.Text = "Cacher les ports inutilisés";
+            this.Cacher_ports.UseVisualStyleBackColor = true;
+            this.Cacher_ports.CheckedChanged += new System.EventHandler(this.Cacher_ports_CheckedChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1114, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 23);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Synthése imprimantes";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1322, 750);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Cacher_ports);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Titre);
             this.Controls.Add(this.btn_Ajouter_Entrée);
-            this.Controls.Add(this.infos1_diverses);
+            this.Controls.Add(this.infos_diverses);
             this.Controls.Add(this.Panel_infos_diverses);
             this.Controls.Add(this.Panel_titres_imprimantes);
             this.Controls.Add(this.Panel_titres_vidéoprojecteur);
             this.Controls.Add(this.Panel_titres_brassage);
             this.Controls.Add(this.Panel_Imprimantes);
-            this.Controls.Add(this.Panel_Vidéoprojecteurs);
+            this.Controls.Add(this.Synthèse_imprimantes);
             this.Controls.Add(this.Panel_Brassage);
             this.Controls.Add(this.Choix_colonne);
             this.Controls.Add(this.Liste_départ);
@@ -201,16 +239,19 @@
         private System.Windows.Forms.ComboBox Tables;
         private System.Windows.Forms.ComboBox Choix_colonne;
         public System.Windows.Forms.Panel Panel_Brassage;
-        private System.Windows.Forms.Panel Panel_Vidéoprojecteurs;
+        private System.Windows.Forms.Panel Synthèse_imprimantes;
         private System.Windows.Forms.Panel Panel_Imprimantes;
         private System.Windows.Forms.Panel Panel_titres_brassage;
         private System.Windows.Forms.Panel Panel_titres_vidéoprojecteur;
         private System.Windows.Forms.Panel Panel_titres_imprimantes;
         private System.Windows.Forms.Panel Panel_infos_diverses;
-        private System.Windows.Forms.RichTextBox infos1_diverses;
+        private System.Windows.Forms.RichTextBox infos_diverses;
         private System.Windows.Forms.Button btn_Ajouter_Entrée;
         public System.Windows.Forms.ListBox Liste_départ;
         private System.Windows.Forms.LinkLabel Titre;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox Cacher_ports;
+        private System.Windows.Forms.Button button1;
     }
 }
 
