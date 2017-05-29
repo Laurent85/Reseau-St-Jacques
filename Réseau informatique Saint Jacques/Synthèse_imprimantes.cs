@@ -22,8 +22,32 @@ public partial class Synthèse_imprimantes : Form
         }       
 
         private void Synthèse_imprimantes_Load(object sender, EventArgs e)
-        {           
-            string requete = "Select imprimante, port_imprimante, type_imprimante, Salle from Brassage where imprimante <> '' ORDER BY imprimante";
+        {
+            
+        }
+
+        private void Bouton_videoprojecteurs_CheckedChanged(object sender, EventArgs e)
+        {
+            string requete = "";
+            if (Bouton_imprimantes.Checked == true) { requete = "Select imprimante, port_imprimante, type_imprimante, Salle from Brassage where imprimante <> '' ORDER BY imprimante"; }
+            if (Bouton_videoprojecteurs.Checked == true) { requete = "Select Salle, Vidéoprojecteur, Date_relevé, Heures_lampe, Observations from Brassage where Vidéoprojecteur <> '' ORDER BY Salle"; }
+
+            OleDbCommand command = new OleDbCommand(requete, database);
+            database.Open();
+            command.CommandType = CommandType.Text;
+            OleDbDataAdapter da = new OleDbDataAdapter(command);
+            DataTable résultats = new DataTable();
+            da.Fill(résultats);
+            Liste_imprimantes.DataSource = résultats;
+            database.Close();
+        }
+
+        private void Bouton_imprimantes_CheckedChanged(object sender, EventArgs e)
+        {
+            string requete = "";
+            if (Bouton_imprimantes.Checked == true) { requete = "Select imprimante, port_imprimante, type_imprimante, Salle from Brassage where imprimante <> '' ORDER BY imprimante"; }
+            if (Bouton_videoprojecteurs.Checked == true) { requete = "Select Salle, Vidéoprojecteur, Date_relevé, Heures_lampe, Observations from Brassage where imprimante <> '' ORDER BY Salle"; }
+
             OleDbCommand command = new OleDbCommand(requete, database);
             database.Open();
             command.CommandType = CommandType.Text;
