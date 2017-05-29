@@ -43,7 +43,7 @@
             this.Titre = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.Cacher_ports = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Bouton_Synthèse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Tables
@@ -194,15 +194,15 @@
             this.Cacher_ports.UseVisualStyleBackColor = true;
             this.Cacher_ports.CheckedChanged += new System.EventHandler(this.Cacher_ports_CheckedChanged);
             // 
-            // button1
+            // Bouton_Synthèse
             // 
-            this.button1.Location = new System.Drawing.Point(1114, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 23);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "Synthése imprimantes";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Bouton_Synthèse.Location = new System.Drawing.Point(1114, 26);
+            this.Bouton_Synthèse.Name = "Bouton_Synthèse";
+            this.Bouton_Synthèse.Size = new System.Drawing.Size(119, 23);
+            this.Bouton_Synthèse.TabIndex = 35;
+            this.Bouton_Synthèse.Text = "Synthèses";
+            this.Bouton_Synthèse.UseVisualStyleBackColor = true;
+            this.Bouton_Synthèse.Click += new System.EventHandler(this.button1_Click);
             // 
             // Principal
             // 
@@ -210,7 +210,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1322, 750);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Bouton_Synthèse);
             this.Controls.Add(this.Cacher_ports);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Titre);
@@ -227,6 +227,7 @@
             this.Controls.Add(this.Liste_départ);
             this.Controls.Add(this.Tables);
             this.Name = "Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Réseau informatique St Jacques";
             this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
@@ -251,7 +252,7 @@
         private System.Windows.Forms.LinkLabel Titre;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox Cacher_ports;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Bouton_Synthèse;
     }
 }
 

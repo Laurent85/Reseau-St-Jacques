@@ -60,11 +60,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Synthèse_imprimantes.cs">
+    <Compile Include="Synthèse.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Synthèse_imprimantes.Designer.cs">
-      <DependentUpon>Synthèse_imprimantes.cs</DependentUpon>
+    <Compile Include="Synthèse.Designer.cs">
+      <DependentUpon>Synthèse.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Modifications.resx">
       <DependentUpon>Modifications.cs</DependentUpon>
@@ -81,8 +81,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Synthèse_imprimantes.resx">
-      <DependentUpon>Synthèse_imprimantes.cs</DependentUpon>
+    <EmbeddedResource Include="Synthèse.resx">
+      <DependentUpon>Synthèse.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

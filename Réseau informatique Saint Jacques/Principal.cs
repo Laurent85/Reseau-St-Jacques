@@ -537,7 +537,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Synthèse_imprimantes synthèse = new Synthèse_imprimantes();
+            Synthèse synthèse = new Synthèse();
             synthèse.Show();
         }
     }

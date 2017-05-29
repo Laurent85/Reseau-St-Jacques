@@ -91,6 +91,7 @@
             this.Controls.Add(this.Panel_Brassage);
             this.Controls.Add(this.textBox_id);
             this.Name = "Modifications";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modifications";
             this.Load += new System.EventHandler(this.Modifications_Load);
             this.ResumeLayout(false);
