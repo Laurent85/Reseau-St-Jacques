@@ -353,12 +353,12 @@ namespace Réseau_informatique_Saint_Jacques
                         Bouton[n].Left = droite;
                         bas++;
                     }
-                    if ((reader[1].ToString() != "nc") && (Bouton[n].Name.Contains("Port")))
+                    if ((reader[2].ToString() != "") && (Bouton[n].Name.Contains("Port")))
                     {
                         Bouton[n].BackColor = Color.LightGreen;
                         Bouton[n].Font = new Font(Bouton[n].Font, FontStyle.Bold);
                     }
-                    if ((reader[1].ToString() == "nc") && (Bouton[n].Name.Contains("Port")))
+                    if ((reader[2].ToString() == "") && (Bouton[n].Name.Contains("Port")))
                     {
                         Bouton[n].BackColor = Color.LightGray;
                     }

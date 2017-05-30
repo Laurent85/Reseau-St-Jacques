@@ -39,6 +39,10 @@
             this.Bornes_Wifi = new System.Windows.Forms.RadioButton();
             this.Salles = new System.Windows.Forms.RadioButton();
             this.Modifier = new System.Windows.Forms.Button();
+            this.comboBox_Salles = new System.Windows.Forms.ComboBox();
+            this.Switchs = new System.Windows.Forms.RadioButton();
+            this.Suppression_ligne = new System.Windows.Forms.Button();
+            this.VLAN = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +57,7 @@
             // Bouton_videoprojecteurs
             // 
             this.Bouton_videoprojecteurs.AutoSize = true;
-            this.Bouton_videoprojecteurs.Location = new System.Drawing.Point(13, 50);
+            this.Bouton_videoprojecteurs.Location = new System.Drawing.Point(978, 81);
             this.Bouton_videoprojecteurs.Name = "Bouton_videoprojecteurs";
             this.Bouton_videoprojecteurs.Size = new System.Drawing.Size(104, 17);
             this.Bouton_videoprojecteurs.TabIndex = 1;
@@ -65,7 +69,7 @@
             // Bouton_imprimantes
             // 
             this.Bouton_imprimantes.AutoSize = true;
-            this.Bouton_imprimantes.Location = new System.Drawing.Point(149, 50);
+            this.Bouton_imprimantes.Location = new System.Drawing.Point(978, 104);
             this.Bouton_imprimantes.Name = "Bouton_imprimantes";
             this.Bouton_imprimantes.Size = new System.Drawing.Size(81, 17);
             this.Bouton_imprimantes.TabIndex = 2;
@@ -85,7 +89,7 @@
             // Ordinateurs
             // 
             this.Ordinateurs.AutoSize = true;
-            this.Ordinateurs.Location = new System.Drawing.Point(262, 50);
+            this.Ordinateurs.Location = new System.Drawing.Point(978, 127);
             this.Ordinateurs.Name = "Ordinateurs";
             this.Ordinateurs.Size = new System.Drawing.Size(79, 17);
             this.Ordinateurs.TabIndex = 4;
@@ -97,7 +101,7 @@
             // Serveurs
             // 
             this.Serveurs.AutoSize = true;
-            this.Serveurs.Location = new System.Drawing.Point(364, 50);
+            this.Serveurs.Location = new System.Drawing.Point(978, 150);
             this.Serveurs.Name = "Serveurs";
             this.Serveurs.Size = new System.Drawing.Size(67, 17);
             this.Serveurs.TabIndex = 5;
@@ -109,7 +113,7 @@
             // Serveurs_virtuels
             // 
             this.Serveurs_virtuels.AutoSize = true;
-            this.Serveurs_virtuels.Location = new System.Drawing.Point(453, 50);
+            this.Serveurs_virtuels.Location = new System.Drawing.Point(978, 173);
             this.Serveurs_virtuels.Name = "Serveurs_virtuels";
             this.Serveurs_virtuels.Size = new System.Drawing.Size(103, 17);
             this.Serveurs_virtuels.TabIndex = 6;
@@ -121,7 +125,7 @@
             // Liaisons
             // 
             this.Liaisons.AutoSize = true;
-            this.Liaisons.Location = new System.Drawing.Point(583, 50);
+            this.Liaisons.Location = new System.Drawing.Point(978, 196);
             this.Liaisons.Name = "Liaisons";
             this.Liaisons.Size = new System.Drawing.Size(63, 17);
             this.Liaisons.TabIndex = 7;
@@ -133,7 +137,7 @@
             // Bornes_Wifi
             // 
             this.Bornes_Wifi.AutoSize = true;
-            this.Bornes_Wifi.Location = new System.Drawing.Point(671, 50);
+            this.Bornes_Wifi.Location = new System.Drawing.Point(978, 219);
             this.Bornes_Wifi.Name = "Bornes_Wifi";
             this.Bornes_Wifi.Size = new System.Drawing.Size(79, 17);
             this.Bornes_Wifi.TabIndex = 8;
@@ -145,7 +149,7 @@
             // Salles
             // 
             this.Salles.AutoSize = true;
-            this.Salles.Location = new System.Drawing.Point(785, 50);
+            this.Salles.Location = new System.Drawing.Point(978, 242);
             this.Salles.Name = "Salles";
             this.Salles.Size = new System.Drawing.Size(53, 17);
             this.Salles.TabIndex = 9;
@@ -156,19 +160,66 @@
             // 
             // Modifier
             // 
-            this.Modifier.Location = new System.Drawing.Point(895, 29);
+            this.Modifier.Location = new System.Drawing.Point(978, 30);
             this.Modifier.Name = "Modifier";
-            this.Modifier.Size = new System.Drawing.Size(75, 23);
+            this.Modifier.Size = new System.Drawing.Size(131, 23);
             this.Modifier.TabIndex = 10;
-            this.Modifier.Text = "Modifier";
+            this.Modifier.Text = "Valider les modifications";
             this.Modifier.UseVisualStyleBackColor = true;
             this.Modifier.Click += new System.EventHandler(this.Modifier_Click);
+            // 
+            // comboBox_Salles
+            // 
+            this.comboBox_Salles.FormattingEnabled = true;
+            this.comboBox_Salles.Location = new System.Drawing.Point(978, 370);
+            this.comboBox_Salles.Name = "comboBox_Salles";
+            this.comboBox_Salles.Size = new System.Drawing.Size(121, 21);
+            this.comboBox_Salles.TabIndex = 11;
+            this.comboBox_Salles.SelectedIndexChanged += new System.EventHandler(this.comboBox_Salles_SelectedIndexChanged);
+            // 
+            // Switchs
+            // 
+            this.Switchs.AutoSize = true;
+            this.Switchs.Location = new System.Drawing.Point(978, 265);
+            this.Switchs.Name = "Switchs";
+            this.Switchs.Size = new System.Drawing.Size(62, 17);
+            this.Switchs.TabIndex = 12;
+            this.Switchs.TabStop = true;
+            this.Switchs.Text = "Switchs";
+            this.Switchs.UseVisualStyleBackColor = true;
+            this.Switchs.CheckedChanged += new System.EventHandler(this.Switchs_CheckedChanged);
+            // 
+            // Suppression_ligne
+            // 
+            this.Suppression_ligne.Location = new System.Drawing.Point(1139, 30);
+            this.Suppression_ligne.Name = "Suppression_ligne";
+            this.Suppression_ligne.Size = new System.Drawing.Size(102, 23);
+            this.Suppression_ligne.TabIndex = 14;
+            this.Suppression_ligne.Text = "Supprimer la ligne";
+            this.Suppression_ligne.UseVisualStyleBackColor = true;
+            this.Suppression_ligne.Click += new System.EventHandler(this.Suppression_ligne_Click);
+            // 
+            // VLAN
+            // 
+            this.VLAN.AutoSize = true;
+            this.VLAN.Location = new System.Drawing.Point(978, 288);
+            this.VLAN.Name = "VLAN";
+            this.VLAN.Size = new System.Drawing.Size(53, 17);
+            this.VLAN.TabIndex = 15;
+            this.VLAN.TabStop = true;
+            this.VLAN.Text = "VLAN";
+            this.VLAN.UseVisualStyleBackColor = true;
+            this.VLAN.CheckedChanged += new System.EventHandler(this.VLAN_CheckedChanged);
             // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(996, 686);
+            this.ClientSize = new System.Drawing.Size(1282, 686);
+            this.Controls.Add(this.VLAN);
+            this.Controls.Add(this.Suppression_ligne);
+            this.Controls.Add(this.Switchs);
+            this.Controls.Add(this.comboBox_Salles);
             this.Controls.Add(this.Modifier);
             this.Controls.Add(this.Salles);
             this.Controls.Add(this.Bornes_Wifi);
@@ -203,5 +254,9 @@
         private System.Windows.Forms.RadioButton Bornes_Wifi;
         private System.Windows.Forms.RadioButton Salles;
         private System.Windows.Forms.Button Modifier;
+        private System.Windows.Forms.ComboBox comboBox_Salles;
+        private System.Windows.Forms.RadioButton Switchs;
+        private System.Windows.Forms.Button Suppression_ligne;
+        private System.Windows.Forms.RadioButton VLAN;
     }
 }
