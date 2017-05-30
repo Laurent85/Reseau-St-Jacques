@@ -17,6 +17,7 @@ public partial class Synthèse : Form
         private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         OleDbConnection database = new OleDbConnection(connectionString);
         DataSet ds;
+        DataTable dt;
         OleDbConnection conn;
         OleDbDataAdapter da;
         OleDbCommandBuilder cmdBldr;
@@ -28,7 +29,17 @@ public partial class Synthèse : Form
 
         private void Synthèse_imprimantes_Load(object sender, EventArgs e)
         {
-            
+            database.Open();
+            dt = new DataTable();
+            ds.Tables.Add(dt);
+            da = new OleDbDataAdapter("Select Switch, Bandeau, port, Périphérique, Adresse_ip, VLAN, Salle from Brassage", database);
+            cmdBldr = new OleDbCommandBuilder(da);
+            cmdBldr.QuotePrefix = "[";
+            cmdBldr.QuoteSuffix = "]";
+            da.Fill(dt);
+            Liste_synthèse.DataSource = dt.DefaultView;
+            database.Close();
+
         }
         private void Bouton_videoprojecteurs_CheckedChanged(object sender, EventArgs e)
         {           
@@ -102,7 +113,7 @@ public partial class Synthèse : Form
 
         private void Modifier_Click(object sender, EventArgs e)
         {
-           
+            da.Update(dt);
         }
     }
 }
