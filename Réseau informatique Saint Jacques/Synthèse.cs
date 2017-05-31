@@ -49,9 +49,9 @@ public partial class Synthèse : Form
             Nombre.Text = nombre.ToString() + " enregistrements";
             Liste_synthèse.DataSource = résultats.DefaultView;
             Liste_synthèse.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            foreach (DataGridViewColumn col in Liste_synthèse.Columns)
+            foreach (DataGridViewColumn colonne in Liste_synthèse.Columns)
             {
-                col.Visible = false;
+                colonne.Visible = false;
             }
             database.Close();
             redimensionner_colonnes();
@@ -246,12 +246,12 @@ public partial class Synthèse : Form
 
         private void redimensionner_colonnes()
         {
-            foreach (DataGridViewColumn c in Liste_synthèse.Columns)
+            foreach (DataGridViewColumn colonne in Liste_synthèse.Columns)
             {
-                c.Width = c.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true) + 15;
+                colonne.Width = colonne.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true) + 15;
                 //c.SortMode = DataGridViewColumnSortMode.NotSortable;
-                c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                c.HeaderCell.Style.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+                colonne.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                colonne.HeaderCell.Style.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
             }
         }
 
@@ -280,10 +280,10 @@ public partial class Synthèse : Form
 
         private void Suppression_ligne_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in Liste_synthèse.SelectedRows)
+            foreach (DataGridViewRow ligne in Liste_synthèse.SelectedRows)
             {
-                if (!row.IsNewRow)
-                    Liste_synthèse.Rows.Remove(row);
+                if (!ligne.IsNewRow)
+                    Liste_synthèse.Rows.Remove(ligne);
             }
         }
 
@@ -317,25 +317,25 @@ public partial class Synthèse : Form
 
         private void couleurs_ports()
         {
-            foreach (DataGridViewRow row in Liste_synthèse.Rows)
+            foreach (DataGridViewRow ligne in Liste_synthèse.Rows)
             {
-                if (Convert.ToString(row.Cells["Périphérique"].Value) == "")
+                if (Convert.ToString(ligne.Cells["Périphérique"].Value) == "")
                 {
                     DataGridViewCellStyle style = new DataGridViewCellStyle();
                     //style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
                     //style.ForeColor = Color.Gray;
-                    row.Cells["port"].Style = style;
-                    row.DefaultCellStyle.BackColor = Color.White;
-                    row.Cells["port"].Style.BackColor = Color.LightGray;
+                    ligne.Cells["port"].Style = style;
+                    ligne.DefaultCellStyle.BackColor = Color.White;
+                    ligne.Cells["port"].Style.BackColor = Color.LightGray;
                     Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                 }
                 else
                 {
                     DataGridViewCellStyle style = new DataGridViewCellStyle();
                     style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
-                    row.Cells["port"].Style = style;
-                    row.DefaultCellStyle.BackColor = Color.White;
-                    row.Cells["port"].Style.BackColor = Color.LimeGreen;
+                    ligne.Cells["port"].Style = style;
+                    ligne.DefaultCellStyle.BackColor = Color.White;
+                    ligne.Cells["port"].Style.BackColor = Color.LimeGreen;
                     Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                 }
             }
@@ -349,16 +349,16 @@ public partial class Synthèse : Form
 
         private void Cacher_lignes()
         {
-            foreach (DataGridViewRow row in Liste_synthèse.Rows)
+            foreach (DataGridViewRow ligne in Liste_synthèse.Rows)
             {
-                if (row.Cells["port"].Style.BackColor == Color.LightGray)
+                if (ligne.Cells["port"].Style.BackColor == Color.LightGray)
                 {
-                    try { row.Visible = false; }
+                    try { ligne.Visible = false; }
                     catch { }
                 }
                 else
                 {
-                    try { row.Visible = true; }
+                    try { ligne.Visible = true; }
                     catch { }
                 }
             }
@@ -368,11 +368,11 @@ public partial class Synthèse : Form
 
         private void Voir_lignes()
         {
-            foreach (DataGridViewRow row in Liste_synthèse.Rows)
+            foreach (DataGridViewRow ligne in Liste_synthèse.Rows)
             {
                 
                 {
-                    try { row.Visible = true; }
+                    try { ligne.Visible = true; }
                     catch { }
                 }
             }

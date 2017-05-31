@@ -597,6 +597,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1072, 405);
             this.Controls.Add(this.port_49F);
             this.Controls.Add(this.port_50F);
