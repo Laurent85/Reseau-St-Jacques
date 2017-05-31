@@ -20,6 +20,7 @@ public partial class Synthèse : Form
         DataTable résultats;        
         OleDbDataAdapter da;
         OleDbCommandBuilder cmdBldr;
+        public static string Valeur_passée;
 
         public Synthèse()
         {
@@ -239,7 +240,8 @@ public partial class Synthèse : Form
             }
 
             couleurs_ports();
-            redimensionner_colonnes();            
+            redimensionner_colonnes();           
+                        
         }
 
         private void redimensionner_colonnes()
@@ -337,6 +339,66 @@ public partial class Synthèse : Form
                     Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                 }
             }
+            Cacher_ports_CheckedChanged(this,new EventArgs());
+        }       
+
+        private void Imprimer_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Cacher_lignes()
+        {
+            foreach (DataGridViewRow row in Liste_synthèse.Rows)
+            {
+                if (row.Cells["port"].Style.BackColor == Color.LightGray)
+                {
+                    try { row.Visible = false; }
+                    catch { }
+                }
+                else
+                {
+                    try { row.Visible = true; }
+                    catch { }
+                }
+            }
+            try { Liste_synthèse.Rows[5].Visible = false; }
+            catch { }
+        }
+
+        private void Voir_lignes()
+        {
+            foreach (DataGridViewRow row in Liste_synthèse.Rows)
+            {
+                
+                {
+                    try { row.Visible = true; }
+                    catch { }
+                }
+            }
+           
+        }
+
+        private void Cacher_ports_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Cacher_ports.Checked == true)
+            {
+                Cacher_lignes();
+            }
+            else
+                Voir_lignes();
+        }
+
+        public string Transfert
+        {
+            get { return Valeur_passée; }
+        }
+
+        private void Voir_Switch_Click(object sender, EventArgs e)
+        {
+            Valeur_passée = comboBox_Salles.Text;
+            SW_OS6450_48 sw_os6450_48 = new SW_OS6450_48();
+            sw_os6450_48.Show();
         }
     }
 }

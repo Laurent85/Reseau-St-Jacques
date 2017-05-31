@@ -43,6 +43,9 @@
             this.Switchs = new System.Windows.Forms.RadioButton();
             this.Suppression_ligne = new System.Windows.Forms.Button();
             this.VLAN = new System.Windows.Forms.RadioButton();
+            this.Imprimer = new System.Windows.Forms.Button();
+            this.Cacher_ports = new System.Windows.Forms.CheckBox();
+            this.Voir_Switch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,11 +215,45 @@
             this.VLAN.UseVisualStyleBackColor = true;
             this.VLAN.CheckedChanged += new System.EventHandler(this.VLAN_CheckedChanged);
             // 
+            // Imprimer
+            // 
+            this.Imprimer.Location = new System.Drawing.Point(875, 29);
+            this.Imprimer.Name = "Imprimer";
+            this.Imprimer.Size = new System.Drawing.Size(75, 23);
+            this.Imprimer.TabIndex = 16;
+            this.Imprimer.Text = "Imprimer";
+            this.Imprimer.UseVisualStyleBackColor = true;
+            this.Imprimer.Click += new System.EventHandler(this.Imprimer_Click);
+            // 
+            // Cacher_ports
+            // 
+            this.Cacher_ports.AutoSize = true;
+            this.Cacher_ports.Location = new System.Drawing.Point(978, 428);
+            this.Cacher_ports.Name = "Cacher_ports";
+            this.Cacher_ports.Size = new System.Drawing.Size(144, 17);
+            this.Cacher_ports.TabIndex = 17;
+            this.Cacher_ports.Text = "Cacher les ports inutilisés";
+            this.Cacher_ports.UseVisualStyleBackColor = true;
+            this.Cacher_ports.CheckedChanged += new System.EventHandler(this.Cacher_ports_CheckedChanged);
+            // 
+            // Voir_Switch
+            // 
+            this.Voir_Switch.Location = new System.Drawing.Point(1139, 81);
+            this.Voir_Switch.Name = "Voir_Switch";
+            this.Voir_Switch.Size = new System.Drawing.Size(75, 23);
+            this.Voir_Switch.TabIndex = 18;
+            this.Voir_Switch.Text = "Voir switch";
+            this.Voir_Switch.UseVisualStyleBackColor = true;
+            this.Voir_Switch.Click += new System.EventHandler(this.Voir_Switch_Click);
+            // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1282, 686);
+            this.Controls.Add(this.Voir_Switch);
+            this.Controls.Add(this.Cacher_ports);
+            this.Controls.Add(this.Imprimer);
             this.Controls.Add(this.VLAN);
             this.Controls.Add(this.Suppression_ligne);
             this.Controls.Add(this.Switchs);
@@ -259,5 +296,8 @@
         private System.Windows.Forms.RadioButton Switchs;
         private System.Windows.Forms.Button Suppression_ligne;
         private System.Windows.Forms.RadioButton VLAN;
+        private System.Windows.Forms.Button Imprimer;
+        private System.Windows.Forms.CheckBox Cacher_ports;
+        private System.Windows.Forms.Button Voir_Switch;
     }
 }
