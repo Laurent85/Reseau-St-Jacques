@@ -53,6 +53,7 @@
             this.Liste_synthèse.Name = "Liste_synthèse";
             this.Liste_synthèse.Size = new System.Drawing.Size(958, 593);
             this.Liste_synthèse.TabIndex = 0;
+            this.Liste_synthèse.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Liste_synthèse_ColumnHeaderMouseClick);
             // 
             // Bouton_videoprojecteurs
             // 

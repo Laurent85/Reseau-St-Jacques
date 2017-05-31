@@ -54,6 +54,7 @@ public partial class Synthèse : Form
             }
             database.Close();
             redimensionner_colonnes();
+            couleurs_ports();
         }
         private void Bouton_videoprojecteurs_CheckedChanged(object sender, EventArgs e)
         {           
@@ -70,6 +71,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Heures_lampe"].DisplayIndex = 3;
             Liste_synthèse.Columns["Observations"].DisplayIndex = 4;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Bouton_imprimantes_CheckedChanged(object sender, EventArgs e)
@@ -84,10 +86,12 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["type_imprimante"].DisplayIndex = 2;
             Liste_synthèse.Columns["Salle"].DisplayIndex = 3;
             redimensionner_colonnes();
+            couleurs_ports();
         }       
 
         private void Ordinateurs_CheckedChanged(object sender, EventArgs e)
         {
+            Combobox_Colonnes("Salle");
             synthèse("Select * from Brassage where Type = 'Ordinateur' ORDER BY Salle");            
             
             Liste_synthèse.Columns[3].Visible = true;
@@ -99,6 +103,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 2;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 3;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Serveurs_CheckedChanged(object sender, EventArgs e)
@@ -114,6 +119,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 2;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 3;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Serveurs_virtuels_CheckedChanged(object sender, EventArgs e)
@@ -129,6 +135,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 2;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 3;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Liaisons_CheckedChanged(object sender, EventArgs e)
@@ -144,6 +151,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 2;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 3;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Bornes_Wifi_CheckedChanged(object sender, EventArgs e)
@@ -158,6 +166,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 2;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 3;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Salles_CheckedChanged(object sender, EventArgs e)
@@ -180,6 +189,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 5;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 6;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Modifier_Click(object sender, EventArgs e)
@@ -205,6 +215,7 @@ public partial class Synthèse : Form
             if (Salles.Checked == true) { synthèse("Select * from Brassage WHERE Salle = '" + comboBox_Salles.Text + "' ORDER BY Bandeau"); }
             if (Switchs.Checked == true) { synthèse("Select * from Brassage WHERE Switch = '" + comboBox_Salles.Text + "' ORDER BY Port"); }
             if (VLAN.Checked == true) { synthèse("Select * from Brassage WHERE VLAN = '" + comboBox_Salles.Text + "' ORDER BY VLAN"); }
+            if (Ordinateurs.Checked == true) { synthèse("Select * from Brassage WHERE Salle = '" + comboBox_Salles.Text + "' ORDER BY Salle"); }
 
             Liste_synthèse.Columns[1].Visible = true;
             Liste_synthèse.Columns[3].Visible = true;
@@ -226,30 +237,8 @@ public partial class Synthèse : Form
                 var lastRow = Liste_synthèse.Rows[Liste_synthèse.RowCount - 1];
                 lastRow.Selected = false;
             }
-            
 
-            foreach (DataGridViewRow row in Liste_synthèse.Rows)
-            {
-                if (Convert.ToString(row.Cells["Périphérique"].Value) == "")
-                {
-                    DataGridViewCellStyle style = new DataGridViewCellStyle();
-                    //style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
-                    //style.ForeColor = Color.Gray;
-                    row.Cells["port"].Style = style;
-                    row.DefaultCellStyle.BackColor = Color.White;
-                    row.Cells["port"].Style.BackColor = Color.LightGray;
-                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;                   
-                }
-                else
-                {
-                    DataGridViewCellStyle style = new DataGridViewCellStyle();
-                    style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);                    
-                    row.Cells["port"].Style = style;
-                    row.DefaultCellStyle.BackColor = Color.White;
-                    row.Cells["port"].Style.BackColor = Color.LimeGreen;                    
-                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;                    
-                }
-            }
+            couleurs_ports();
             redimensionner_colonnes();            
         }
 
@@ -284,6 +273,7 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 5;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 6;
             redimensionner_colonnes();
+            couleurs_ports();
         }
 
         private void Suppression_ligne_Click(object sender, EventArgs e)
@@ -315,6 +305,38 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Adresse_ip"].DisplayIndex = 5;
             Liste_synthèse.Columns["VLAN"].DisplayIndex = 6;
             redimensionner_colonnes();
+            couleurs_ports();
+        }
+
+        private void Liste_synthèse_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            couleurs_ports(); 
+        }
+
+        private void couleurs_ports()
+        {
+            foreach (DataGridViewRow row in Liste_synthèse.Rows)
+            {
+                if (Convert.ToString(row.Cells["Périphérique"].Value) == "")
+                {
+                    DataGridViewCellStyle style = new DataGridViewCellStyle();
+                    //style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
+                    //style.ForeColor = Color.Gray;
+                    row.Cells["port"].Style = style;
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.Cells["port"].Style.BackColor = Color.LightGray;
+                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
+                }
+                else
+                {
+                    DataGridViewCellStyle style = new DataGridViewCellStyle();
+                    style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
+                    row.Cells["port"].Style = style;
+                    row.DefaultCellStyle.BackColor = Color.White;
+                    row.Cells["port"].Style.BackColor = Color.LimeGreen;
+                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
+                }
+            }
         }
     }
 }
