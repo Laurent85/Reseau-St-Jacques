@@ -68,6 +68,12 @@
     <Compile Include="SW_OS6450_48.Designer.cs">
       <DependentUpon>SW_OS6450_48.cs</DependentUpon>
     </Compile>
+    <Compile Include="SW_OS6850E-24.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SW_OS6850E-24.Designer.cs">
+      <DependentUpon>SW_OS6850E-24.cs</DependentUpon>
+    </Compile>
     <Compile Include="Synthèse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <EmbeddedResource Include="SW_OS6450_48.resx">
       <DependentUpon>SW_OS6450_48.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SW_OS6850E-24.resx">
+      <DependentUpon>SW_OS6850E-24.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Synthèse.resx">
       <DependentUpon>Synthèse.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,7 +120,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Reseau St Jacques.accdb" />
-    <None Include="Resources\OS6450-48.png" />
+    <Content Include="Resources\GS_748T.png" />
+    <None Include="Resources\SW_6850E_24.png" />
+    <None Include="Resources\SW_6450_48.png" />
     <None Include="Resources\vert.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
