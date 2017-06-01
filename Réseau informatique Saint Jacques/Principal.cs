@@ -9,7 +9,7 @@ namespace Réseau_informatique_Saint_Jacques
     public partial class Principal : Form
     {
         private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
-        OleDbConnection database = new OleDbConnection(connectionString);
+        private OleDbConnection database = new OleDbConnection(connectionString);
         private int n = 0;
         private int droite = 0;
         private int droite_titre = 0;
@@ -130,8 +130,6 @@ namespace Réseau_informatique_Saint_Jacques
             droite = 0;
             bas = 1;
         }
-
-        
 
         private void Principal_Load(object sender, System.EventArgs e)
         {
@@ -426,7 +424,7 @@ namespace Réseau_informatique_Saint_Jacques
             if (reader.Read())
             {
                 {
-                    Button Bouton = new Button();                    
+                    Button Bouton = new Button();
                     Bouton.Name = colonne.ToString();
                     Bouton.AutoSize = true;
                     Bouton.FlatStyle = FlatStyle.Flat;
@@ -483,7 +481,7 @@ namespace Réseau_informatique_Saint_Jacques
             if (reader.Read())
             {
                 {
-                    Button Bouton = new Button();                    
+                    Button Bouton = new Button();
                     Bouton.Name = colonne.ToString();
                     Bouton.AutoSize = true;
                     Bouton.FlatStyle = FlatStyle.Flat;

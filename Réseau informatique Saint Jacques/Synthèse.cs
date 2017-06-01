@@ -1,35 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    
-public partial class Synthèse : Form
+    public partial class Synthèse : Form
     {
         private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
-        OleDbConnection database = new OleDbConnection(connectionString);
-        DataSet ds;
-        DataTable résultats;        
-        OleDbDataAdapter da;
-        OleDbCommandBuilder cmdBldr;
+        private OleDbConnection database = new OleDbConnection(connectionString);
+        private DataSet ds;
+        private DataTable résultats;
+        private OleDbDataAdapter da;
+        private OleDbCommandBuilder cmdBldr;
         public static string Valeur_passée;
 
         public Synthèse()
         {
-            InitializeComponent();            
-        }       
+            InitializeComponent();
+        }
 
         private void Synthèse_imprimantes_Load(object sender, EventArgs e)
         {
-           
         }
 
         private void synthèse(string requete)
@@ -57,15 +50,31 @@ public partial class Synthèse : Form
             redimensionner_colonnes();
             couleurs_ports();
         }
-        private void Bouton_videoprojecteurs_CheckedChanged(object sender, EventArgs e)
-        {           
-            synthèse("Select * from Brassage where Vidéoprojecteur <> '' ORDER BY Salle");
 
+        private void Visibilité_colonnes(int[] numéro, params string[] nom_colonne)
+        {
+            int index = 0;
+            foreach (int num in numéro)
+            {
+                Liste_synthèse.Columns[num].Visible = true;
+            }
+            foreach (string str in nom_colonne)
+            {                
+                Liste_synthèse.Columns[str].DisplayIndex = index;
+                index++;
+            }
+
+        }
+
+        private void Bouton_videoprojecteurs_CheckedChanged(object sender, EventArgs e)
+        {
+            synthèse("Select * from Brassage where Vidéoprojecteur <> '' ORDER BY Salle");
+            Visibilité_colonnes(3, 13, 14, 15, 16, "Salle", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations");
             Liste_synthèse.Columns[3].Visible = true;
             Liste_synthèse.Columns[13].Visible = true;
             Liste_synthèse.Columns[14].Visible = true;
             Liste_synthèse.Columns[15].Visible = true;
-            Liste_synthèse.Columns[16].Visible = true;            
+            Liste_synthèse.Columns[16].Visible = true;
             Liste_synthèse.Columns["Salle"].DisplayIndex = 0;
             Liste_synthèse.Columns["Vidéoprojecteur"].DisplayIndex = 1;
             Liste_synthèse.Columns["Date_relevé"].DisplayIndex = 2;
@@ -88,13 +97,13 @@ public partial class Synthèse : Form
             Liste_synthèse.Columns["Salle"].DisplayIndex = 3;
             redimensionner_colonnes();
             couleurs_ports();
-        }       
+        }
 
         private void Ordinateurs_CheckedChanged(object sender, EventArgs e)
         {
             Combobox_Colonnes("Salle");
-            synthèse("Select * from Brassage where Type = 'Ordinateur' ORDER BY Salle");            
-            
+            synthèse("Select * from Brassage where Type = 'Ordinateur' ORDER BY Salle");
+
             Liste_synthèse.Columns[3].Visible = true;
             Liste_synthèse.Columns[5].Visible = true;
             Liste_synthèse.Columns[6].Visible = true;
@@ -195,14 +204,14 @@ public partial class Synthèse : Form
 
         private void Modifier_Click(object sender, EventArgs e)
         {
-            try {da.Update(résultats); }
+            try { da.Update(résultats); }
             catch { }
             finally { MessageBox.Show("Modifications effectuées !"); }
         }
+
         private void Combobox_Colonnes(string colonne)
         {
-            
-            string requete = "SELECT DISTINCT " + colonne + " from BRASSAGE WHERE " + colonne + " <> ''";            
+            string requete = "SELECT DISTINCT " + colonne + " from BRASSAGE WHERE " + colonne + " <> ''";
             OleDbDataAdapter adapter = new OleDbDataAdapter(new OleDbCommand(requete, database));
             DataSet dst = new DataSet();
             adapter.Fill(dst);
@@ -240,8 +249,7 @@ public partial class Synthèse : Form
             }
 
             couleurs_ports();
-            redimensionner_colonnes();           
-                        
+            redimensionner_colonnes();
         }
 
         private void redimensionner_colonnes()
@@ -312,7 +320,7 @@ public partial class Synthèse : Form
 
         private void Liste_synthèse_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            couleurs_ports(); 
+            couleurs_ports();
         }
 
         private void couleurs_ports()
@@ -339,12 +347,11 @@ public partial class Synthèse : Form
                     Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                 }
             }
-            Cacher_ports_CheckedChanged(this,new EventArgs());
-        }       
+            Cacher_ports_CheckedChanged(this, new EventArgs());
+        }
 
         private void Imprimer_Click(object sender, EventArgs e)
         {
-           
         }
 
         private void Cacher_lignes()
@@ -370,13 +377,11 @@ public partial class Synthèse : Form
         {
             foreach (DataGridViewRow ligne in Liste_synthèse.Rows)
             {
-                
                 {
                     try { ligne.Visible = true; }
                     catch { }
                 }
             }
-           
         }
 
         private void Cacher_ports_CheckedChanged(object sender, EventArgs e)
