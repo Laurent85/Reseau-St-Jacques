@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.port_24F = new System.Windows.Forms.PictureBox();
             this.port_23F = new System.Windows.Forms.PictureBox();
             this.port_22F = new System.Windows.Forms.PictureBox();
@@ -57,6 +58,8 @@
             this.port_02 = new System.Windows.Forms.PictureBox();
             this.port_01 = new System.Windows.Forms.PictureBox();
             this.Image_switch = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.port_24F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_23F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_22F)).BeginInit();
@@ -91,7 +94,7 @@
             // port_24F
             // 
             this.port_24F.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_24F.Location = new System.Drawing.Point(877, 207);
+            this.port_24F.Location = new System.Drawing.Point(863, 206);
             this.port_24F.Name = "port_24F";
             this.port_24F.Size = new System.Drawing.Size(13, 13);
             this.port_24F.TabIndex = 41;
@@ -100,7 +103,7 @@
             // port_23F
             // 
             this.port_23F.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_23F.Location = new System.Drawing.Point(877, 156);
+            this.port_23F.Location = new System.Drawing.Point(863, 155);
             this.port_23F.Name = "port_23F";
             this.port_23F.Size = new System.Drawing.Size(13, 13);
             this.port_23F.TabIndex = 40;
@@ -109,7 +112,7 @@
             // port_22F
             // 
             this.port_22F.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_22F.Location = new System.Drawing.Point(830, 207);
+            this.port_22F.Location = new System.Drawing.Point(816, 206);
             this.port_22F.Name = "port_22F";
             this.port_22F.Size = new System.Drawing.Size(13, 13);
             this.port_22F.TabIndex = 39;
@@ -118,7 +121,7 @@
             // port_21F
             // 
             this.port_21F.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_21F.Location = new System.Drawing.Point(830, 156);
+            this.port_21F.Location = new System.Drawing.Point(816, 155);
             this.port_21F.Name = "port_21F";
             this.port_21F.Size = new System.Drawing.Size(13, 13);
             this.port_21F.TabIndex = 38;
@@ -127,7 +130,7 @@
             // port_24
             // 
             this.port_24.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_24.Location = new System.Drawing.Point(773, 213);
+            this.port_24.Location = new System.Drawing.Point(759, 212);
             this.port_24.Name = "port_24";
             this.port_24.Size = new System.Drawing.Size(13, 13);
             this.port_24.TabIndex = 37;
@@ -136,7 +139,7 @@
             // port_23
             // 
             this.port_23.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_23.Location = new System.Drawing.Point(773, 174);
+            this.port_23.Location = new System.Drawing.Point(759, 173);
             this.port_23.Name = "port_23";
             this.port_23.Size = new System.Drawing.Size(13, 13);
             this.port_23.TabIndex = 36;
@@ -145,7 +148,7 @@
             // port_22
             // 
             this.port_22.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_22.Location = new System.Drawing.Point(735, 213);
+            this.port_22.Location = new System.Drawing.Point(721, 212);
             this.port_22.Name = "port_22";
             this.port_22.Size = new System.Drawing.Size(13, 13);
             this.port_22.TabIndex = 35;
@@ -154,7 +157,7 @@
             // port_21
             // 
             this.port_21.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_21.Location = new System.Drawing.Point(735, 174);
+            this.port_21.Location = new System.Drawing.Point(721, 173);
             this.port_21.Name = "port_21";
             this.port_21.Size = new System.Drawing.Size(13, 13);
             this.port_21.TabIndex = 34;
@@ -163,7 +166,7 @@
             // port_20
             // 
             this.port_20.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_20.Location = new System.Drawing.Point(696, 213);
+            this.port_20.Location = new System.Drawing.Point(682, 212);
             this.port_20.Name = "port_20";
             this.port_20.Size = new System.Drawing.Size(13, 13);
             this.port_20.TabIndex = 33;
@@ -172,7 +175,7 @@
             // port_19
             // 
             this.port_19.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_19.Location = new System.Drawing.Point(696, 174);
+            this.port_19.Location = new System.Drawing.Point(682, 173);
             this.port_19.Name = "port_19";
             this.port_19.Size = new System.Drawing.Size(13, 13);
             this.port_19.TabIndex = 32;
@@ -181,7 +184,7 @@
             // port_18
             // 
             this.port_18.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_18.Location = new System.Drawing.Point(658, 213);
+            this.port_18.Location = new System.Drawing.Point(644, 212);
             this.port_18.Name = "port_18";
             this.port_18.Size = new System.Drawing.Size(13, 13);
             this.port_18.TabIndex = 31;
@@ -190,7 +193,7 @@
             // port_17
             // 
             this.port_17.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_17.Location = new System.Drawing.Point(658, 174);
+            this.port_17.Location = new System.Drawing.Point(644, 173);
             this.port_17.Name = "port_17";
             this.port_17.Size = new System.Drawing.Size(13, 13);
             this.port_17.TabIndex = 30;
@@ -199,7 +202,7 @@
             // port_16
             // 
             this.port_16.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_16.Location = new System.Drawing.Point(619, 213);
+            this.port_16.Location = new System.Drawing.Point(605, 212);
             this.port_16.Name = "port_16";
             this.port_16.Size = new System.Drawing.Size(13, 13);
             this.port_16.TabIndex = 29;
@@ -208,7 +211,7 @@
             // port_15
             // 
             this.port_15.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_15.Location = new System.Drawing.Point(619, 174);
+            this.port_15.Location = new System.Drawing.Point(605, 173);
             this.port_15.Name = "port_15";
             this.port_15.Size = new System.Drawing.Size(13, 13);
             this.port_15.TabIndex = 28;
@@ -217,7 +220,7 @@
             // port_14
             // 
             this.port_14.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_14.Location = new System.Drawing.Point(580, 213);
+            this.port_14.Location = new System.Drawing.Point(566, 212);
             this.port_14.Name = "port_14";
             this.port_14.Size = new System.Drawing.Size(13, 13);
             this.port_14.TabIndex = 27;
@@ -226,7 +229,7 @@
             // port_13
             // 
             this.port_13.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_13.Location = new System.Drawing.Point(580, 174);
+            this.port_13.Location = new System.Drawing.Point(566, 173);
             this.port_13.Name = "port_13";
             this.port_13.Size = new System.Drawing.Size(13, 13);
             this.port_13.TabIndex = 26;
@@ -235,7 +238,7 @@
             // port_12
             // 
             this.port_12.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_12.Location = new System.Drawing.Point(524, 213);
+            this.port_12.Location = new System.Drawing.Point(510, 212);
             this.port_12.Name = "port_12";
             this.port_12.Size = new System.Drawing.Size(13, 13);
             this.port_12.TabIndex = 25;
@@ -244,7 +247,7 @@
             // port_11
             // 
             this.port_11.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_11.Location = new System.Drawing.Point(524, 174);
+            this.port_11.Location = new System.Drawing.Point(510, 173);
             this.port_11.Name = "port_11";
             this.port_11.Size = new System.Drawing.Size(13, 13);
             this.port_11.TabIndex = 24;
@@ -253,7 +256,7 @@
             // port_10
             // 
             this.port_10.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_10.Location = new System.Drawing.Point(486, 213);
+            this.port_10.Location = new System.Drawing.Point(472, 212);
             this.port_10.Name = "port_10";
             this.port_10.Size = new System.Drawing.Size(13, 13);
             this.port_10.TabIndex = 23;
@@ -262,7 +265,7 @@
             // port_09
             // 
             this.port_09.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_09.Location = new System.Drawing.Point(486, 174);
+            this.port_09.Location = new System.Drawing.Point(472, 173);
             this.port_09.Name = "port_09";
             this.port_09.Size = new System.Drawing.Size(13, 13);
             this.port_09.TabIndex = 22;
@@ -271,7 +274,7 @@
             // port_08
             // 
             this.port_08.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_08.Location = new System.Drawing.Point(446, 213);
+            this.port_08.Location = new System.Drawing.Point(432, 212);
             this.port_08.Name = "port_08";
             this.port_08.Size = new System.Drawing.Size(13, 13);
             this.port_08.TabIndex = 21;
@@ -280,7 +283,7 @@
             // port_07
             // 
             this.port_07.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_07.Location = new System.Drawing.Point(446, 174);
+            this.port_07.Location = new System.Drawing.Point(432, 173);
             this.port_07.Name = "port_07";
             this.port_07.Size = new System.Drawing.Size(13, 13);
             this.port_07.TabIndex = 20;
@@ -289,7 +292,7 @@
             // port_06
             // 
             this.port_06.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_06.Location = new System.Drawing.Point(408, 213);
+            this.port_06.Location = new System.Drawing.Point(394, 212);
             this.port_06.Name = "port_06";
             this.port_06.Size = new System.Drawing.Size(13, 13);
             this.port_06.TabIndex = 19;
@@ -298,7 +301,7 @@
             // port_05
             // 
             this.port_05.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_05.Location = new System.Drawing.Point(408, 174);
+            this.port_05.Location = new System.Drawing.Point(394, 173);
             this.port_05.Name = "port_05";
             this.port_05.Size = new System.Drawing.Size(13, 13);
             this.port_05.TabIndex = 18;
@@ -307,7 +310,7 @@
             // port_04
             // 
             this.port_04.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_04.Location = new System.Drawing.Point(369, 213);
+            this.port_04.Location = new System.Drawing.Point(355, 212);
             this.port_04.Name = "port_04";
             this.port_04.Size = new System.Drawing.Size(13, 13);
             this.port_04.TabIndex = 17;
@@ -316,7 +319,7 @@
             // port_03
             // 
             this.port_03.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_03.Location = new System.Drawing.Point(369, 174);
+            this.port_03.Location = new System.Drawing.Point(355, 173);
             this.port_03.Name = "port_03";
             this.port_03.Size = new System.Drawing.Size(13, 13);
             this.port_03.TabIndex = 16;
@@ -325,7 +328,7 @@
             // port_02
             // 
             this.port_02.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_02.Location = new System.Drawing.Point(331, 213);
+            this.port_02.Location = new System.Drawing.Point(317, 212);
             this.port_02.Name = "port_02";
             this.port_02.Size = new System.Drawing.Size(13, 13);
             this.port_02.TabIndex = 15;
@@ -334,7 +337,7 @@
             // port_01
             // 
             this.port_01.BackColor = System.Drawing.Color.LimeGreen;
-            this.port_01.Location = new System.Drawing.Point(331, 174);
+            this.port_01.Location = new System.Drawing.Point(317, 173);
             this.port_01.Name = "port_01";
             this.port_01.Size = new System.Drawing.Size(13, 13);
             this.port_01.TabIndex = 14;
@@ -343,11 +346,25 @@
             // Image_switch
             // 
             this.Image_switch.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.SW_6850E_24;
-            this.Image_switch.Location = new System.Drawing.Point(12, 127);
+            this.Image_switch.Location = new System.Drawing.Point(-2, 126);
             this.Image_switch.Name = "Image_switch";
             this.Image_switch.Size = new System.Drawing.Size(1369, 136);
             this.Image_switch.TabIndex = 0;
             this.Image_switch.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(501, 42);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "label1";
             // 
             // SW_OS6850E_24
             // 
@@ -355,6 +372,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1370, 405);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.port_24F);
             this.Controls.Add(this.port_23F);
             this.Controls.Add(this.port_22F);
@@ -385,6 +403,7 @@
             this.Controls.Add(this.port_01);
             this.Controls.Add(this.Image_switch);
             this.Name = "SW_OS6850E_24";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SW_OS6850E_24";
             this.Load += new System.EventHandler(this.SW_OS6850E_24_Load);
             ((System.ComponentModel.ISupportInitialize)(this.port_24F)).EndInit();
@@ -417,6 +436,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.port_01)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Image_switch)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -451,5 +471,7 @@
         private System.Windows.Forms.PictureBox port_23F;
         private System.Windows.Forms.PictureBox port_22F;
         private System.Windows.Forms.PictureBox port_21F;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
     }
 }

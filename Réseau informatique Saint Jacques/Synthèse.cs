@@ -280,8 +280,8 @@ namespace Réseau_informatique_Saint_Jacques
             int i = Liste_synthèse.Rows.Count;
             if (i < 40) { sw_os6850e_24.Show(); }
             if (((i > 40) && (Valeur_passée.Contains("SR4")))) { gs_748t.Show(); }
-            if (((i > 40) && (Valeur_passée.Contains("SR5")))) { gs_748t.Show(); }
-            if (i > 40) { sw_os6450_48.Show(); }
+            if ((i > 40) && (Valeur_passée.Contains("SR4")) || (Valeur_passée.Contains("SR5"))) { gs_748t.Show(); }
+            if ((i > 40) && (!Valeur_passée.Contains("SR4")) && (!Valeur_passée.Contains("SR5"))) { sw_os6450_48.Show(); }            
         }
 
         private void Liste_synthèse_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

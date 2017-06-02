@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GS_748T));
             this.Image_switch = new System.Windows.Forms.PictureBox();
             this.port_12 = new System.Windows.Forms.PictureBox();
@@ -82,6 +83,8 @@
             this.port_46F = new System.Windows.Forms.PictureBox();
             this.port_47F = new System.Windows.Forms.PictureBox();
             this.port_48F = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Image_switch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_11)).BeginInit();
@@ -615,12 +618,27 @@
             this.port_48F.TabIndex = 65;
             this.port_48F.TabStop = false;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(475, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 66;
+            this.label1.Text = "label1";
+            // 
             // GS_748T
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1370, 405);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.port_48F);
             this.Controls.Add(this.port_47F);
             this.Controls.Add(this.port_46F);
@@ -675,6 +693,7 @@
             this.Controls.Add(this.port_01);
             this.Controls.Add(this.Image_switch);
             this.Name = "GS_748T";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GS_748T";
             this.Load += new System.EventHandler(this.GS_748T_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Image_switch)).EndInit();
@@ -731,6 +750,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.port_47F)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_48F)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -789,5 +809,7 @@
         private System.Windows.Forms.PictureBox port_46F;
         private System.Windows.Forms.PictureBox port_47F;
         private System.Windows.Forms.PictureBox port_48F;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -31,17 +31,63 @@ namespace Réseau_informatique_Saint_Jacques
             foreach (DataRow row in resultat.Rows)
             {
                 string nom_du_port = row["port"].ToString().Replace("-", "_");
-                if (row["périphérique"].ToString() == "")
+
+                if ((row["périphérique"].ToString() == "") || (!row["port"].ToString().Contains("i")))
                 {
                     PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = false;
                 }
-                if (row["périphérique"].ToString() != "")
+                if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")))
                 {
+
                     PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
+                    carré_vert.Click += new EventHandler(Informations);
                     ToolTip Infobulle_périphérique = new ToolTip();
                     Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
+                    timer1.Start();
                 }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            string requete = "SELECT port, périphérique FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "'";
+            OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
+            DataTable resultat = new DataTable();
+            adapter.Fill(resultat);
+
+            foreach (DataRow row in resultat.Rows)
+            {
+                string nom_du_port = row["port"].ToString().Replace("-", "_");
+
+                if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")))
+                {
+                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault();
+                    if (carré_vert.BackColor == Color.LimeGreen)
+
+                        carré_vert.BackColor = Color.Black;
+                    else carré_vert.BackColor = Color.LimeGreen;
+
+                }
+            }
+
+        }
+
+        private void Informations(object sender, EventArgs e)
+        {
+            string nom_du_port = ((PictureBox)sender).Name.ToString().Replace("_", "-");
+            string requete = "SELECT périphérique FROM BRASSAGE WHERE port = '" + nom_du_port + "' AND switch = '" + synthèse.Transfert + "'";
+
+            OleDbConnection con = new OleDbConnection(connectionString);
+            con.Open();
+            OleDbCommand cmd = new OleDbCommand(requete, con);
+
+            OleDbDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+
+            { label1.Text = reader["périphérique"].ToString(); }
+
+            con.Close();
         }
     }
 }
