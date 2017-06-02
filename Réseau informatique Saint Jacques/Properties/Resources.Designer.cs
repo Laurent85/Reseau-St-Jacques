@@ -63,6 +63,16 @@ namespace Réseau_informatique_Saint_Jacques.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GS_748T {
+            get {
+                object obj = ResourceManager.GetObject("GS_748T", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SW_6450_48 {
             get {
                 object obj = ResourceManager.GetObject("SW_6450_48", resourceCulture);

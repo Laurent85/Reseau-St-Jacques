@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GS-748T.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GS-748T.Designer.cs">
+      <DependentUpon>GS-748T.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modifications.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     <Compile Include="Synthèse.Designer.cs">
       <DependentUpon>Synthèse.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GS-748T.resx">
+      <DependentUpon>GS-748T.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modifications.resx">
       <DependentUpon>Modifications.cs</DependentUpon>
     </EmbeddedResource>

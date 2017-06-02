@@ -275,11 +275,13 @@ namespace Réseau_informatique_Saint_Jacques
             Valeur_passée = comboBox_Salles.Text;
             SW_OS6450_48 sw_os6450_48 = new SW_OS6450_48();
             SW_OS6850E_24 sw_os6850e_24 = new SW_OS6850E_24();
+            GS_748T gs_748t = new GS_748T();
 
             int i = Liste_synthèse.Rows.Count;
             if (i < 40) { sw_os6850e_24.Show(); }
-            else if (i > 30) { sw_os6450_48.Show(); }
-            
+            if (((i > 40) && (Valeur_passée.Contains("SR4")))) { gs_748t.Show(); }
+            if (((i > 40) && (Valeur_passée.Contains("SR5")))) { gs_748t.Show(); }
+            if (i > 40) { sw_os6450_48.Show(); }
         }
 
         private void Liste_synthèse_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
