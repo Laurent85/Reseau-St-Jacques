@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
     public partial class GS_748T : Form
     {
-
         private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private Synthèse synthèse = new Synthèse();
+
         public GS_748T()
         {
             InitializeComponent();
@@ -38,7 +34,6 @@ namespace Réseau_informatique_Saint_Jacques
                 }
                 if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")))
                 {
-
                     PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
                     carré_vert.Click += new EventHandler(Informations);
                     ToolTip Infobulle_périphérique = new ToolTip();
@@ -66,10 +61,8 @@ namespace Réseau_informatique_Saint_Jacques
 
                         carré_vert.BackColor = Color.Black;
                     else carré_vert.BackColor = Color.LimeGreen;
-
                 }
             }
-
         }
 
         private void Informations(object sender, EventArgs e)
