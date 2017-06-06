@@ -50,9 +50,9 @@
             this.Voir_utilisés = new System.Windows.Forms.RadioButton();
             this.Voir_libres = new System.Windows.Forms.RadioButton();
             this.Panel_choix = new System.Windows.Forms.Panel();
+            this.Bouton_Tableau_complet = new System.Windows.Forms.RadioButton();
             this.Panel_ports = new System.Windows.Forms.Panel();
             this.Choix_colonne = new System.Windows.Forms.ComboBox();
-            this.Tableau_complet = new System.Windows.Forms.RadioButton();
             this.Recherche = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
@@ -295,7 +295,7 @@
             // 
             // Panel_choix
             // 
-            this.Panel_choix.Controls.Add(this.Tableau_complet);
+            this.Panel_choix.Controls.Add(this.Bouton_Tableau_complet);
             this.Panel_choix.Controls.Add(this.Bouton_videoprojecteurs);
             this.Panel_choix.Controls.Add(this.Bouton_imprimantes);
             this.Panel_choix.Controls.Add(this.Bouton_Ordinateurs);
@@ -310,6 +310,18 @@
             this.Panel_choix.Name = "Panel_choix";
             this.Panel_choix.Size = new System.Drawing.Size(155, 281);
             this.Panel_choix.TabIndex = 22;
+            // 
+            // Bouton_Tableau_complet
+            // 
+            this.Bouton_Tableau_complet.AutoSize = true;
+            this.Bouton_Tableau_complet.Location = new System.Drawing.Point(3, 236);
+            this.Bouton_Tableau_complet.Name = "Bouton_Tableau_complet";
+            this.Bouton_Tableau_complet.Size = new System.Drawing.Size(104, 17);
+            this.Bouton_Tableau_complet.TabIndex = 16;
+            this.Bouton_Tableau_complet.TabStop = true;
+            this.Bouton_Tableau_complet.Text = "Tableau complet";
+            this.Bouton_Tableau_complet.UseVisualStyleBackColor = true;
+            this.Bouton_Tableau_complet.CheckedChanged += new System.EventHandler(this.Bouton_Tableau_complet_CheckedChanged);
             // 
             // Panel_ports
             // 
@@ -329,18 +341,6 @@
             this.Choix_colonne.Name = "Choix_colonne";
             this.Choix_colonne.Size = new System.Drawing.Size(121, 21);
             this.Choix_colonne.TabIndex = 24;
-            // 
-            // Tableau_complet
-            // 
-            this.Tableau_complet.AutoSize = true;
-            this.Tableau_complet.Location = new System.Drawing.Point(3, 236);
-            this.Tableau_complet.Name = "Tableau_complet";
-            this.Tableau_complet.Size = new System.Drawing.Size(104, 17);
-            this.Tableau_complet.TabIndex = 16;
-            this.Tableau_complet.TabStop = true;
-            this.Tableau_complet.Text = "Tableau complet";
-            this.Tableau_complet.UseVisualStyleBackColor = true;
-            this.Tableau_complet.CheckedChanged += new System.EventHandler(this.Tableau_complet_CheckedChanged);
             // 
             // Recherche
             // 
@@ -406,7 +406,7 @@
         private System.Windows.Forms.Panel Panel_choix;
         private System.Windows.Forms.Panel Panel_ports;
         private System.Windows.Forms.ComboBox Choix_colonne;
-        private System.Windows.Forms.RadioButton Tableau_complet;
+        private System.Windows.Forms.RadioButton Bouton_Tableau_complet;
         private System.Windows.Forms.TextBox Recherche;
     }
 }

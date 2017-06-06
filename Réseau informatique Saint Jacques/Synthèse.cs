@@ -180,11 +180,15 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void ComboBox_Filtrage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Bouton_Salles.Checked == true) { synthèse("Select * from Brassage WHERE Salle = '" + ComboBox_Filtrage.Text + "' ORDER BY Bandeau"); }
-            if (Bouton_Switchs.Checked == true) { synthèse("Select * from Brassage WHERE Switch = '" + ComboBox_Filtrage.Text + "' ORDER BY Port"); }
-            if (Bouton_VLAN.Checked == true) { synthèse("Select * from Brassage WHERE VLAN = '" + ComboBox_Filtrage.Text + "' ORDER BY VLAN"); }
-            if (Bouton_Ordinateurs.Checked == true) { synthèse("Select * from Brassage WHERE Salle = '" + ComboBox_Filtrage.Text + "' ORDER BY Salle"); }
-            Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN");
+            if (Bouton_Salles.Checked == true) { synthèse("Select * from Brassage WHERE Salle = '" + ComboBox_Filtrage.Text + "' ORDER BY Bandeau"); Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN"); }
+            if (Bouton_Switchs.Checked == true) { synthèse("Select * from Brassage WHERE Switch = '" + ComboBox_Filtrage.Text + "' ORDER BY Port"); Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN"); }
+            if (Bouton_VLAN.Checked == true) { synthèse("Select * from Brassage WHERE VLAN = '" + ComboBox_Filtrage.Text + "' ORDER BY VLAN"); Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN"); }
+            if (Bouton_Ordinateurs.Checked == true) { synthèse("Select * from Brassage WHERE Salle = '" + ComboBox_Filtrage.Text + "' ORDER BY Salle"); Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN"); }
+            if (Bouton_Tableau_complet.Checked == true) { synthèse("Select * from Brassage WHERE Switch = '" + ComboBox_Filtrage.Text + "' ORDER BY Bandeau"); Visibilité_colonnes("Switch", "Port", "Salle", "Bandeau", "VLAN", "Périphérique", "Modèle_périphérique", "Type", "Adresse_ip", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");}
+            if (Bouton_Serveurs.Checked == true) { synthèse("Select * from Brassage WHERE Switch = '" + ComboBox_Filtrage.Text + "' ORDER BY Port"); Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN"); }
+            if (Bouton_imprimantes.Checked == true) { synthèse("Select * from Brassage WHERE Switch = '" + ComboBox_Filtrage.Text + "' ORDER BY VLAN"); Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN"); }
+            if (Bouton_videoprojecteurs.Checked == true) { synthèse("Select * from Brassage WHERE Switch = '" + ComboBox_Filtrage.Text + "' ORDER BY Salle"); Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN"); }
+            
 
             if (Liste_synthèse.RowCount > 0)
             {
@@ -284,7 +288,7 @@ namespace Réseau_informatique_Saint_Jacques
             redimensionner_colonnes();
             Couleurs_ports();
         }
-        private void Tableau_complet_CheckedChanged(object sender, EventArgs e)
+        private void Bouton_Tableau_complet_CheckedChanged(object sender, EventArgs e)
         {
             synthèse("Select * from Brassage ORDER BY Switch, Port, Salle");
             Visibilité_colonnes("Switch", "Port", "Salle", "Bandeau", "VLAN", "Périphérique", "Modèle_périphérique", "Type", "Adresse_ip", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");
@@ -373,7 +377,7 @@ namespace Réseau_informatique_Saint_Jacques
             
             database.Open();
 
-            string requete = "select * from brassage where périphérique like '%" + Recherche.Text + "%' OR salle like '%" + Recherche.Text + "%'";
+            string requete = "select * from brassage where périphérique like '%" + Recherche.Text + "%' OR salle like '%" + Recherche.Text + "%' OR adresse_ip like '%" + Recherche.Text + "%' OR bandeau like '%" + Recherche.Text + "%'";
             adapter = new OleDbDataAdapter(requete, connectionString);
             résultats = new DataTable();
             adapter.Fill(résultats);
