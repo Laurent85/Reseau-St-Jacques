@@ -148,7 +148,7 @@ namespace Réseau_informatique_Saint_Jacques
                     Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                 }
             }
-        }
+        }        
 
         private void Cacher_ports_utilisés()
         {
