@@ -95,8 +95,8 @@ namespace Réseau_informatique_Saint_Jacques
             foreach (DataGridViewColumn colonne in Liste_synthèse.Columns)
             {
                 colonne.Width = colonne.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true) + 15;
-                colonne.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                colonne.HeaderCell.Style.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+                //colonne.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                //colonne.HeaderCell.Style.Font = new Font("Arial", 12F, FontStyle.Bold);                
             }
         }
 
@@ -252,6 +252,7 @@ namespace Réseau_informatique_Saint_Jacques
             Visibilité_colonnes("Salle", "Périphérique", "Adresse_ip", "VLAN");
             redimensionner_colonnes();
             Couleurs_ports();
+            Panel_ports.Visible = false;
         }
 
         private void Bouton_Serveurs_virtuels_CheckedChanged(object sender, EventArgs e)
@@ -287,6 +288,7 @@ namespace Réseau_informatique_Saint_Jacques
             Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN");
             redimensionner_colonnes();
             Couleurs_ports();
+            Panel_ports.Visible = true;
         }
         private void Bouton_Tableau_complet_CheckedChanged(object sender, EventArgs e)
         {
