@@ -41,6 +41,72 @@ namespace Réseau_informatique_Saint_Jacques
                     timer1.Start();
                 }
             }
+            switch (synthèse.Transfert)
+            {
+                case "SW_SR1_1":
+                    Titre.Text = "Switch 48 ports - Local Internet : 172.16.7.251";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(35, 12, "http://172.16.7.251");
+                    break;
+
+                case "SW_SR2_1":
+                    Titre.Text = "Switch N°1 - 24 ports - Bureau Informatique : 172.16.7.254";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(46, 12, "http://172.16.7.254");
+                    break;
+
+                case "SW_SR2_2":
+                    Titre.Text = "Switch N°2 - 24 ports - Bureau Informatique : 172.16.7.254";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(46, 12, "http://172.16.7.254");
+                    break;
+
+                case "SW_SR2_3":
+                    Titre.Text = "Switch N°1 - 48 ports - Bureau Informatique : 172.16.7.253";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(46, 12, "http://172.16.7.253");
+                    break;
+
+                case "SW_SR2_4":
+                    Titre.Text = "Switch N°2 - 48 ports - Bureau Informatique : 172.16.7.253";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(46, 12, "http://172.16.7.253");
+                    break;
+
+                case "SW_SR3_1":
+                    Titre.Text = "Switch N°1 - 48 ports - Salle Informatique : 172.16.7.252";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(45, 12, "http://172.16.7.252");
+                    break;
+
+                case "SW_SR3_2":
+                    Titre.Text = "Switch N°2 - 48 ports - Salle Informatique : 172.16.7.252";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(45, 12, "http://172.16.7.252");
+                    break;
+
+                case "SW_SR4_1":
+                    Titre.Text = "Switch 48 ports - Bureau Vie Scolaire : 172.16.7.244";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(40, 12, "http://172.16.7.244");
+                    break;
+
+                case "SW_SR5_1":
+                    Titre.Text = "Switch 48 ports - Salle de Sport : 172.16.7.245";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(35, 12, "http://172.16.7.245");
+                    break;
+                case "SW_Cdi":
+                    Titre.Text = "Switch 5 ports - Cdi";
+                    Titre.Links.Clear();
+                    //Titre.Links.Add(35, 12, "http://172.16.7.245");
+                    break;
+                case "SW_Laurent":
+                    Titre.Text = "Switch 28 ports - Bureau Laurent : 172.16.7.242";
+                    Titre.Links.Clear();
+                    Titre.Links.Add(35, 12, "http://172.16.7.242");
+                    break;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -78,9 +144,19 @@ namespace Réseau_informatique_Saint_Jacques
 
             while (reader.Read())
 
-            { label1.Text = reader["périphérique"].ToString(); }
+            { Titre.Text = reader["périphérique"].ToString(); }
 
             con.Close();
+        }
+
+        private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (Titre.Text.Contains("172.16.7.251")) { System.Diagnostics.Process.Start("http://172.16.7.251"); }
+            if (Titre.Text.Contains("172.16.7.252")) { System.Diagnostics.Process.Start("http://172.16.7.252"); }
+            if (Titre.Text.Contains("172.16.7.253")) { System.Diagnostics.Process.Start("http://172.16.7.253"); }
+            if (Titre.Text.Contains("172.16.7.254")) { System.Diagnostics.Process.Start("http://172.16.7.254"); }
+            if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
+            if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }
         }
     }
 }

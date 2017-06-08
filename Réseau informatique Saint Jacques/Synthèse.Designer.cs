@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Synthèse));
             this.Liste_synthèse = new System.Windows.Forms.DataGridView();
             this.Bouton_videoprojecteurs = new System.Windows.Forms.RadioButton();
             this.Bouton_imprimantes = new System.Windows.Forms.RadioButton();
@@ -54,8 +55,10 @@
             this.Panel_choix = new System.Windows.Forms.Panel();
             this.Bouton_Tableau_complet = new System.Windows.Forms.RadioButton();
             this.Panel_ports = new System.Windows.Forms.Panel();
-            this.Choix_colonne = new System.Windows.Forms.ComboBox();
+            this.Combobox_Filtrer_par = new System.Windows.Forms.ComboBox();
             this.Recherche = new System.Windows.Forms.TextBox();
+            this.Titre = new System.Windows.Forms.LinkLabel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
@@ -127,11 +130,13 @@
             // 
             // Nombre
             // 
+            this.Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(74, 29);
+            this.Nombre.Location = new System.Drawing.Point(1117, 481);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(0, 13);
+            this.Nombre.Size = new System.Drawing.Size(52, 13);
             this.Nombre.TabIndex = 3;
+            this.Nombre.Text = "Compteur";
             // 
             // Bouton_Ordinateurs
             // 
@@ -208,7 +213,7 @@
             // Modifier
             // 
             this.Modifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Modifier.Location = new System.Drawing.Point(978, 30);
+            this.Modifier.Location = new System.Drawing.Point(1120, 81);
             this.Modifier.Name = "Modifier";
             this.Modifier.Size = new System.Drawing.Size(131, 23);
             this.Modifier.TabIndex = 10;
@@ -242,9 +247,9 @@
             // Suppression_ligne
             // 
             this.Suppression_ligne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Suppression_ligne.Location = new System.Drawing.Point(1139, 30);
+            this.Suppression_ligne.Location = new System.Drawing.Point(1120, 127);
             this.Suppression_ligne.Name = "Suppression_ligne";
-            this.Suppression_ligne.Size = new System.Drawing.Size(102, 23);
+            this.Suppression_ligne.Size = new System.Drawing.Size(131, 23);
             this.Suppression_ligne.TabIndex = 14;
             this.Suppression_ligne.Text = "Supprimer la ligne";
             this.Suppression_ligne.UseVisualStyleBackColor = true;
@@ -265,9 +270,9 @@
             // Imprimer
             // 
             this.Imprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Imprimer.Location = new System.Drawing.Point(875, 29);
+            this.Imprimer.Location = new System.Drawing.Point(1120, 176);
             this.Imprimer.Name = "Imprimer";
-            this.Imprimer.Size = new System.Drawing.Size(75, 23);
+            this.Imprimer.Size = new System.Drawing.Size(131, 23);
             this.Imprimer.TabIndex = 16;
             this.Imprimer.Text = "Imprimer";
             this.Imprimer.UseVisualStyleBackColor = true;
@@ -276,9 +281,9 @@
             // Voir_Switch
             // 
             this.Voir_Switch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Voir_Switch.Location = new System.Drawing.Point(1139, 81);
+            this.Voir_Switch.Location = new System.Drawing.Point(1120, 339);
             this.Voir_Switch.Name = "Voir_Switch";
-            this.Voir_Switch.Size = new System.Drawing.Size(75, 23);
+            this.Voir_Switch.Size = new System.Drawing.Size(119, 23);
             this.Voir_Switch.TabIndex = 18;
             this.Voir_Switch.Text = "Voir switch";
             this.Voir_Switch.UseVisualStyleBackColor = true;
@@ -336,7 +341,7 @@
             this.Panel_choix.Controls.Add(this.Bouton_Switchs);
             this.Panel_choix.Location = new System.Drawing.Point(978, 81);
             this.Panel_choix.Name = "Panel_choix";
-            this.Panel_choix.Size = new System.Drawing.Size(155, 281);
+            this.Panel_choix.Size = new System.Drawing.Size(124, 281);
             this.Panel_choix.TabIndex = 22;
             // 
             // Bouton_Tableau_complet
@@ -359,27 +364,53 @@
             this.Panel_ports.Controls.Add(this.Voir_libres);
             this.Panel_ports.Location = new System.Drawing.Point(978, 453);
             this.Panel_ports.Name = "Panel_ports";
-            this.Panel_ports.Size = new System.Drawing.Size(110, 76);
+            this.Panel_ports.Size = new System.Drawing.Size(124, 76);
             this.Panel_ports.TabIndex = 23;
             // 
-            // Choix_colonne
+            // Combobox_Filtrer_par
             // 
-            this.Choix_colonne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Choix_colonne.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.Choix_colonne.FormattingEnabled = true;
-            this.Choix_colonne.Location = new System.Drawing.Point(981, 380);
-            this.Choix_colonne.Name = "Choix_colonne";
-            this.Choix_colonne.Size = new System.Drawing.Size(121, 21);
-            this.Choix_colonne.TabIndex = 24;
+            this.Combobox_Filtrer_par.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Combobox_Filtrer_par.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.Combobox_Filtrer_par.FormattingEnabled = true;
+            this.Combobox_Filtrer_par.Location = new System.Drawing.Point(981, 380);
+            this.Combobox_Filtrer_par.Name = "Combobox_Filtrer_par";
+            this.Combobox_Filtrer_par.Size = new System.Drawing.Size(121, 21);
+            this.Combobox_Filtrer_par.TabIndex = 24;
+            this.Combobox_Filtrer_par.SelectedIndexChanged += new System.EventHandler(this.Combobox_Filtrer_par_SelectedIndexChanged);
             // 
             // Recherche
             // 
             this.Recherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Recherche.Location = new System.Drawing.Point(706, 30);
+            this.Recherche.Location = new System.Drawing.Point(1120, 225);
             this.Recherche.Name = "Recherche";
-            this.Recherche.Size = new System.Drawing.Size(100, 20);
+            this.Recherche.Size = new System.Drawing.Size(131, 20);
             this.Recherche.TabIndex = 25;
             this.Recherche.TextChanged += new System.EventHandler(this.Recherche_TextChanged);
+            // 
+            // Titre
+            // 
+            this.Titre.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Titre.AutoSize = true;
+            this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.Titre.Location = new System.Drawing.Point(77, 30);
+            this.Titre.Name = "Titre";
+            this.Titre.Size = new System.Drawing.Size(86, 23);
+            this.Titre.TabIndex = 26;
+            this.Titre.TabStop = true;
+            this.Titre.Text = "linkLabel1";
+            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(46, 58);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(80, 17);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Synthèse
             // 
@@ -387,8 +418,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1282, 686);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.Titre);
             this.Controls.Add(this.Recherche);
-            this.Controls.Add(this.Choix_colonne);
+            this.Controls.Add(this.Combobox_Filtrer_par);
             this.Controls.Add(this.Panel_ports);
             this.Controls.Add(this.Panel_choix);
             this.Controls.Add(this.Voir_Switch);
@@ -398,6 +431,7 @@
             this.Controls.Add(this.Modifier);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Liste_synthèse);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Synthèse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Synthèse";
@@ -436,8 +470,10 @@
         private System.Windows.Forms.RadioButton Voir_libres;
         private System.Windows.Forms.Panel Panel_choix;
         private System.Windows.Forms.Panel Panel_ports;
-        private System.Windows.Forms.ComboBox Choix_colonne;
+        private System.Windows.Forms.ComboBox Combobox_Filtrer_par;
         private System.Windows.Forms.RadioButton Bouton_Tableau_complet;
         private System.Windows.Forms.TextBox Recherche;
+        private System.Windows.Forms.LinkLabel Titre;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

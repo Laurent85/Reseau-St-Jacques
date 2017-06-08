@@ -51,6 +51,9 @@
   <PropertyGroup>
     <StartupObject>Réseau_informatique_Saint_Jacques.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icone.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -147,6 +150,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icone.ico" />
     <Content Include="Reseau St Jacques.accdb" />
     <Content Include="Resources\GS_748T.png" />
     <None Include="Resources\SW_6850E_24.png" />
