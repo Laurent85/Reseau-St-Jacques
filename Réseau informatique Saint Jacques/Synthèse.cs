@@ -27,6 +27,7 @@ namespace Réseau_informatique_Saint_Jacques
             ComboBox_Filtrage.SelectedIndex = 2;
             Combobox_Colonnes();
             Combobox_Filtrer_par.SelectedIndex = 14;
+            créer_event_colonnes();
         }
 
         private void synthèse(string requete)
@@ -50,7 +51,7 @@ namespace Réseau_informatique_Saint_Jacques
             {
                 colonne.Visible = false;
             }
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
             database.Close();
         }
@@ -102,7 +103,7 @@ namespace Réseau_informatique_Saint_Jacques
             }
         }
 
-        private void redimensionner_colonnes()
+        private void Redimensionner_colonnes()
         {
             foreach (DataGridViewColumn colonne in Liste_synthèse.Columns)
             {
@@ -205,12 +206,12 @@ namespace Réseau_informatique_Saint_Jacques
                 lastRow.Selected = false;
             }
             Couleurs_ports();
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             if (sender != null)
             {
                 Voir_Tous.Checked = true;
             }
-            checkBox1_CheckedChanged(sender, e);
+            Chk_Switch_CheckedChanged(sender, e);
             switch (ComboBox_Filtrage.Text)
             {
                 case "SW_SR1_1":
@@ -290,7 +291,7 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Filtrer_par.SelectedItem = "Imprimante";
             synthèse("Select * from Brassage where imprimante <> '' ORDER BY imprimante");
             Visibilité_colonnes("imprimante", "port_imprimante", "type_imprimante", "Salle");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -298,7 +299,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             synthèse("Select * from Brassage where Type = 'Serveur' ORDER BY Salle");
             Visibilité_colonnes("Salle", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -306,7 +307,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             synthèse("Select * from Brassage where Vidéoprojecteur <> '' ORDER BY Salle");
             Visibilité_colonnes("Salle", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -315,7 +316,7 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Colonnes("VLAN");
             synthèse("Select * from Brassage ORDER BY VLAN");
             Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -323,7 +324,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             synthèse("Select * from Brassage where Type = 'Borne wifi' ORDER BY Salle");
             Visibilité_colonnes("Salle", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -331,7 +332,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             synthèse("Select * from Brassage where Type = 'Liaison' ORDER BY Salle");
             Visibilité_colonnes("Salle", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
             Panel_ports.Visible = false;
         }
@@ -340,7 +341,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             synthèse("Select * from Brassage where Type = 'Serveur virtuel' ORDER BY Salle");
             Visibilité_colonnes("Salle", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -349,7 +350,7 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Colonnes("Salle");
             synthèse("Select * from Brassage where Type = 'Ordinateur' ORDER BY Salle");
             Visibilité_colonnes("Salle", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -358,7 +359,7 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Colonnes("Salle");
             synthèse("Select * from Brassage ORDER BY Bandeau");
             Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -367,7 +368,7 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Colonnes("Switch");
             synthèse("Select * from Brassage ORDER BY Bandeau");
             Visibilité_colonnes("Salle", "Switch", "Bandeau", "Port", "Périphérique", "Adresse_ip", "VLAN");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
             Panel_ports.Visible = true;
         }
@@ -376,7 +377,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             synthèse("Select * from Brassage ORDER BY Switch, Port, Salle");
             Visibilité_colonnes("Switch", "Port", "Salle", "Bandeau", "VLAN", "Périphérique", "Modèle_périphérique", "Type", "Adresse_ip", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");
-            redimensionner_colonnes();
+            Redimensionner_colonnes();
             Couleurs_ports();
         }
 
@@ -489,11 +490,22 @@ namespace Réseau_informatique_Saint_Jacques
             ComboBox_Filtrage.DataSource = dataset.Tables[0];
             ComboBox_Filtrage.DisplayMember = Combobox_Filtrer_par.Text;
             ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;
+        }     
+
+        private void Chk_Switch_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Chk_Switch.Checked == true) { Liste_synthèse.Columns["switch"].Visible = false; } else Liste_synthèse.Columns["switch"].Visible = true;
+            
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void créer_event_colonnes()
         {
-            if (checkBox1.Checked == true) { Liste_synthèse.Columns["port"].Visible = false; } else Liste_synthèse.Columns["port"].Visible = true;
+            foreach (Control checkbox in Choix_Colonnes.Controls)
+            {
+                CheckBox chk = checkbox as CheckBox;
+                chk.CheckedChanged += new EventHandler(Chk_Switch_CheckedChanged);
+                
+            }
         }
     }
 }

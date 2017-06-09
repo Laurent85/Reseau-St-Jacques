@@ -58,10 +58,29 @@
             this.Combobox_Filtrer_par = new System.Windows.Forms.ComboBox();
             this.Recherche = new System.Windows.Forms.TextBox();
             this.Titre = new System.Windows.Forms.LinkLabel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Chk_Switch = new System.Windows.Forms.CheckBox();
+            this.Chk_Port = new System.Windows.Forms.CheckBox();
+            this.Chk_Salle = new System.Windows.Forms.CheckBox();
+            this.Chk_Bandeau = new System.Windows.Forms.CheckBox();
+            this.Chk_VLAN = new System.Windows.Forms.CheckBox();
+            this.Chk_Périphérique = new System.Windows.Forms.CheckBox();
+            this.Choix_Colonnes = new System.Windows.Forms.Panel();
+            this.Chk_Heures_Lampe = new System.Windows.Forms.CheckBox();
+            this.Chk_Infos_diverses = new System.Windows.Forms.CheckBox();
+            this.Chk_Vidéoprojecteur = new System.Windows.Forms.CheckBox();
+            this.Chk_Modèle_Lampe = new System.Windows.Forms.CheckBox();
+            this.Chk_Date_Relevé = new System.Windows.Forms.CheckBox();
+            this.Chk_Observations = new System.Windows.Forms.CheckBox();
+            this.Chk_Adresse_IP = new System.Windows.Forms.CheckBox();
+            this.Chk_Type_imprimante = new System.Windows.Forms.CheckBox();
+            this.Chk_Modèle = new System.Windows.Forms.CheckBox();
+            this.Chk_Port_Imprimante = new System.Windows.Forms.CheckBox();
+            this.Chk_Type = new System.Windows.Forms.CheckBox();
+            this.Chk_Imprimante = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
+            this.Choix_Colonnes.SuspendLayout();
             this.SuspendLayout();
             // 
             // Liste_synthèse
@@ -100,7 +119,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Liste_synthèse.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.Liste_synthèse.Size = new System.Drawing.Size(958, 593);
+            this.Liste_synthèse.Size = new System.Drawing.Size(982, 593);
             this.Liste_synthèse.TabIndex = 0;
             this.Liste_synthèse.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Liste_synthèse_ColumnHeaderMouseClick);
             // 
@@ -132,7 +151,7 @@
             // 
             this.Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(1117, 481);
+            this.Nombre.Location = new System.Drawing.Point(1152, 463);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(52, 13);
             this.Nombre.TabIndex = 3;
@@ -213,7 +232,7 @@
             // Modifier
             // 
             this.Modifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Modifier.Location = new System.Drawing.Point(1120, 81);
+            this.Modifier.Location = new System.Drawing.Point(1144, 81);
             this.Modifier.Name = "Modifier";
             this.Modifier.Size = new System.Drawing.Size(131, 23);
             this.Modifier.TabIndex = 10;
@@ -226,7 +245,7 @@
             this.ComboBox_Filtrage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBox_Filtrage.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ComboBox_Filtrage.FormattingEnabled = true;
-            this.ComboBox_Filtrage.Location = new System.Drawing.Point(1120, 380);
+            this.ComboBox_Filtrage.Location = new System.Drawing.Point(1144, 380);
             this.ComboBox_Filtrage.Name = "ComboBox_Filtrage";
             this.ComboBox_Filtrage.Size = new System.Drawing.Size(121, 21);
             this.ComboBox_Filtrage.TabIndex = 11;
@@ -247,7 +266,7 @@
             // Suppression_ligne
             // 
             this.Suppression_ligne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Suppression_ligne.Location = new System.Drawing.Point(1120, 127);
+            this.Suppression_ligne.Location = new System.Drawing.Point(1144, 127);
             this.Suppression_ligne.Name = "Suppression_ligne";
             this.Suppression_ligne.Size = new System.Drawing.Size(131, 23);
             this.Suppression_ligne.TabIndex = 14;
@@ -270,7 +289,7 @@
             // Imprimer
             // 
             this.Imprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Imprimer.Location = new System.Drawing.Point(1120, 176);
+            this.Imprimer.Location = new System.Drawing.Point(1144, 176);
             this.Imprimer.Name = "Imprimer";
             this.Imprimer.Size = new System.Drawing.Size(131, 23);
             this.Imprimer.TabIndex = 16;
@@ -281,7 +300,7 @@
             // Voir_Switch
             // 
             this.Voir_Switch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Voir_Switch.Location = new System.Drawing.Point(1120, 339);
+            this.Voir_Switch.Location = new System.Drawing.Point(1144, 339);
             this.Voir_Switch.Name = "Voir_Switch";
             this.Voir_Switch.Size = new System.Drawing.Size(119, 23);
             this.Voir_Switch.TabIndex = 18;
@@ -339,7 +358,7 @@
             this.Panel_choix.Controls.Add(this.Bouton_VLAN);
             this.Panel_choix.Controls.Add(this.Bouton_Salles);
             this.Panel_choix.Controls.Add(this.Bouton_Switchs);
-            this.Panel_choix.Location = new System.Drawing.Point(978, 81);
+            this.Panel_choix.Location = new System.Drawing.Point(1002, 81);
             this.Panel_choix.Name = "Panel_choix";
             this.Panel_choix.Size = new System.Drawing.Size(124, 281);
             this.Panel_choix.TabIndex = 22;
@@ -362,7 +381,7 @@
             this.Panel_ports.Controls.Add(this.Voir_Tous);
             this.Panel_ports.Controls.Add(this.Voir_utilisés);
             this.Panel_ports.Controls.Add(this.Voir_libres);
-            this.Panel_ports.Location = new System.Drawing.Point(978, 453);
+            this.Panel_ports.Location = new System.Drawing.Point(1005, 435);
             this.Panel_ports.Name = "Panel_ports";
             this.Panel_ports.Size = new System.Drawing.Size(124, 76);
             this.Panel_ports.TabIndex = 23;
@@ -372,7 +391,7 @@
             this.Combobox_Filtrer_par.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Combobox_Filtrer_par.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.Combobox_Filtrer_par.FormattingEnabled = true;
-            this.Combobox_Filtrer_par.Location = new System.Drawing.Point(981, 380);
+            this.Combobox_Filtrer_par.Location = new System.Drawing.Point(1005, 380);
             this.Combobox_Filtrer_par.Name = "Combobox_Filtrer_par";
             this.Combobox_Filtrer_par.Size = new System.Drawing.Size(121, 21);
             this.Combobox_Filtrer_par.TabIndex = 24;
@@ -381,7 +400,7 @@
             // Recherche
             // 
             this.Recherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Recherche.Location = new System.Drawing.Point(1120, 225);
+            this.Recherche.Location = new System.Drawing.Point(1144, 225);
             this.Recherche.Name = "Recherche";
             this.Recherche.Size = new System.Drawing.Size(131, 20);
             this.Recherche.TabIndex = 25;
@@ -393,7 +412,7 @@
             this.Titre.AutoSize = true;
             this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.Titre.Location = new System.Drawing.Point(77, 30);
+            this.Titre.Location = new System.Drawing.Point(89, 30);
             this.Titre.Name = "Titre";
             this.Titre.Size = new System.Drawing.Size(86, 23);
             this.Titre.TabIndex = 26;
@@ -401,24 +420,219 @@
             this.Titre.Text = "linkLabel1";
             this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
             // 
-            // checkBox1
+            // Chk_Switch
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(46, 58);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 27;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.Chk_Switch.AutoSize = true;
+            this.Chk_Switch.Location = new System.Drawing.Point(3, 8);
+            this.Chk_Switch.Name = "Chk_Switch";
+            this.Chk_Switch.Size = new System.Drawing.Size(58, 17);
+            this.Chk_Switch.TabIndex = 27;
+            this.Chk_Switch.Text = "Switch";
+            this.Chk_Switch.UseVisualStyleBackColor = true;
+            this.Chk_Switch.CheckedChanged += new System.EventHandler(this.Chk_Switch_CheckedChanged);
+            // 
+            // Chk_Port
+            // 
+            this.Chk_Port.AutoSize = true;
+            this.Chk_Port.Location = new System.Drawing.Point(3, 31);
+            this.Chk_Port.Name = "Chk_Port";
+            this.Chk_Port.Size = new System.Drawing.Size(45, 17);
+            this.Chk_Port.TabIndex = 28;
+            this.Chk_Port.Text = "Port";
+            this.Chk_Port.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Salle
+            // 
+            this.Chk_Salle.AutoSize = true;
+            this.Chk_Salle.Location = new System.Drawing.Point(3, 54);
+            this.Chk_Salle.Name = "Chk_Salle";
+            this.Chk_Salle.Size = new System.Drawing.Size(49, 17);
+            this.Chk_Salle.TabIndex = 29;
+            this.Chk_Salle.Text = "Salle";
+            this.Chk_Salle.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Bandeau
+            // 
+            this.Chk_Bandeau.AutoSize = true;
+            this.Chk_Bandeau.Location = new System.Drawing.Point(3, 77);
+            this.Chk_Bandeau.Name = "Chk_Bandeau";
+            this.Chk_Bandeau.Size = new System.Drawing.Size(69, 17);
+            this.Chk_Bandeau.TabIndex = 30;
+            this.Chk_Bandeau.Text = "Bandeau";
+            this.Chk_Bandeau.UseVisualStyleBackColor = true;
+            // 
+            // Chk_VLAN
+            // 
+            this.Chk_VLAN.AutoSize = true;
+            this.Chk_VLAN.Location = new System.Drawing.Point(3, 100);
+            this.Chk_VLAN.Name = "Chk_VLAN";
+            this.Chk_VLAN.Size = new System.Drawing.Size(54, 17);
+            this.Chk_VLAN.TabIndex = 31;
+            this.Chk_VLAN.Text = "VLAN";
+            this.Chk_VLAN.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Périphérique
+            // 
+            this.Chk_Périphérique.AutoSize = true;
+            this.Chk_Périphérique.Location = new System.Drawing.Point(3, 123);
+            this.Chk_Périphérique.Name = "Chk_Périphérique";
+            this.Chk_Périphérique.Size = new System.Drawing.Size(85, 17);
+            this.Chk_Périphérique.TabIndex = 32;
+            this.Chk_Périphérique.Text = "Périphérique";
+            this.Chk_Périphérique.UseVisualStyleBackColor = true;
+            // 
+            // Choix_Colonnes
+            // 
+            this.Choix_Colonnes.Controls.Add(this.Chk_Heures_Lampe);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Infos_diverses);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Vidéoprojecteur);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Modèle_Lampe);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Date_Relevé);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Observations);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Adresse_IP);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Type_imprimante);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Modèle);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Port_Imprimante);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Type);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Imprimante);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Salle);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Périphérique);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Switch);
+            this.Choix_Colonnes.Controls.Add(this.Chk_VLAN);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Port);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Bandeau);
+            this.Choix_Colonnes.Location = new System.Drawing.Point(1005, 528);
+            this.Choix_Colonnes.Name = "Choix_Colonnes";
+            this.Choix_Colonnes.Size = new System.Drawing.Size(299, 146);
+            this.Choix_Colonnes.TabIndex = 33;
+            // 
+            // Chk_Heures_Lampe
+            // 
+            this.Chk_Heures_Lampe.AutoSize = true;
+            this.Chk_Heures_Lampe.Location = new System.Drawing.Point(200, 54);
+            this.Chk_Heures_Lampe.Name = "Chk_Heures_Lampe";
+            this.Chk_Heures_Lampe.Size = new System.Drawing.Size(91, 17);
+            this.Chk_Heures_Lampe.TabIndex = 41;
+            this.Chk_Heures_Lampe.Text = "Heures lampe";
+            this.Chk_Heures_Lampe.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Infos_diverses
+            // 
+            this.Chk_Infos_diverses.AutoSize = true;
+            this.Chk_Infos_diverses.Location = new System.Drawing.Point(200, 123);
+            this.Chk_Infos_diverses.Name = "Chk_Infos_diverses";
+            this.Chk_Infos_diverses.Size = new System.Drawing.Size(91, 17);
+            this.Chk_Infos_diverses.TabIndex = 44;
+            this.Chk_Infos_diverses.Text = "Infos diverses";
+            this.Chk_Infos_diverses.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Vidéoprojecteur
+            // 
+            this.Chk_Vidéoprojecteur.AutoSize = true;
+            this.Chk_Vidéoprojecteur.Location = new System.Drawing.Point(200, 8);
+            this.Chk_Vidéoprojecteur.Name = "Chk_Vidéoprojecteur";
+            this.Chk_Vidéoprojecteur.Size = new System.Drawing.Size(100, 17);
+            this.Chk_Vidéoprojecteur.TabIndex = 39;
+            this.Chk_Vidéoprojecteur.Text = "Vidéoprojecteur";
+            this.Chk_Vidéoprojecteur.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Modèle_Lampe
+            // 
+            this.Chk_Modèle_Lampe.AutoSize = true;
+            this.Chk_Modèle_Lampe.Location = new System.Drawing.Point(200, 100);
+            this.Chk_Modèle_Lampe.Name = "Chk_Modèle_Lampe";
+            this.Chk_Modèle_Lampe.Size = new System.Drawing.Size(92, 17);
+            this.Chk_Modèle_Lampe.TabIndex = 43;
+            this.Chk_Modèle_Lampe.Text = "Modèle lampe";
+            this.Chk_Modèle_Lampe.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Date_Relevé
+            // 
+            this.Chk_Date_Relevé.AutoSize = true;
+            this.Chk_Date_Relevé.Location = new System.Drawing.Point(200, 31);
+            this.Chk_Date_Relevé.Name = "Chk_Date_Relevé";
+            this.Chk_Date_Relevé.Size = new System.Drawing.Size(81, 17);
+            this.Chk_Date_Relevé.TabIndex = 40;
+            this.Chk_Date_Relevé.Text = "Date relevé";
+            this.Chk_Date_Relevé.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Observations
+            // 
+            this.Chk_Observations.AutoSize = true;
+            this.Chk_Observations.Location = new System.Drawing.Point(200, 77);
+            this.Chk_Observations.Name = "Chk_Observations";
+            this.Chk_Observations.Size = new System.Drawing.Size(88, 17);
+            this.Chk_Observations.TabIndex = 42;
+            this.Chk_Observations.Text = "Observations";
+            this.Chk_Observations.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Adresse_IP
+            // 
+            this.Chk_Adresse_IP.AutoSize = true;
+            this.Chk_Adresse_IP.Location = new System.Drawing.Point(101, 53);
+            this.Chk_Adresse_IP.Name = "Chk_Adresse_IP";
+            this.Chk_Adresse_IP.Size = new System.Drawing.Size(77, 17);
+            this.Chk_Adresse_IP.TabIndex = 35;
+            this.Chk_Adresse_IP.Text = "Adresse IP";
+            this.Chk_Adresse_IP.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Type_imprimante
+            // 
+            this.Chk_Type_imprimante.AutoSize = true;
+            this.Chk_Type_imprimante.Location = new System.Drawing.Point(101, 122);
+            this.Chk_Type_imprimante.Name = "Chk_Type_imprimante";
+            this.Chk_Type_imprimante.Size = new System.Drawing.Size(103, 17);
+            this.Chk_Type_imprimante.TabIndex = 38;
+            this.Chk_Type_imprimante.Text = "Type imprimante";
+            this.Chk_Type_imprimante.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Modèle
+            // 
+            this.Chk_Modèle.AutoSize = true;
+            this.Chk_Modèle.Location = new System.Drawing.Point(101, 7);
+            this.Chk_Modèle.Name = "Chk_Modèle";
+            this.Chk_Modèle.Size = new System.Drawing.Size(61, 17);
+            this.Chk_Modèle.TabIndex = 33;
+            this.Chk_Modèle.Text = "Modèle";
+            this.Chk_Modèle.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Port_Imprimante
+            // 
+            this.Chk_Port_Imprimante.AutoSize = true;
+            this.Chk_Port_Imprimante.Location = new System.Drawing.Point(101, 99);
+            this.Chk_Port_Imprimante.Name = "Chk_Port_Imprimante";
+            this.Chk_Port_Imprimante.Size = new System.Drawing.Size(98, 17);
+            this.Chk_Port_Imprimante.TabIndex = 37;
+            this.Chk_Port_Imprimante.Text = "Port imprimante";
+            this.Chk_Port_Imprimante.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Type
+            // 
+            this.Chk_Type.AutoSize = true;
+            this.Chk_Type.Location = new System.Drawing.Point(101, 30);
+            this.Chk_Type.Name = "Chk_Type";
+            this.Chk_Type.Size = new System.Drawing.Size(50, 17);
+            this.Chk_Type.TabIndex = 34;
+            this.Chk_Type.Text = "Type";
+            this.Chk_Type.UseVisualStyleBackColor = true;
+            // 
+            // Chk_Imprimante
+            // 
+            this.Chk_Imprimante.AutoSize = true;
+            this.Chk_Imprimante.Location = new System.Drawing.Point(101, 76);
+            this.Chk_Imprimante.Name = "Chk_Imprimante";
+            this.Chk_Imprimante.Size = new System.Drawing.Size(77, 17);
+            this.Chk_Imprimante.TabIndex = 36;
+            this.Chk_Imprimante.Text = "Imprimante";
+            this.Chk_Imprimante.UseVisualStyleBackColor = true;
             // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(1282, 686);
-            this.Controls.Add(this.checkBox1);
+            this.ClientSize = new System.Drawing.Size(1306, 686);
+            this.Controls.Add(this.Choix_Colonnes);
             this.Controls.Add(this.Titre);
             this.Controls.Add(this.Recherche);
             this.Controls.Add(this.Combobox_Filtrer_par);
@@ -441,6 +655,8 @@
             this.Panel_choix.PerformLayout();
             this.Panel_ports.ResumeLayout(false);
             this.Panel_ports.PerformLayout();
+            this.Choix_Colonnes.ResumeLayout(false);
+            this.Choix_Colonnes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,6 +690,24 @@
         private System.Windows.Forms.RadioButton Bouton_Tableau_complet;
         private System.Windows.Forms.TextBox Recherche;
         private System.Windows.Forms.LinkLabel Titre;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox Chk_Switch;
+        private System.Windows.Forms.CheckBox Chk_Port;
+        private System.Windows.Forms.CheckBox Chk_Salle;
+        private System.Windows.Forms.CheckBox Chk_Bandeau;
+        private System.Windows.Forms.CheckBox Chk_VLAN;
+        private System.Windows.Forms.CheckBox Chk_Périphérique;
+        private System.Windows.Forms.Panel Choix_Colonnes;
+        private System.Windows.Forms.CheckBox Chk_Heures_Lampe;
+        private System.Windows.Forms.CheckBox Chk_Infos_diverses;
+        private System.Windows.Forms.CheckBox Chk_Vidéoprojecteur;
+        private System.Windows.Forms.CheckBox Chk_Modèle_Lampe;
+        private System.Windows.Forms.CheckBox Chk_Date_Relevé;
+        private System.Windows.Forms.CheckBox Chk_Observations;
+        private System.Windows.Forms.CheckBox Chk_Adresse_IP;
+        private System.Windows.Forms.CheckBox Chk_Type_imprimante;
+        private System.Windows.Forms.CheckBox Chk_Modèle;
+        private System.Windows.Forms.CheckBox Chk_Port_Imprimante;
+        private System.Windows.Forms.CheckBox Chk_Type;
+        private System.Windows.Forms.CheckBox Chk_Imprimante;
     }
 }
