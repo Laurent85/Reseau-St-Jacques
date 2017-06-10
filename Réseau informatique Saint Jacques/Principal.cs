@@ -26,9 +26,9 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Principal_Load(object sender, System.EventArgs e)
         {
-            Combobox_Colonnes();
-            Choix_colonne.SelectedItem = "Salle";
-            Combobox_tables();
+            //Combobox_Colonnes();
+            //Choix_colonne.SelectedItem = "Salle";
+            //Combobox_tables();
         }
 
         private void Bouton_Vidéoprojecteurs(string colonne)

@@ -41,12 +41,9 @@
             this.Bouton_Serveurs_virtuels = new System.Windows.Forms.RadioButton();
             this.Bouton_Liaisons = new System.Windows.Forms.RadioButton();
             this.Bouton_Bornes_Wifi = new System.Windows.Forms.RadioButton();
-            this.Bouton_Salles = new System.Windows.Forms.RadioButton();
             this.Modifier = new System.Windows.Forms.Button();
             this.ComboBox_Filtrage = new System.Windows.Forms.ComboBox();
-            this.Bouton_Switchs = new System.Windows.Forms.RadioButton();
             this.Suppression_ligne = new System.Windows.Forms.Button();
-            this.Bouton_VLAN = new System.Windows.Forms.RadioButton();
             this.Imprimer = new System.Windows.Forms.Button();
             this.Voir_Switch = new System.Windows.Forms.Button();
             this.Voir_Tous = new System.Windows.Forms.RadioButton();
@@ -219,18 +216,6 @@
             this.Bouton_Bornes_Wifi.UseVisualStyleBackColor = true;
             this.Bouton_Bornes_Wifi.CheckedChanged += new System.EventHandler(this.Bouton_Bornes_Wifi_CheckedChanged);
             // 
-            // Bouton_Salles
-            // 
-            this.Bouton_Salles.AutoSize = true;
-            this.Bouton_Salles.Location = new System.Drawing.Point(3, 167);
-            this.Bouton_Salles.Name = "Bouton_Salles";
-            this.Bouton_Salles.Size = new System.Drawing.Size(53, 17);
-            this.Bouton_Salles.TabIndex = 9;
-            this.Bouton_Salles.TabStop = true;
-            this.Bouton_Salles.Text = "Salles";
-            this.Bouton_Salles.UseVisualStyleBackColor = true;
-            this.Bouton_Salles.CheckedChanged += new System.EventHandler(this.Bouton_Salles_CheckedChanged);
-            // 
             // Modifier
             // 
             this.Modifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,18 +238,6 @@
             this.ComboBox_Filtrage.TabIndex = 11;
             this.ComboBox_Filtrage.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Filtrage_SelectedIndexChanged);
             // 
-            // Bouton_Switchs
-            // 
-            this.Bouton_Switchs.AutoSize = true;
-            this.Bouton_Switchs.Location = new System.Drawing.Point(3, 190);
-            this.Bouton_Switchs.Name = "Bouton_Switchs";
-            this.Bouton_Switchs.Size = new System.Drawing.Size(62, 17);
-            this.Bouton_Switchs.TabIndex = 12;
-            this.Bouton_Switchs.TabStop = true;
-            this.Bouton_Switchs.Text = "Switchs";
-            this.Bouton_Switchs.UseVisualStyleBackColor = true;
-            this.Bouton_Switchs.CheckedChanged += new System.EventHandler(this.Bouton_Switchs_CheckedChanged);
-            // 
             // Suppression_ligne
             // 
             this.Suppression_ligne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -275,18 +248,6 @@
             this.Suppression_ligne.Text = "Supprimer la ligne";
             this.Suppression_ligne.UseVisualStyleBackColor = true;
             this.Suppression_ligne.Click += new System.EventHandler(this.Suppression_ligne_Click);
-            // 
-            // Bouton_VLAN
-            // 
-            this.Bouton_VLAN.AutoSize = true;
-            this.Bouton_VLAN.Location = new System.Drawing.Point(3, 213);
-            this.Bouton_VLAN.Name = "Bouton_VLAN";
-            this.Bouton_VLAN.Size = new System.Drawing.Size(53, 17);
-            this.Bouton_VLAN.TabIndex = 15;
-            this.Bouton_VLAN.TabStop = true;
-            this.Bouton_VLAN.Text = "VLAN";
-            this.Bouton_VLAN.UseVisualStyleBackColor = true;
-            this.Bouton_VLAN.CheckedChanged += new System.EventHandler(this.Bouton_VLAN_CheckedChanged);
             // 
             // Imprimer
             // 
@@ -357,9 +318,6 @@
             this.Panel_choix.Controls.Add(this.Bouton_Serveurs_virtuels);
             this.Panel_choix.Controls.Add(this.Bouton_Liaisons);
             this.Panel_choix.Controls.Add(this.Bouton_Bornes_Wifi);
-            this.Panel_choix.Controls.Add(this.Bouton_VLAN);
-            this.Panel_choix.Controls.Add(this.Bouton_Salles);
-            this.Panel_choix.Controls.Add(this.Bouton_Switchs);
             this.Panel_choix.Location = new System.Drawing.Point(1002, 81);
             this.Panel_choix.Name = "Panel_choix";
             this.Panel_choix.Size = new System.Drawing.Size(124, 263);
@@ -516,29 +474,29 @@
             // Chk_Heures_Lampe
             // 
             this.Chk_Heures_Lampe.AutoSize = true;
-            this.Chk_Heures_Lampe.Location = new System.Drawing.Point(200, 54);
+            this.Chk_Heures_Lampe.Location = new System.Drawing.Point(199, 54);
             this.Chk_Heures_Lampe.Name = "Chk_Heures_Lampe";
-            this.Chk_Heures_Lampe.Size = new System.Drawing.Size(91, 17);
+            this.Chk_Heures_Lampe.Size = new System.Drawing.Size(94, 17);
             this.Chk_Heures_Lampe.TabIndex = 41;
-            this.Chk_Heures_Lampe.Text = "Heures lampe";
+            this.Chk_Heures_Lampe.Text = "Heures_lampe";
             this.Chk_Heures_Lampe.UseVisualStyleBackColor = true;
             this.Chk_Heures_Lampe.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Infos_diverses
             // 
             this.Chk_Infos_diverses.AutoSize = true;
-            this.Chk_Infos_diverses.Location = new System.Drawing.Point(200, 123);
+            this.Chk_Infos_diverses.Location = new System.Drawing.Point(199, 123);
             this.Chk_Infos_diverses.Name = "Chk_Infos_diverses";
-            this.Chk_Infos_diverses.Size = new System.Drawing.Size(91, 17);
+            this.Chk_Infos_diverses.Size = new System.Drawing.Size(94, 17);
             this.Chk_Infos_diverses.TabIndex = 44;
-            this.Chk_Infos_diverses.Text = "Infos diverses";
+            this.Chk_Infos_diverses.Text = "Infos_diverses";
             this.Chk_Infos_diverses.UseVisualStyleBackColor = true;
             this.Chk_Infos_diverses.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Vidéoprojecteur
             // 
             this.Chk_Vidéoprojecteur.AutoSize = true;
-            this.Chk_Vidéoprojecteur.Location = new System.Drawing.Point(200, 8);
+            this.Chk_Vidéoprojecteur.Location = new System.Drawing.Point(199, 8);
             this.Chk_Vidéoprojecteur.Name = "Chk_Vidéoprojecteur";
             this.Chk_Vidéoprojecteur.Size = new System.Drawing.Size(100, 17);
             this.Chk_Vidéoprojecteur.TabIndex = 39;
@@ -549,29 +507,29 @@
             // Chk_Modèle_Lampe
             // 
             this.Chk_Modèle_Lampe.AutoSize = true;
-            this.Chk_Modèle_Lampe.Location = new System.Drawing.Point(200, 100);
+            this.Chk_Modèle_Lampe.Location = new System.Drawing.Point(199, 100);
             this.Chk_Modèle_Lampe.Name = "Chk_Modèle_Lampe";
-            this.Chk_Modèle_Lampe.Size = new System.Drawing.Size(92, 17);
+            this.Chk_Modèle_Lampe.Size = new System.Drawing.Size(95, 17);
             this.Chk_Modèle_Lampe.TabIndex = 43;
-            this.Chk_Modèle_Lampe.Text = "Modèle lampe";
+            this.Chk_Modèle_Lampe.Text = "Modèle_lampe";
             this.Chk_Modèle_Lampe.UseVisualStyleBackColor = true;
             this.Chk_Modèle_Lampe.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Date_Relevé
             // 
             this.Chk_Date_Relevé.AutoSize = true;
-            this.Chk_Date_Relevé.Location = new System.Drawing.Point(200, 31);
+            this.Chk_Date_Relevé.Location = new System.Drawing.Point(199, 31);
             this.Chk_Date_Relevé.Name = "Chk_Date_Relevé";
-            this.Chk_Date_Relevé.Size = new System.Drawing.Size(81, 17);
+            this.Chk_Date_Relevé.Size = new System.Drawing.Size(84, 17);
             this.Chk_Date_Relevé.TabIndex = 40;
-            this.Chk_Date_Relevé.Text = "Date relevé";
+            this.Chk_Date_Relevé.Text = "Date_relevé";
             this.Chk_Date_Relevé.UseVisualStyleBackColor = true;
             this.Chk_Date_Relevé.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Observations
             // 
             this.Chk_Observations.AutoSize = true;
-            this.Chk_Observations.Location = new System.Drawing.Point(200, 77);
+            this.Chk_Observations.Location = new System.Drawing.Point(199, 77);
             this.Chk_Observations.Name = "Chk_Observations";
             this.Chk_Observations.Size = new System.Drawing.Size(88, 17);
             this.Chk_Observations.TabIndex = 42;
@@ -582,51 +540,51 @@
             // Chk_Adresse_IP
             // 
             this.Chk_Adresse_IP.AutoSize = true;
-            this.Chk_Adresse_IP.Location = new System.Drawing.Point(101, 53);
+            this.Chk_Adresse_IP.Location = new System.Drawing.Point(85, 54);
             this.Chk_Adresse_IP.Name = "Chk_Adresse_IP";
-            this.Chk_Adresse_IP.Size = new System.Drawing.Size(77, 17);
+            this.Chk_Adresse_IP.Size = new System.Drawing.Size(80, 17);
             this.Chk_Adresse_IP.TabIndex = 35;
-            this.Chk_Adresse_IP.Text = "Adresse IP";
+            this.Chk_Adresse_IP.Text = "Adresse_IP";
             this.Chk_Adresse_IP.UseVisualStyleBackColor = true;
             this.Chk_Adresse_IP.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Type_imprimante
             // 
             this.Chk_Type_imprimante.AutoSize = true;
-            this.Chk_Type_imprimante.Location = new System.Drawing.Point(101, 122);
+            this.Chk_Type_imprimante.Location = new System.Drawing.Point(85, 123);
             this.Chk_Type_imprimante.Name = "Chk_Type_imprimante";
-            this.Chk_Type_imprimante.Size = new System.Drawing.Size(103, 17);
+            this.Chk_Type_imprimante.Size = new System.Drawing.Size(106, 17);
             this.Chk_Type_imprimante.TabIndex = 38;
-            this.Chk_Type_imprimante.Text = "Type imprimante";
+            this.Chk_Type_imprimante.Text = "Type_imprimante";
             this.Chk_Type_imprimante.UseVisualStyleBackColor = true;
             this.Chk_Type_imprimante.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Modèle
             // 
             this.Chk_Modèle.AutoSize = true;
-            this.Chk_Modèle.Location = new System.Drawing.Point(101, 7);
+            this.Chk_Modèle.Location = new System.Drawing.Point(85, 8);
             this.Chk_Modèle.Name = "Chk_Modèle";
-            this.Chk_Modèle.Size = new System.Drawing.Size(61, 17);
+            this.Chk_Modèle.Size = new System.Drawing.Size(125, 17);
             this.Chk_Modèle.TabIndex = 33;
-            this.Chk_Modèle.Text = "Modèle";
+            this.Chk_Modèle.Text = "Modèle_périphérique";
             this.Chk_Modèle.UseVisualStyleBackColor = true;
             this.Chk_Modèle.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Port_Imprimante
             // 
             this.Chk_Port_Imprimante.AutoSize = true;
-            this.Chk_Port_Imprimante.Location = new System.Drawing.Point(101, 99);
+            this.Chk_Port_Imprimante.Location = new System.Drawing.Point(85, 100);
             this.Chk_Port_Imprimante.Name = "Chk_Port_Imprimante";
-            this.Chk_Port_Imprimante.Size = new System.Drawing.Size(98, 17);
+            this.Chk_Port_Imprimante.Size = new System.Drawing.Size(101, 17);
             this.Chk_Port_Imprimante.TabIndex = 37;
-            this.Chk_Port_Imprimante.Text = "Port imprimante";
+            this.Chk_Port_Imprimante.Text = "Port_imprimante";
             this.Chk_Port_Imprimante.UseVisualStyleBackColor = true;
             this.Chk_Port_Imprimante.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
             // Chk_Type
             // 
             this.Chk_Type.AutoSize = true;
-            this.Chk_Type.Location = new System.Drawing.Point(101, 30);
+            this.Chk_Type.Location = new System.Drawing.Point(85, 31);
             this.Chk_Type.Name = "Chk_Type";
             this.Chk_Type.Size = new System.Drawing.Size(50, 17);
             this.Chk_Type.TabIndex = 34;
@@ -637,7 +595,7 @@
             // Chk_Imprimante
             // 
             this.Chk_Imprimante.AutoSize = true;
-            this.Chk_Imprimante.Location = new System.Drawing.Point(101, 76);
+            this.Chk_Imprimante.Location = new System.Drawing.Point(85, 77);
             this.Chk_Imprimante.Name = "Chk_Imprimante";
             this.Chk_Imprimante.Size = new System.Drawing.Size(77, 17);
             this.Chk_Imprimante.TabIndex = 36;
@@ -704,12 +662,9 @@
         private System.Windows.Forms.RadioButton Bouton_Serveurs_virtuels;
         private System.Windows.Forms.RadioButton Bouton_Liaisons;
         private System.Windows.Forms.RadioButton Bouton_Bornes_Wifi;
-        private System.Windows.Forms.RadioButton Bouton_Salles;
         private System.Windows.Forms.Button Modifier;
         private System.Windows.Forms.ComboBox ComboBox_Filtrage;
-        private System.Windows.Forms.RadioButton Bouton_Switchs;
         private System.Windows.Forms.Button Suppression_ligne;
-        private System.Windows.Forms.RadioButton Bouton_VLAN;
         private System.Windows.Forms.Button Imprimer;
         private System.Windows.Forms.Button Voir_Switch;
         private System.Windows.Forms.RadioButton Voir_Tous;
