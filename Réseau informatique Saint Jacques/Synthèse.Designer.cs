@@ -373,7 +373,7 @@
             // 
             // Titre
             // 
-            this.Titre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Titre.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre.ForeColor = System.Drawing.Color.DarkSeaGreen;
             this.Titre.Location = new System.Drawing.Point(12, 89);
@@ -623,7 +623,7 @@
             // 
             // Titre_principal
             // 
-            this.Titre_principal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Titre_principal.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Titre_principal.AutoSize = true;
             this.Titre_principal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Titre_principal.Font = new System.Drawing.Font("Freestyle Script", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
