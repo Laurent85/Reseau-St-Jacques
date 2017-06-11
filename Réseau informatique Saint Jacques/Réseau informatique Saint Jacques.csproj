@@ -153,6 +153,7 @@
     <Content Include="Icone.ico" />
     <Content Include="Reseau St Jacques.accdb" />
     <Content Include="Resources\GS_748T.png" />
+    <Content Include="Resources\logo.png" />
     <None Include="Resources\SW_6850E_24.png" />
     <None Include="Resources\SW_6450_48.png" />
     <None Include="Resources\vert.png" />

@@ -75,10 +75,13 @@
             this.Chk_Type = new System.Windows.Forms.CheckBox();
             this.Chk_Imprimante = new System.Windows.Forms.CheckBox();
             this.checkBox_aucun_filtre = new System.Windows.Forms.CheckBox();
+            this.Titre_principal = new System.Windows.Forms.Label();
+            this.Logo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
             this.Choix_Colonnes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // Liste_synthèse
@@ -108,7 +111,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Liste_synthèse.DefaultCellStyle = dataGridViewCellStyle2;
             this.Liste_synthèse.EnableHeadersVisualStyles = false;
-            this.Liste_synthèse.Location = new System.Drawing.Point(12, 81);
+            this.Liste_synthèse.Location = new System.Drawing.Point(12, 127);
             this.Liste_synthèse.Name = "Liste_synthèse";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -118,7 +121,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Liste_synthèse.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.Liste_synthèse.Size = new System.Drawing.Size(982, 593);
+            this.Liste_synthèse.Size = new System.Drawing.Size(982, 547);
             this.Liste_synthèse.TabIndex = 0;
             this.Liste_synthèse.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Liste_synthèse_ColumnHeaderMouseClick);
             // 
@@ -150,9 +153,11 @@
             // 
             this.Nombre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Nombre.AutoSize = true;
-            this.Nombre.Location = new System.Drawing.Point(1152, 463);
+            this.Nombre.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Nombre.ForeColor = System.Drawing.Color.Red;
+            this.Nombre.Location = new System.Drawing.Point(863, 92);
             this.Nombre.Name = "Nombre";
-            this.Nombre.Size = new System.Drawing.Size(52, 13);
+            this.Nombre.Size = new System.Drawing.Size(73, 18);
             this.Nombre.TabIndex = 3;
             this.Nombre.Text = "Compteur";
             // 
@@ -219,7 +224,7 @@
             // Modifier
             // 
             this.Modifier.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Modifier.Location = new System.Drawing.Point(1144, 81);
+            this.Modifier.Location = new System.Drawing.Point(1144, 127);
             this.Modifier.Name = "Modifier";
             this.Modifier.Size = new System.Drawing.Size(131, 23);
             this.Modifier.TabIndex = 10;
@@ -241,7 +246,7 @@
             // Suppression_ligne
             // 
             this.Suppression_ligne.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Suppression_ligne.Location = new System.Drawing.Point(1144, 127);
+            this.Suppression_ligne.Location = new System.Drawing.Point(1144, 173);
             this.Suppression_ligne.Name = "Suppression_ligne";
             this.Suppression_ligne.Size = new System.Drawing.Size(131, 23);
             this.Suppression_ligne.TabIndex = 14;
@@ -252,7 +257,7 @@
             // Imprimer
             // 
             this.Imprimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Imprimer.Location = new System.Drawing.Point(1144, 176);
+            this.Imprimer.Location = new System.Drawing.Point(1144, 219);
             this.Imprimer.Name = "Imprimer";
             this.Imprimer.Size = new System.Drawing.Size(131, 23);
             this.Imprimer.TabIndex = 16;
@@ -265,7 +270,7 @@
             this.Voir_Switch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Voir_Switch.Location = new System.Drawing.Point(1144, 321);
             this.Voir_Switch.Name = "Voir_Switch";
-            this.Voir_Switch.Size = new System.Drawing.Size(119, 23);
+            this.Voir_Switch.Size = new System.Drawing.Size(131, 23);
             this.Voir_Switch.TabIndex = 18;
             this.Voir_Switch.Text = "Voir switch";
             this.Voir_Switch.UseVisualStyleBackColor = true;
@@ -318,15 +323,15 @@
             this.Panel_choix.Controls.Add(this.Bouton_Serveurs_virtuels);
             this.Panel_choix.Controls.Add(this.Bouton_Liaisons);
             this.Panel_choix.Controls.Add(this.Bouton_Bornes_Wifi);
-            this.Panel_choix.Location = new System.Drawing.Point(1002, 81);
+            this.Panel_choix.Location = new System.Drawing.Point(1005, 127);
             this.Panel_choix.Name = "Panel_choix";
-            this.Panel_choix.Size = new System.Drawing.Size(124, 263);
+            this.Panel_choix.Size = new System.Drawing.Size(124, 200);
             this.Panel_choix.TabIndex = 22;
             // 
             // Bouton_Tableau_complet
             // 
             this.Bouton_Tableau_complet.AutoSize = true;
-            this.Bouton_Tableau_complet.Location = new System.Drawing.Point(3, 236);
+            this.Bouton_Tableau_complet.Location = new System.Drawing.Point(3, 167);
             this.Bouton_Tableau_complet.Name = "Bouton_Tableau_complet";
             this.Bouton_Tableau_complet.Size = new System.Drawing.Size(104, 17);
             this.Bouton_Tableau_complet.TabIndex = 16;
@@ -360,7 +365,7 @@
             // Recherche
             // 
             this.Recherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Recherche.Location = new System.Drawing.Point(1144, 225);
+            this.Recherche.Location = new System.Drawing.Point(1144, 271);
             this.Recherche.Name = "Recherche";
             this.Recherche.Size = new System.Drawing.Size(131, 20);
             this.Recherche.TabIndex = 25;
@@ -368,16 +373,16 @@
             // 
             // Titre
             // 
-            this.Titre.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Titre.AutoSize = true;
+            this.Titre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Titre.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.Titre.Location = new System.Drawing.Point(89, 30);
+            this.Titre.ForeColor = System.Drawing.Color.DarkSeaGreen;
+            this.Titre.Location = new System.Drawing.Point(12, 89);
             this.Titre.Name = "Titre";
-            this.Titre.Size = new System.Drawing.Size(86, 23);
+            this.Titre.Size = new System.Drawing.Size(982, 23);
             this.Titre.TabIndex = 26;
             this.Titre.TabStop = true;
             this.Titre.Text = "linkLabel1";
+            this.Titre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
             // 
             // Chk_Switch
@@ -448,6 +453,7 @@
             // 
             // Choix_Colonnes
             // 
+            this.Choix_Colonnes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Choix_Colonnes.Controls.Add(this.Chk_Heures_Lampe);
             this.Choix_Colonnes.Controls.Add(this.Chk_Infos_diverses);
             this.Choix_Colonnes.Controls.Add(this.Chk_Vidéoprojecteur);
@@ -605,6 +611,7 @@
             // 
             // checkBox_aucun_filtre
             // 
+            this.checkBox_aucun_filtre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox_aucun_filtre.AutoSize = true;
             this.checkBox_aucun_filtre.Location = new System.Drawing.Point(1005, 357);
             this.checkBox_aucun_filtre.Name = "checkBox_aucun_filtre";
@@ -614,15 +621,41 @@
             this.checkBox_aucun_filtre.UseVisualStyleBackColor = true;
             this.checkBox_aucun_filtre.CheckedChanged += new System.EventHandler(this.checkBox_aucun_filtre_CheckedChanged);
             // 
+            // Titre_principal
+            // 
+            this.Titre_principal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Titre_principal.AutoSize = true;
+            this.Titre_principal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Titre_principal.Font = new System.Drawing.Font("Freestyle Script", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre_principal.ForeColor = System.Drawing.Color.MediumPurple;
+            this.Titre_principal.Location = new System.Drawing.Point(204, 9);
+            this.Titre_principal.Name = "Titre_principal";
+            this.Titre_principal.Size = new System.Drawing.Size(604, 59);
+            this.Titre_principal.TabIndex = 35;
+            this.Titre_principal.Text = "Réseau informatique - Collège Saint Jacques";
+            // 
+            // Logo
+            // 
+            this.Logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Logo.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.logo;
+            this.Logo.Location = new System.Drawing.Point(1144, 18);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(131, 72);
+            this.Logo.TabIndex = 36;
+            this.Logo.TabStop = false;
+            // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1306, 686);
+            this.Controls.Add(this.Nombre);
+            this.Controls.Add(this.Titre);
+            this.Controls.Add(this.Logo);
+            this.Controls.Add(this.Titre_principal);
             this.Controls.Add(this.checkBox_aucun_filtre);
             this.Controls.Add(this.Choix_Colonnes);
-            this.Controls.Add(this.Titre);
             this.Controls.Add(this.Recherche);
             this.Controls.Add(this.Combobox_Filtrer_par);
             this.Controls.Add(this.Panel_ports);
@@ -632,7 +665,6 @@
             this.Controls.Add(this.Suppression_ligne);
             this.Controls.Add(this.ComboBox_Filtrage);
             this.Controls.Add(this.Modifier);
-            this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Liste_synthèse);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Synthèse";
@@ -646,6 +678,7 @@
             this.Panel_ports.PerformLayout();
             this.Choix_Colonnes.ResumeLayout(false);
             this.Choix_Colonnes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -696,5 +729,7 @@
         private System.Windows.Forms.CheckBox Chk_Type;
         private System.Windows.Forms.CheckBox Chk_Imprimante;
         private System.Windows.Forms.CheckBox checkBox_aucun_filtre;
+        private System.Windows.Forms.Label Titre_principal;
+        private System.Windows.Forms.PictureBox Logo;
     }
 }
