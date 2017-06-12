@@ -74,9 +74,9 @@
             this.Chk_Port_Imprimante = new System.Windows.Forms.CheckBox();
             this.Chk_Type = new System.Windows.Forms.CheckBox();
             this.Chk_Imprimante = new System.Windows.Forms.CheckBox();
-            this.checkBox_aucun_filtre = new System.Windows.Forms.CheckBox();
             this.Titre_principal = new System.Windows.Forms.Label();
             this.Logo = new System.Windows.Forms.PictureBox();
+            this.RAZ_Filtres = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
@@ -155,7 +155,7 @@
             this.Nombre.AutoSize = true;
             this.Nombre.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Nombre.ForeColor = System.Drawing.Color.Red;
-            this.Nombre.Location = new System.Drawing.Point(863, 92);
+            this.Nombre.Location = new System.Drawing.Point(849, 92);
             this.Nombre.Name = "Nombre";
             this.Nombre.Size = new System.Drawing.Size(73, 18);
             this.Nombre.TabIndex = 3;
@@ -239,7 +239,7 @@
             this.ComboBox_Filtrage.FormattingEnabled = true;
             this.ComboBox_Filtrage.Location = new System.Drawing.Point(1144, 380);
             this.ComboBox_Filtrage.Name = "ComboBox_Filtrage";
-            this.ComboBox_Filtrage.Size = new System.Drawing.Size(121, 21);
+            this.ComboBox_Filtrage.Size = new System.Drawing.Size(131, 21);
             this.ComboBox_Filtrage.TabIndex = 11;
             this.ComboBox_Filtrage.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Filtrage_SelectedIndexChanged);
             // 
@@ -268,7 +268,7 @@
             // Voir_Switch
             // 
             this.Voir_Switch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Voir_Switch.Location = new System.Drawing.Point(1144, 321);
+            this.Voir_Switch.Location = new System.Drawing.Point(1144, 349);
             this.Voir_Switch.Name = "Voir_Switch";
             this.Voir_Switch.Size = new System.Drawing.Size(131, 23);
             this.Voir_Switch.TabIndex = 18;
@@ -358,14 +358,14 @@
             this.Combobox_Filtrer_par.FormattingEnabled = true;
             this.Combobox_Filtrer_par.Location = new System.Drawing.Point(1005, 380);
             this.Combobox_Filtrer_par.Name = "Combobox_Filtrer_par";
-            this.Combobox_Filtrer_par.Size = new System.Drawing.Size(121, 21);
+            this.Combobox_Filtrer_par.Size = new System.Drawing.Size(124, 21);
             this.Combobox_Filtrer_par.TabIndex = 24;
             this.Combobox_Filtrer_par.SelectedIndexChanged += new System.EventHandler(this.Combobox_Filtrer_par_SelectedIndexChanged);
             // 
             // Recherche
             // 
             this.Recherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Recherche.Location = new System.Drawing.Point(1144, 271);
+            this.Recherche.Location = new System.Drawing.Point(1144, 307);
             this.Recherche.Name = "Recherche";
             this.Recherche.Size = new System.Drawing.Size(131, 20);
             this.Recherche.TabIndex = 25;
@@ -381,7 +381,7 @@
             this.Titre.Size = new System.Drawing.Size(982, 23);
             this.Titre.TabIndex = 26;
             this.Titre.TabStop = true;
-            this.Titre.Text = "linkLabel1";
+            this.Titre.Text = "Titre";
             this.Titre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
             // 
@@ -609,18 +609,6 @@
             this.Chk_Imprimante.UseVisualStyleBackColor = true;
             this.Chk_Imprimante.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
             // 
-            // checkBox_aucun_filtre
-            // 
-            this.checkBox_aucun_filtre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox_aucun_filtre.AutoSize = true;
-            this.checkBox_aucun_filtre.Location = new System.Drawing.Point(1005, 357);
-            this.checkBox_aucun_filtre.Name = "checkBox_aucun_filtre";
-            this.checkBox_aucun_filtre.Size = new System.Drawing.Size(79, 17);
-            this.checkBox_aucun_filtre.TabIndex = 34;
-            this.checkBox_aucun_filtre.Text = "Aucun filtre";
-            this.checkBox_aucun_filtre.UseVisualStyleBackColor = true;
-            this.checkBox_aucun_filtre.CheckedChanged += new System.EventHandler(this.checkBox_aucun_filtre_CheckedChanged);
-            // 
             // Titre_principal
             // 
             this.Titre_principal.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -644,17 +632,28 @@
             this.Logo.TabIndex = 36;
             this.Logo.TabStop = false;
             // 
+            // RAZ_Filtres
+            // 
+            this.RAZ_Filtres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.RAZ_Filtres.Location = new System.Drawing.Point(1005, 349);
+            this.RAZ_Filtres.Name = "RAZ_Filtres";
+            this.RAZ_Filtres.Size = new System.Drawing.Size(124, 23);
+            this.RAZ_Filtres.TabIndex = 37;
+            this.RAZ_Filtres.Text = "RAZ des filtres";
+            this.RAZ_Filtres.UseVisualStyleBackColor = true;
+            this.RAZ_Filtres.Click += new System.EventHandler(this.RAZ_Filtres_Click);
+            // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1306, 686);
+            this.Controls.Add(this.RAZ_Filtres);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Titre);
             this.Controls.Add(this.Logo);
             this.Controls.Add(this.Titre_principal);
-            this.Controls.Add(this.checkBox_aucun_filtre);
             this.Controls.Add(this.Choix_Colonnes);
             this.Controls.Add(this.Recherche);
             this.Controls.Add(this.Combobox_Filtrer_par);
@@ -728,8 +727,8 @@
         private System.Windows.Forms.CheckBox Chk_Port_Imprimante;
         private System.Windows.Forms.CheckBox Chk_Type;
         private System.Windows.Forms.CheckBox Chk_Imprimante;
-        private System.Windows.Forms.CheckBox checkBox_aucun_filtre;
         private System.Windows.Forms.Label Titre_principal;
         private System.Windows.Forms.PictureBox Logo;
+        private System.Windows.Forms.Button RAZ_Filtres;
     }
 }

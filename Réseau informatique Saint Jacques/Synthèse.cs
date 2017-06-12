@@ -25,12 +25,12 @@ namespace Réseau_informatique_Saint_Jacques
         private void Synthèse_imprimantes_Load(object sender, EventArgs e)
         {
             Bouton_Tableau_complet.Checked = true;
-            Combobox_Filtrer_Par();
+            Combobox_Filtrer_Par();            
             Liste_synthèse.AutoGenerateColumns = false;
             Liste_synthèse.ColumnHeadersHeight = 30;
-            Combobox_Filtrer_par.SelectedIndex = 14;
-            Combobox_Filtrage();
-            ComboBox_Filtrage.SelectedIndex = 0;
+            Combobox_Filtrer_par.SelectedItem = "Switch";
+            Combobox_Filtrage();            
+            ComboBox_Filtrage.SelectedItem = "SW_SR1_1";
         }
 
         private void synthèse(string requete)
@@ -104,10 +104,12 @@ namespace Réseau_informatique_Saint_Jacques
             adapter.Fill(résultats);
 
             foreach (DataColumn item in résultats.Columns)
-            {
-                Combobox_Filtrer_par.Items.Add(item.ColumnName);
-                Combobox_Filtrer_par.Sorted = true;
-            }
+                if (item.ColumnName != "ID") {
+                    {
+                        Combobox_Filtrer_par.Items.Add(item.ColumnName);
+                        Combobox_Filtrer_par.Sorted = true;
+                    }
+                }
         }
 
         private void Redimensionner_colonnes()
@@ -485,15 +487,6 @@ namespace Réseau_informatique_Saint_Jacques
             }
         }
 
-        private void checkBox_aucun_filtre_CheckedChanged(object sender, EventArgs e)
-        {
-            if ((Bouton_imprimantes.Checked == true) && (checkBox_aucun_filtre.Checked == true)) { synthèse("Select * from Brassage WHERE imprimante <> ''"); }
-            else if ((Bouton_Serveurs.Checked == true) && (checkBox_aucun_filtre.Checked == true)) { Bouton_Serveurs_CheckedChanged(null, null); }
-            else Combobox_Filtrer_par_SelectedIndexChanged(null, null);
-            //if ((Bouton_imprimantes.Checked == true) && (checkBox_aucun_filtre.Checked == false)) { Combobox_Filtrer_par_SelectedIndexChanged(null, null); }
-
-        }
-
         private void Sélectionner_Checkbox()
         {
             if (Chk_Switch.Checked == true) { Liste_synthèse.Columns["switch"].Visible = true; } else Liste_synthèse.Columns["switch"].Visible = false;
@@ -516,6 +509,18 @@ namespace Réseau_informatique_Saint_Jacques
             if (Chk_Infos_diverses.Checked == true) { Liste_synthèse.Columns["Infos_diverses"].Visible = true; } else Liste_synthèse.Columns["Infos_diverses"].Visible = false;
 
             Redimensionner_colonnes();
+        }
+
+        private void RAZ_Filtres_Click(object sender, EventArgs e)
+        {
+            if ((Bouton_imprimantes.Checked == true)) { Bouton_imprimantes_CheckedChanged(null, null); }
+            if ((Bouton_Serveurs.Checked == true)) { Bouton_Serveurs_CheckedChanged(null, null); }
+            if ((Bouton_videoprojecteurs.Checked == true)) { Bouton_videoprojecteurs_CheckedChanged(null, null); }
+            if ((Bouton_Bornes_Wifi.Checked == true)) { Bouton_Bornes_Wifi_CheckedChanged(null, null); }
+            if ((Bouton_Liaisons.Checked == true)) { Bouton_Liaisons_CheckedChanged(null, null); }
+            if ((Bouton_Serveurs_virtuels.Checked == true)) { Bouton_Serveurs_virtuels_CheckedChanged(null, null); }
+            if ((Bouton_Ordinateurs.Checked == true)) { Bouton_Ordinateurs_CheckedChanged(null, null); }
+            if ((Bouton_Tableau_complet.Checked == true)) { Bouton_Tableau_complet_CheckedChanged(null, null); }
         }
     }
 }
