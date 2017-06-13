@@ -77,6 +77,8 @@
             this.Titre_principal = new System.Windows.Forms.Label();
             this.Logo = new System.Windows.Forms.PictureBox();
             this.RAZ_Filtres = new System.Windows.Forms.Button();
+            this.printDocument = new System.Drawing.Printing.PrintDocument();
+            this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
@@ -643,6 +645,21 @@
             this.RAZ_Filtres.UseVisualStyleBackColor = true;
             this.RAZ_Filtres.Click += new System.EventHandler(this.RAZ_Filtres_Click);
             // 
+            // printDocument
+            // 
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            // 
+            // printPreviewDialog
+            // 
+            this.printPreviewDialog.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog.Document = this.printDocument;
+            this.printPreviewDialog.Enabled = true;
+            this.printPreviewDialog.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog.Icon")));
+            this.printPreviewDialog.Name = "printPreviewDialog1";
+            this.printPreviewDialog.Visible = false;
+            // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,5 +747,7 @@
         private System.Windows.Forms.Label Titre_principal;
         private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Button RAZ_Filtres;
+        private System.Drawing.Printing.PrintDocument printDocument;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
     }
 }

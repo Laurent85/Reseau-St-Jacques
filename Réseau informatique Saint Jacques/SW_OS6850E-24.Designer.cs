@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Titre = new System.Windows.Forms.LinkLabel();
             this.port_24F = new System.Windows.Forms.PictureBox();
             this.port_23F = new System.Windows.Forms.PictureBox();
             this.port_22F = new System.Windows.Forms.PictureBox();
@@ -58,8 +60,6 @@
             this.port_02 = new System.Windows.Forms.PictureBox();
             this.port_01 = new System.Windows.Forms.PictureBox();
             this.Image_switch = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.Titre = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.port_24F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_23F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_22F)).BeginInit();
@@ -90,6 +90,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.port_01)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Image_switch)).BeginInit();
             this.SuspendLayout();
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 10;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // Titre
+            // 
+            this.Titre.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Titre.AutoSize = true;
+            this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titre.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.Titre.Location = new System.Drawing.Point(284, 56);
+            this.Titre.Name = "Titre";
+            this.Titre.Size = new System.Drawing.Size(86, 23);
+            this.Titre.TabIndex = 54;
+            this.Titre.TabStop = true;
+            this.Titre.Text = "linkLabel1";
+            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
             // 
             // port_24F
             // 
@@ -351,25 +370,6 @@
             this.Image_switch.Size = new System.Drawing.Size(1369, 136);
             this.Image_switch.TabIndex = 0;
             this.Image_switch.TabStop = false;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // Titre
-            // 
-            this.Titre.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Titre.AutoSize = true;
-            this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Titre.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.Titre.Location = new System.Drawing.Point(284, 56);
-            this.Titre.Name = "Titre";
-            this.Titre.Size = new System.Drawing.Size(86, 23);
-            this.Titre.TabIndex = 54;
-            this.Titre.TabStop = true;
-            this.Titre.Text = "linkLabel1";
-            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
             // 
             // SW_OS6850E_24
             // 

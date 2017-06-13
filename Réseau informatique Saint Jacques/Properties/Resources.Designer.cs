@@ -103,6 +103,36 @@ namespace Réseau_informatique_Saint_Jacques.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SW_DLINK_5_PORTS {
+            get {
+                object obj = ResourceManager.GetObject("SW_DLINK_5_PORTS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SW_DLINK_5_PORTS1 {
+            get {
+                object obj = ResourceManager.GetObject("SW_DLINK_5_PORTS1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SW_DLINK_5_PORTS2 {
+            get {
+                object obj = ResourceManager.GetObject("SW_DLINK_5_PORTS2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap vert {
             get {
                 object obj = ResourceManager.GetObject("vert", resourceCulture);

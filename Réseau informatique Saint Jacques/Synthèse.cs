@@ -16,6 +16,7 @@ namespace Réseau_informatique_Saint_Jacques
         private OleDbCommandBuilder cmdBldr;
         public static string Valeur_passée;
         private int checkbox_ok = 0;
+        public int row = 0;
 
         public Synthèse()
         {
@@ -74,26 +75,16 @@ namespace Réseau_informatique_Saint_Jacques
             checkbox_ok = 1;
         }
 
-        private void Combobox_Filtrage(string colonne)
-        {
-            string requete = "SELECT DISTINCT " + colonne + " from BRASSAGE WHERE " + colonne + " <> ''";
-            adapter = new OleDbDataAdapter(new OleDbCommand(requete, database));
-            dataset = new DataSet();
-            adapter.Fill(dataset);
-            ComboBox_Filtrage.DataSource = dataset.Tables[0];
-            ComboBox_Filtrage.DisplayMember = colonne;
-            ComboBox_Filtrage.ValueMember = colonne;
-        }
-
         private void Combobox_Filtrage()
         {
             string requete = "SELECT DISTINCT " + Combobox_Filtrer_par.Text + " from BRASSAGE WHERE " + ComboBox_Filtrage.Text + " <> ''";
             adapter = new OleDbDataAdapter(new OleDbCommand(requete, database));
-            dataset = new DataSet();
+            dataset = new DataSet();            
             adapter.Fill(dataset);
             ComboBox_Filtrage.DataSource = dataset.Tables[0];
             ComboBox_Filtrage.DisplayMember = Combobox_Filtrer_par.Text;
             ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;
+            
         }
 
         private void Combobox_Filtrer_Par()
@@ -303,6 +294,7 @@ namespace Réseau_informatique_Saint_Jacques
             Checkbox_actifs("Imprimante", "Port_imprimante", "Type_imprimante", "Salle");
             Redimensionner_colonnes();
             Couleurs_ports();
+            Panel_ports.Visible = true;
             Titre.Text = "Bilan des imprimantes";
         }
 
@@ -312,6 +304,7 @@ namespace Réseau_informatique_Saint_Jacques
             Checkbox_actifs("Salle", "Périphérique", "Adresse_IP", "VLAN");
             Redimensionner_colonnes();
             Couleurs_ports();
+            Panel_ports.Visible = true;
             Titre.Text = "Bilan des serveurs";
         }
 
@@ -321,6 +314,7 @@ namespace Réseau_informatique_Saint_Jacques
             Checkbox_actifs("Salle", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations");
             Redimensionner_colonnes();
             Couleurs_ports();
+            Panel_ports.Visible = false;
             Titre.Text = "Bilan des vidéoprojecteurs";
         }
 
@@ -330,6 +324,7 @@ namespace Réseau_informatique_Saint_Jacques
             Checkbox_actifs("Salle", "Périphérique", "Adresse_IP", "Switch", "Port", "VLAN");
             Redimensionner_colonnes();
             Couleurs_ports();
+            Panel_ports.Visible = true;
             Titre.Text = "Bilan des bornes Wifi";
         }
 
@@ -360,6 +355,7 @@ namespace Réseau_informatique_Saint_Jacques
             Couleurs_ports();
             checkbox_ok = 1;
             Titre.Text = "Bilan des ordinateurs";
+            Panel_ports.Visible = true;
         }
 
         private void Bouton_Tableau_complet_CheckedChanged(object sender, EventArgs e)
@@ -369,6 +365,7 @@ namespace Réseau_informatique_Saint_Jacques
             Redimensionner_colonnes();
             Couleurs_ports();
             Titre.Text = "Bilan complet";
+            Panel_ports.Visible = true;
         }
 
         private void Voir_utilisés_CheckedChanged(object sender, EventArgs e)
@@ -423,12 +420,14 @@ namespace Réseau_informatique_Saint_Jacques
             SW_OS6450_48 sw_os6450_48 = new SW_OS6450_48();
             SW_OS6850E_24 sw_os6850e_24 = new SW_OS6850E_24();
             GS_748T gs_748t = new GS_748T();
+            SW_DLINK_5_PORTS sw_dlink_5_ports = new SW_DLINK_5_PORTS();
 
             int i = Liste_synthèse.Rows.Count;
-            if (i < 40) { sw_os6850e_24.Show(); }
+            if ((i < 40) && (i > 10)) { sw_os6850e_24.Show(); }
             if ((i > 40) && (Valeur_passée.Contains("SR4"))) { gs_748t.Show(); }
             if ((i > 40) && (Valeur_passée.Contains("SR4")) || (Valeur_passée.Contains("SR5"))) { gs_748t.Show(); }
             if ((i > 40) && (!Valeur_passée.Contains("SR4")) && (!Valeur_passée.Contains("SR5"))) { sw_os6450_48.Show(); }
+            if (i < 10) { sw_dlink_5_ports.Show(); }
         }
 
         private void Liste_synthèse_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -438,6 +437,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Imprimer_Click(object sender, EventArgs e)
         {
+            printPreviewDialog.ShowDialog();
         }
 
         public string Transfert
@@ -476,7 +476,7 @@ namespace Réseau_informatique_Saint_Jacques
             adapter.Fill(dataset);
             ComboBox_Filtrage.DataSource = dataset.Tables[0];
             ComboBox_Filtrage.DisplayMember = Combobox_Filtrer_par.Text;
-            ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;
+            ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;            
         }
 
         private void Checkbox_CheckedChanged(object sender, EventArgs e)
@@ -522,5 +522,69 @@ namespace Réseau_informatique_Saint_Jacques
             if ((Bouton_Ordinateurs.Checked == true)) { Bouton_Ordinateurs_CheckedChanged(null, null); }
             if ((Bouton_Tableau_complet.Checked == true)) { Bouton_Tableau_complet_CheckedChanged(null, null); }
         }
+        private void DrawHeader(Graphics g, ref int y_value)
+        {
+            int x_value = 0;
+            Font bold = new Font(this.Font, FontStyle.Bold);
+
+            foreach (DataGridViewColumn dc in Liste_synthèse.Columns)
+            {
+                if (dc.Visible == true)
+                {
+
+
+                    g.DrawString(dc.HeaderText, bold, Brushes.Black, (float)x_value, (float)y_value);
+                    x_value += dc.Width + 1;
+                }            }
+        }
+        private void DrawGridBody(Graphics g, int y_value)
+        {
+            int x_value;
+            
+
+            for (int i = 0; (i < 27) && ((i + row) < ((DataTable)résultats).Rows.Count); ++i)
+            {
+                DataRow dr = ((DataTable)résultats).Rows[i + row];
+                x_value = 0;
+
+                // draw a solid line
+                g.DrawLine(Pens.Black, new Point(0, y_value), new Point(this.Width, y_value));
+
+                foreach (DataGridViewColumn dc in Liste_synthèse.Columns)
+                {
+                    if (dc.Visible == true)
+                    { 
+                    string text = dr[dc.DataPropertyName].ToString();
+                    g.DrawString(text, this.Font, Brushes.Black, (float)x_value, (float)y_value + 10f);
+                    x_value += dc.Width + 1;
+                }
+                }
+
+                y_value += 40;
+            }
+
+            row += 27;
+        }
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int rowPosition = 25;
+
+            // draw headers
+            DrawHeader(e.Graphics, ref rowPosition);
+
+            rowPosition += 40;
+
+            // draw each row
+            DrawGridBody(e.Graphics, rowPosition);
+
+            // see if there are more pages to print
+            if (((DataTable)résultats).Rows.Count > row)
+                e.HasMorePages = true;
+            else
+                row = 0;
+        }
     }
+    
+    
 }
