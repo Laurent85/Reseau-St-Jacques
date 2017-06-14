@@ -27,10 +27,12 @@ namespace Réseau_informatique_Saint_Jacques
         {
             Bouton_Tableau_complet.Checked = true;
             Combobox_Filtrer_Par();
+            Combobox_Filtrer_par.SelectedIndex = 13;
             Combobox_Filtrage();
+            
             Liste_synthèse.AutoGenerateColumns = false;
             Liste_synthèse.ColumnHeadersHeight = 30;
-            Combobox_Filtrer_par.SelectedItem = "Switch";         
+                     
             Combobox_Filtrage();
         }
 
