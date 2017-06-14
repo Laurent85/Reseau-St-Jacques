@@ -26,12 +26,12 @@ namespace Réseau_informatique_Saint_Jacques
         private void Synthèse_imprimantes_Load(object sender, EventArgs e)
         {
             Bouton_Tableau_complet.Checked = true;
-            Combobox_Filtrer_Par();            
+            Combobox_Filtrer_Par();
+            Combobox_Filtrage();
             Liste_synthèse.AutoGenerateColumns = false;
             Liste_synthèse.ColumnHeadersHeight = 30;
-            Combobox_Filtrer_par.SelectedItem = "Switch";
-            Combobox_Filtrage();            
-            ComboBox_Filtrage.SelectedItem = "SW_SR1_1";
+            Combobox_Filtrer_par.SelectedItem = "Switch";         
+            Combobox_Filtrage();
         }
 
         private void synthèse(string requete)
@@ -52,7 +52,7 @@ namespace Réseau_informatique_Saint_Jacques
             Liste_synthèse.DataSource = résultats.DefaultView;
             Liste_synthèse.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Redimensionner_colonnes();
-            Couleurs_ports();
+            Couleurs_ports();           
             database.Close();
         }
 
@@ -286,6 +286,7 @@ namespace Réseau_informatique_Saint_Jacques
                     Titre.Links.Clear();
                     break;
             }
+            
         }
 
         private void Bouton_imprimantes_CheckedChanged(object sender, EventArgs e)
@@ -400,9 +401,11 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Modifier_Click(object sender, EventArgs e)
         {
+            Liste_synthèse.EndEdit();
+            Liste_synthèse.CurrentCell = Liste_synthèse.Rows[0].Cells[1];
             try { adapter.Update(résultats); }
-            catch { }
-            finally { MessageBox.Show("Modifications effectuées !"); }
+            catch { MessageBox.Show("Erreur !"); }
+            finally { MessageBox.Show("Modifications effectuées !"); }            
         }
 
         private void Suppression_ligne_Click(object sender, EventArgs e)
@@ -454,6 +457,8 @@ namespace Réseau_informatique_Saint_Jacques
             adapter.Fill(résultats);
             Liste_synthèse.DataSource = résultats;
             Couleurs_ports();
+            int nombre = résultats.Rows.Count;
+            Nombre.Text = nombre.ToString() + " enregistrements";
             database.Close();
         }
 
@@ -584,7 +589,27 @@ namespace Réseau_informatique_Saint_Jacques
             else
                 row = 0;
         }
-    }
-    
-    
+
+        private void Remplir_combobox(object sender, DataGridViewCellEventArgs e)
+        {
+            int columnIndex = Liste_synthèse.CurrentCell.ColumnIndex;
+            string columnName = Liste_synthèse.Columns[columnIndex].Name;           
+            string requete = "SELECT DISTINCT " + columnName + " from BRASSAGE WHERE " + columnName + " <> ''";
+            OleDbDataAdapter adapter1 = new OleDbDataAdapter(new OleDbCommand(requete, database));
+            DataSet dataset1 = new DataSet();            
+            adapter1.Fill(dataset1);
+            comboBox1.DataSource = dataset1.Tables[0];
+            comboBox1.DisplayMember = columnName;
+            comboBox1.ValueMember = columnName;
+            comboBox1.SelectedValue = "";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {           
+            
+            {
+                Liste_synthèse.CurrentCell.Value = comboBox1.SelectedValue.ToString();
+            }
+        }
+    }    
 }

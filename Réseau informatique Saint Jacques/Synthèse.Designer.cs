@@ -79,6 +79,8 @@
             this.RAZ_Filtres = new System.Windows.Forms.Button();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
@@ -125,6 +127,7 @@
             this.Liste_synthèse.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.Liste_synthèse.Size = new System.Drawing.Size(982, 547);
             this.Liste_synthèse.TabIndex = 0;
+            this.Liste_synthèse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Remplir_combobox);
             this.Liste_synthèse.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Liste_synthèse_ColumnHeaderMouseClick);
             // 
             // Bouton_videoprojecteurs
@@ -327,13 +330,13 @@
             this.Panel_choix.Controls.Add(this.Bouton_Bornes_Wifi);
             this.Panel_choix.Location = new System.Drawing.Point(1005, 127);
             this.Panel_choix.Name = "Panel_choix";
-            this.Panel_choix.Size = new System.Drawing.Size(124, 200);
+            this.Panel_choix.Size = new System.Drawing.Size(124, 216);
             this.Panel_choix.TabIndex = 22;
             // 
             // Bouton_Tableau_complet
             // 
             this.Bouton_Tableau_complet.AutoSize = true;
-            this.Bouton_Tableau_complet.Location = new System.Drawing.Point(3, 167);
+            this.Bouton_Tableau_complet.Location = new System.Drawing.Point(3, 181);
             this.Bouton_Tableau_complet.Name = "Bouton_Tableau_complet";
             this.Bouton_Tableau_complet.Size = new System.Drawing.Size(104, 17);
             this.Bouton_Tableau_complet.TabIndex = 16;
@@ -367,6 +370,7 @@
             // Recherche
             // 
             this.Recherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Recherche.BackColor = System.Drawing.Color.AliceBlue;
             this.Recherche.Location = new System.Drawing.Point(1144, 307);
             this.Recherche.Name = "Recherche";
             this.Recherche.Size = new System.Drawing.Size(131, 20);
@@ -660,12 +664,32 @@
             this.printPreviewDialog.Name = "printPreviewDialog1";
             this.printPreviewDialog.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1179, 288);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "Rechercher";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(16, 46);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 39;
+            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1306, 686);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.RAZ_Filtres);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Titre);
@@ -749,5 +773,7 @@
         private System.Windows.Forms.Button RAZ_Filtres;
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
