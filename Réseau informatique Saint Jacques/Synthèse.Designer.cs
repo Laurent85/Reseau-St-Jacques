@@ -80,7 +80,7 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Combobox_Choix_Modifications = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
@@ -127,7 +127,7 @@
             this.Liste_synthèse.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.Liste_synthèse.Size = new System.Drawing.Size(982, 547);
             this.Liste_synthèse.TabIndex = 0;
-            this.Liste_synthèse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Remplir_combobox);
+            this.Liste_synthèse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Remplir_Combobox_Choix_Modifications);
             this.Liste_synthèse.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Liste_synthèse_ColumnHeaderMouseClick);
             // 
             // Bouton_videoprojecteurs
@@ -673,14 +673,15 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Rechercher";
             // 
-            // comboBox1
+            // Combobox_Choix_Modifications
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 39;
-            this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.Combobox_Choix_Modifications.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.Combobox_Choix_Modifications.FormattingEnabled = true;
+            this.Combobox_Choix_Modifications.Location = new System.Drawing.Point(12, 89);
+            this.Combobox_Choix_Modifications.Name = "Combobox_Choix_Modifications";
+            this.Combobox_Choix_Modifications.Size = new System.Drawing.Size(121, 21);
+            this.Combobox_Choix_Modifications.TabIndex = 39;
+            this.Combobox_Choix_Modifications.SelectionChangeCommitted += new System.EventHandler(this.Combobox_Choix_Modifications_SelectedIndexChanged);
             // 
             // Synthèse
             // 
@@ -688,7 +689,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1306, 686);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Combobox_Choix_Modifications);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RAZ_Filtres);
             this.Controls.Add(this.Nombre);
@@ -774,6 +775,6 @@
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox Combobox_Choix_Modifications;
     }
 }

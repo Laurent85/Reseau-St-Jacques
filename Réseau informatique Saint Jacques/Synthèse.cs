@@ -28,8 +28,8 @@ namespace Réseau_informatique_Saint_Jacques
             Bouton_Tableau_complet.Checked = true;
             Combobox_Filtrer_Par();
             Combobox_Filtrer_par.SelectedIndex = 13;
-            Combobox_Filtrage();
-            
+            Combobox_Filtrage();            
+            ComboBox_Filtrage.SelectedValue = "SW_SR1_1";
             Liste_synthèse.AutoGenerateColumns = false;
             Liste_synthèse.ColumnHeadersHeight = 30;
                      
@@ -80,9 +80,9 @@ namespace Réseau_informatique_Saint_Jacques
         private void Combobox_Filtrage()
         {
             string requete = "SELECT DISTINCT " + Combobox_Filtrer_par.Text + " from BRASSAGE WHERE " + ComboBox_Filtrage.Text + " <> ''";
-            adapter = new OleDbDataAdapter(new OleDbCommand(requete, database));
+            OleDbDataAdapter adapter1 = new OleDbDataAdapter(new OleDbCommand(requete, database));
             dataset = new DataSet();            
-            adapter.Fill(dataset);
+            adapter1.Fill(dataset);
             ComboBox_Filtrage.DataSource = dataset.Tables[0];
             ComboBox_Filtrage.DisplayMember = Combobox_Filtrer_par.Text;
             ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;
@@ -92,9 +92,9 @@ namespace Réseau_informatique_Saint_Jacques
         private void Combobox_Filtrer_Par()
         {
             string requete = "SELECT * FROM BRASSAGE";
-            adapter = new OleDbDataAdapter(requete, connectionString);
-            résultats = new DataTable();
-            adapter.Fill(résultats);
+            OleDbDataAdapter adapter2 = new OleDbDataAdapter(requete, connectionString);
+            DataTable résultats = new DataTable();
+            adapter2.Fill(résultats);
 
             foreach (DataColumn item in résultats.Columns)
                 if (item.ColumnName != "ID") {
@@ -592,7 +592,7 @@ namespace Réseau_informatique_Saint_Jacques
                 row = 0;
         }
 
-        private void Remplir_combobox(object sender, DataGridViewCellEventArgs e)
+        private void Remplir_Combobox_Choix_Modifications(object sender, DataGridViewCellEventArgs e)
         {
             int columnIndex = Liste_synthèse.CurrentCell.ColumnIndex;
             string columnName = Liste_synthèse.Columns[columnIndex].Name;           
@@ -600,17 +600,17 @@ namespace Réseau_informatique_Saint_Jacques
             OleDbDataAdapter adapter1 = new OleDbDataAdapter(new OleDbCommand(requete, database));
             DataSet dataset1 = new DataSet();            
             adapter1.Fill(dataset1);
-            comboBox1.DataSource = dataset1.Tables[0];
-            comboBox1.DisplayMember = columnName;
-            comboBox1.ValueMember = columnName;
-            comboBox1.SelectedValue = "";
+            Combobox_Choix_Modifications.DataSource = dataset1.Tables[0];
+            Combobox_Choix_Modifications.DisplayMember = columnName;
+            Combobox_Choix_Modifications.ValueMember = columnName;
+            Combobox_Choix_Modifications.SelectedValue = "";
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void Combobox_Choix_Modifications_SelectedIndexChanged(object sender, EventArgs e)
         {           
             
             {
-                Liste_synthèse.CurrentCell.Value = comboBox1.SelectedValue.ToString();
+                Liste_synthèse.CurrentCell.Value = Combobox_Choix_Modifications.SelectedValue.ToString();
             }
         }
     }    
