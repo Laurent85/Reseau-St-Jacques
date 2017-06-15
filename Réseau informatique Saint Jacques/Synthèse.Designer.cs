@@ -711,7 +711,7 @@
             this.Name = "Synthèse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Synthèse";
-            this.Load += new System.EventHandler(this.Synthèse_imprimantes_Load);
+            this.Load += new System.EventHandler(this.Synthèse_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).EndInit();
             this.Panel_choix.ResumeLayout(false);
             this.Panel_choix.PerformLayout();

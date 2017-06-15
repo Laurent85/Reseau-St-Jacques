@@ -15,25 +15,27 @@ namespace Réseau_informatique_Saint_Jacques
         private OleDbDataAdapter adapter;
         private OleDbCommandBuilder cmdBldr;
         public static string Valeur_passée;
-        private int checkbox_ok = 0;
-        public int row = 0;
+        private int Checkbox_ok = 0;
+        public int Rang = 0;
 
         public Synthèse()
         {
             InitializeComponent();
         }
 
-        private void Synthèse_imprimantes_Load(object sender, EventArgs e)
+        private void Synthèse_Load(object sender, EventArgs e)
         {
             Bouton_Tableau_complet.Checked = true;
             Combobox_Filtrer_Par();
             Combobox_Filtrer_par.SelectedIndex = 13;
-            Combobox_Filtrage();            
-            ComboBox_Filtrage.SelectedValue = "SW_SR1_1";
-            Liste_synthèse.AutoGenerateColumns = false;
-            Liste_synthèse.ColumnHeadersHeight = 30;
-                     
+            Checkbox_actifs("Switch", "Bandeau", "Port", "Salle", "Périphérique", "VLAN", "Adresse_IP", "Type", "Modèle_périphérique", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");
             Combobox_Filtrage();
+            //ComboBox_Filtrage.SelectedValue = "SW_SR1_1";
+            //Liste_synthèse.AutoGenerateColumns = false;
+            //Liste_synthèse.ColumnHeadersHeight = 30;
+            //Bouton_Tableau_complet.Checked = true;
+            //Combobox_Filtrage();
+            
         }
 
         private void synthèse(string requete)
@@ -54,14 +56,14 @@ namespace Réseau_informatique_Saint_Jacques
             Liste_synthèse.DataSource = résultats.DefaultView;
             Liste_synthèse.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             Redimensionner_colonnes();
-            Couleurs_ports();           
+            Couleurs_ports();
             database.Close();
         }
 
         private void Checkbox_actifs(params string[] nom_checkbox)
         {
             int index = 0;
-            checkbox_ok = 0;
+            Checkbox_ok = 0;
             foreach (CheckBox chk in Choix_Colonnes.Controls)
             {
                 chk.Checked = false;
@@ -74,19 +76,18 @@ namespace Réseau_informatique_Saint_Jacques
                 }
                 Liste_synthèse.Columns[str].DisplayIndex = index; index++;
             }
-            checkbox_ok = 1;
+            Checkbox_ok = 1;
         }
 
         private void Combobox_Filtrage()
         {
             string requete = "SELECT DISTINCT " + Combobox_Filtrer_par.Text + " from BRASSAGE WHERE " + ComboBox_Filtrage.Text + " <> ''";
             OleDbDataAdapter adapter1 = new OleDbDataAdapter(new OleDbCommand(requete, database));
-            dataset = new DataSet();            
+            dataset = new DataSet();
             adapter1.Fill(dataset);
             ComboBox_Filtrage.DataSource = dataset.Tables[0];
             ComboBox_Filtrage.DisplayMember = Combobox_Filtrer_par.Text;
             ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;
-            
         }
 
         private void Combobox_Filtrer_Par()
@@ -97,7 +98,8 @@ namespace Réseau_informatique_Saint_Jacques
             adapter2.Fill(résultats);
 
             foreach (DataColumn item in résultats.Columns)
-                if (item.ColumnName != "ID") {
+                if (item.ColumnName != "ID")
+                {
                     {
                         Combobox_Filtrer_par.Items.Add(item.ColumnName);
                         Combobox_Filtrer_par.Sorted = true;
@@ -140,32 +142,6 @@ namespace Réseau_informatique_Saint_Jacques
             Liste_synthèse.AllowUserToAddRows = true;
         }
 
-        private void Couleurs_ports()
-        {
-            foreach (DataGridViewRow ligne in Liste_synthèse.Rows)
-            {
-                if (Convert.ToString(ligne.Cells["Périphérique"].Value) == "")
-                {
-                    DataGridViewCellStyle style = new DataGridViewCellStyle();
-                    ligne.Cells["port"].Style = style;
-                    ligne.DefaultCellStyle.BackColor = Color.White;
-                    ligne.Cells["port"].Style.BackColor = Color.LightGray;
-                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
-                }
-                else
-                {
-                    DataGridViewCellStyle style = new DataGridViewCellStyle();
-                    style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
-                    ligne.Cells["port"].Style = style;
-                    ligne.DefaultCellStyle.BackColor = Color.White;
-                    ligne.Cells["port"].Style.BackColor = Color.LimeGreen;
-                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
-                }
-            }
-            Sélectionner_Checkbox();
-            Liste_synthèse.Columns["ID"].Visible = false;
-        }
-
         private void Cacher_ports_utilisés()
         {
             Liste_synthèse.AllowUserToAddRows = false;
@@ -194,6 +170,99 @@ namespace Réseau_informatique_Saint_Jacques
                 }
             }
             Liste_synthèse.AllowUserToAddRows = true;
+        }
+
+        private void Couleurs_ports()
+        {
+            foreach (DataGridViewRow ligne in Liste_synthèse.Rows)
+            {
+                if (Convert.ToString(ligne.Cells["Périphérique"].Value) == "")
+                {
+                    DataGridViewCellStyle style = new DataGridViewCellStyle();
+                    ligne.Cells["port"].Style = style;
+                    ligne.DefaultCellStyle.BackColor = Color.White;
+                    ligne.Cells["port"].Style.BackColor = Color.LightGray;
+                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
+                }
+                else
+                {
+                    DataGridViewCellStyle style = new DataGridViewCellStyle();
+                    style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
+                    ligne.Cells["port"].Style = style;
+                    ligne.DefaultCellStyle.BackColor = Color.White;
+                    ligne.Cells["port"].Style.BackColor = Color.LimeGreen;
+                    Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
+                }
+            }
+            Sélectionner_Checkbox();
+            Liste_synthèse.Columns["ID"].Visible = false;
+        }
+
+        private void Sélectionner_Checkbox()
+        {
+            if (Chk_Switch.Checked == true) { Liste_synthèse.Columns["switch"].Visible = true; } else Liste_synthèse.Columns["switch"].Visible = false;
+            if (Chk_VLAN.Checked == true) { Liste_synthèse.Columns["VLAN"].Visible = true; } else Liste_synthèse.Columns["VLAN"].Visible = false;
+            if (Chk_Port.Checked == true) { Liste_synthèse.Columns["Port"].Visible = true; } else Liste_synthèse.Columns["Port"].Visible = false;
+            if (Chk_Salle.Checked == true) { Liste_synthèse.Columns["Salle"].Visible = true; } else Liste_synthèse.Columns["Salle"].Visible = false;
+            if (Chk_Bandeau.Checked == true) { Liste_synthèse.Columns["Bandeau"].Visible = true; } else Liste_synthèse.Columns["Bandeau"].Visible = false;
+            if (Chk_Périphérique.Checked == true) { Liste_synthèse.Columns["Périphérique"].Visible = true; } else Liste_synthèse.Columns["Périphérique"].Visible = false;
+            if (Chk_Modèle.Checked == true) { Liste_synthèse.Columns["Modèle_périphérique"].Visible = true; } else Liste_synthèse.Columns["Modèle_périphérique"].Visible = false;
+            if (Chk_Imprimante.Checked == true) { Liste_synthèse.Columns["Imprimante"].Visible = true; } else Liste_synthèse.Columns["Imprimante"].Visible = false;
+            if (Chk_Adresse_IP.Checked == true) { Liste_synthèse.Columns["Adresse_IP"].Visible = true; } else Liste_synthèse.Columns["Adresse_IP"].Visible = false;
+            if (Chk_Type.Checked == true) { Liste_synthèse.Columns["Type"].Visible = true; } else Liste_synthèse.Columns["Type"].Visible = false;
+            if (Chk_Port_Imprimante.Checked == true) { Liste_synthèse.Columns["Port_Imprimante"].Visible = true; } else Liste_synthèse.Columns["Port_Imprimante"].Visible = false;
+            if (Chk_Type_imprimante.Checked == true) { Liste_synthèse.Columns["Type_imprimante"].Visible = true; } else Liste_synthèse.Columns["Type_imprimante"].Visible = false;
+            if (Chk_Vidéoprojecteur.Checked == true) { Liste_synthèse.Columns["Vidéoprojecteur"].Visible = true; } else Liste_synthèse.Columns["Vidéoprojecteur"].Visible = false;
+            if (Chk_Date_Relevé.Checked == true) { Liste_synthèse.Columns["Date_Relevé"].Visible = true; } else Liste_synthèse.Columns["Date_Relevé"].Visible = false;
+            if (Chk_Heures_Lampe.Checked == true) { Liste_synthèse.Columns["Heures_Lampe"].Visible = true; } else Liste_synthèse.Columns["Heures_Lampe"].Visible = false;
+            if (Chk_Observations.Checked == true) { Liste_synthèse.Columns["Observations"].Visible = true; } else Liste_synthèse.Columns["Observations"].Visible = false;
+            if (Chk_Modèle_Lampe.Checked == true) { Liste_synthèse.Columns["Modèle_Lampe"].Visible = true; } else Liste_synthèse.Columns["Modèle_Lampe"].Visible = false;
+            if (Chk_Infos_diverses.Checked == true) { Liste_synthèse.Columns["Infos_diverses"].Visible = true; } else Liste_synthèse.Columns["Infos_diverses"].Visible = false;
+
+            Redimensionner_colonnes();
+        }
+
+        private void Dessiner_En_têtes(Graphics g, ref int y_value)
+        {
+            int x_value = 0;
+            Font bold = new Font(this.Font, FontStyle.Bold);
+
+            foreach (DataGridViewColumn dc in Liste_synthèse.Columns)
+            {
+                if (dc.Visible == true)
+                {
+                    g.DrawString(dc.HeaderText, bold, Brushes.Black, (float)x_value, (float)y_value);
+                    x_value += dc.Width + 1;
+                }
+            }
+        }
+
+        private void Dessiner_Grille(Graphics g, int y_value)
+        {
+            int x_value;
+
+            for (int i = 0; (i < 27) && ((i + Rang) < ((DataTable)résultats).Rows.Count); ++i)
+            {
+                DataRow dr = ((DataTable)résultats).Rows[i + Rang];
+                x_value = 0;
+
+                // dessiner une ligne
+                g.DrawLine(Pens.Black, new Point(0, y_value), new Point(this.Width, y_value));
+
+                foreach (DataGridViewColumn dc in Liste_synthèse.Columns)
+                {
+                    if (dc.Visible == true)
+                    {
+                        string text = dr[dc.DataPropertyName].ToString();
+                        g.DrawString(text, this.Font, Brushes.Black, (float)x_value, (float)y_value + 10f);
+                        x_value += dc.Width + 1;
+                    }
+                }
+
+                y_value += 40;
+            }
+
+            Rang += 27;
         }
 
         private void ComboBox_Filtrage_SelectedIndexChanged(object sender, EventArgs e)
@@ -288,7 +357,23 @@ namespace Réseau_informatique_Saint_Jacques
                     Titre.Links.Clear();
                     break;
             }
-            
+        }
+
+        private void Combobox_Filtrer_par_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string requete = "SELECT DISTINCT " + Combobox_Filtrer_par.Text + " from BRASSAGE WHERE " + Combobox_Filtrer_par.Text + " <> ''";
+            adapter = new OleDbDataAdapter(new OleDbCommand(requete, database));
+            dataset = new DataSet();
+            adapter.Fill(dataset);
+            ComboBox_Filtrage.DataSource = dataset.Tables[0];
+            ComboBox_Filtrage.DisplayMember = Combobox_Filtrer_par.Text;
+            ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;
+        }
+
+        private void Combobox_Choix_Modifications_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Liste_synthèse.CurrentCell.Value = Combobox_Choix_Modifications.SelectedValue.ToString();
+            Liste_synthèse.BeginEdit(true);
         }
 
         private void Bouton_imprimantes_CheckedChanged(object sender, EventArgs e)
@@ -356,7 +441,7 @@ namespace Réseau_informatique_Saint_Jacques
             Checkbox_actifs("Salle", "Périphérique", "Adresse_IP", "Switch", "Port", "VLAN");
             Redimensionner_colonnes();
             Couleurs_ports();
-            checkbox_ok = 1;
+            Checkbox_ok = 1;
             Titre.Text = "Bilan des ordinateurs";
             Panel_ports.Visible = true;
         }
@@ -364,7 +449,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Bouton_Tableau_complet_CheckedChanged(object sender, EventArgs e)
         {
             synthèse("Select * from Brassage ORDER BY Switch, Bandeau, Port, Salle");
-            Checkbox_actifs("Switch", "Bandeau", "Port", "Salle", "Périphérique", "VLAN", "Modèle_périphérique", "Type", "Adresse_IP", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");
+            Checkbox_actifs("Switch", "Bandeau", "Port", "Salle", "Périphérique", "VLAN", "Adresse_IP", "Type", "Modèle_périphérique", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");
             Redimensionner_colonnes();
             Couleurs_ports();
             Titre.Text = "Bilan complet";
@@ -401,53 +486,12 @@ namespace Réseau_informatique_Saint_Jacques
             Compter_lignes("ports libres");
         }
 
-        private void Modifier_Click(object sender, EventArgs e)
+        private void Checkbox_CheckedChanged(object sender, EventArgs e)
         {
-            Liste_synthèse.EndEdit();
-            Liste_synthèse.CurrentCell = Liste_synthèse.Rows[0].Cells[1];
-            try { adapter.Update(résultats); }
-            catch { MessageBox.Show("Erreur !"); }
-            finally { MessageBox.Show("Modifications effectuées !"); }            
-        }
-
-        private void Suppression_ligne_Click(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow ligne in Liste_synthèse.SelectedRows)
+            if (Checkbox_ok == 1)
             {
-                if (!ligne.IsNewRow)
-                    Liste_synthèse.Rows.Remove(ligne);
+                Sélectionner_Checkbox();
             }
-        }
-
-        private void Voir_Switch_Click(object sender, EventArgs e)
-        {
-            Valeur_passée = ComboBox_Filtrage.Text;
-            SW_OS6450_48 sw_os6450_48 = new SW_OS6450_48();
-            SW_OS6850E_24 sw_os6850e_24 = new SW_OS6850E_24();
-            GS_748T gs_748t = new GS_748T();
-            SW_DLINK_5_PORTS sw_dlink_5_ports = new SW_DLINK_5_PORTS();
-
-            int i = Liste_synthèse.Rows.Count;
-            if ((i < 40) && (i > 10)) { sw_os6850e_24.Show(); }
-            if ((i > 40) && (Valeur_passée.Contains("SR4"))) { gs_748t.Show(); }
-            if ((i > 40) && (Valeur_passée.Contains("SR4")) || (Valeur_passée.Contains("SR5"))) { gs_748t.Show(); }
-            if ((i > 40) && (!Valeur_passée.Contains("SR4")) && (!Valeur_passée.Contains("SR5"))) { sw_os6450_48.Show(); }
-            if (i < 10) { sw_dlink_5_ports.Show(); }
-        }
-
-        private void Liste_synthèse_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            Couleurs_ports();
-        }
-
-        private void Imprimer_Click(object sender, EventArgs e)
-        {
-            printPreviewDialog.ShowDialog();
-        }
-
-        public string Transfert
-        {
-            get { return Valeur_passée; }
         }
 
         private void Recherche_TextChanged(object sender, EventArgs e)
@@ -464,58 +508,46 @@ namespace Réseau_informatique_Saint_Jacques
             database.Close();
         }
 
-        private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void Modifier_Click(object sender, EventArgs e)
         {
-            if (Titre.Text.Contains("172.16.7.251")) { System.Diagnostics.Process.Start("http://172.16.7.251"); }
-            if (Titre.Text.Contains("172.16.7.252")) { System.Diagnostics.Process.Start("http://172.16.7.252"); }
-            if (Titre.Text.Contains("172.16.7.253")) { System.Diagnostics.Process.Start("http://172.16.7.253"); }
-            if (Titre.Text.Contains("172.16.7.254")) { System.Diagnostics.Process.Start("http://172.16.7.254"); }
-            if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
-            if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }
-            if (Titre.Text.Contains("172.16.7.242")) { System.Diagnostics.Process.Start("IEXPLORE.EXE", "-nomerge http://172.16.7.242"); }
+            Liste_synthèse.EndEdit();
+            //Liste_synthèse.CurrentCell = Liste_synthèse.Rows[0].Cells[1];
+            Combobox_Choix_Modifications.SelectedValue = "";
+            try { adapter.Update(résultats); }
+            catch { MessageBox.Show("Erreur !"); }
+            finally { MessageBox.Show("Modifications effectuées !"); }
         }
 
-        private void Combobox_Filtrer_par_SelectedIndexChanged(object sender, EventArgs e)
+        private void Suppression_ligne_Click(object sender, EventArgs e)
         {
-            string requete = "SELECT DISTINCT " + Combobox_Filtrer_par.Text + " from BRASSAGE WHERE " + Combobox_Filtrer_par.Text + " <> ''";
-            adapter = new OleDbDataAdapter(new OleDbCommand(requete, database));
-            dataset = new DataSet();
-            adapter.Fill(dataset);
-            ComboBox_Filtrage.DataSource = dataset.Tables[0];
-            ComboBox_Filtrage.DisplayMember = Combobox_Filtrer_par.Text;
-            ComboBox_Filtrage.ValueMember = Combobox_Filtrer_par.Text;            
-        }
-
-        private void Checkbox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkbox_ok == 1)
+            foreach (DataGridViewRow ligne in Liste_synthèse.SelectedRows)
             {
-                Sélectionner_Checkbox();
+                if (!ligne.IsNewRow)
+                    Liste_synthèse.Rows.Remove(ligne);
             }
         }
 
-        private void Sélectionner_Checkbox()
+        private void Imprimer_Click(object sender, EventArgs e)
         {
-            if (Chk_Switch.Checked == true) { Liste_synthèse.Columns["switch"].Visible = true; } else Liste_synthèse.Columns["switch"].Visible = false;
-            if (Chk_VLAN.Checked == true) { Liste_synthèse.Columns["VLAN"].Visible = true; } else Liste_synthèse.Columns["VLAN"].Visible = false;
-            if (Chk_Port.Checked == true) { Liste_synthèse.Columns["Port"].Visible = true; } else Liste_synthèse.Columns["Port"].Visible = false;
-            if (Chk_Salle.Checked == true) { Liste_synthèse.Columns["Salle"].Visible = true; } else Liste_synthèse.Columns["Salle"].Visible = false;
-            if (Chk_Bandeau.Checked == true) { Liste_synthèse.Columns["Bandeau"].Visible = true; } else Liste_synthèse.Columns["Bandeau"].Visible = false;
-            if (Chk_Périphérique.Checked == true) { Liste_synthèse.Columns["Périphérique"].Visible = true; } else Liste_synthèse.Columns["Périphérique"].Visible = false;
-            if (Chk_Modèle.Checked == true) { Liste_synthèse.Columns["Modèle_périphérique"].Visible = true; } else Liste_synthèse.Columns["Modèle_périphérique"].Visible = false;
-            if (Chk_Imprimante.Checked == true) { Liste_synthèse.Columns["Imprimante"].Visible = true; } else Liste_synthèse.Columns["Imprimante"].Visible = false;
-            if (Chk_Adresse_IP.Checked == true) { Liste_synthèse.Columns["Adresse_IP"].Visible = true; } else Liste_synthèse.Columns["Adresse_IP"].Visible = false;
-            if (Chk_Type.Checked == true) { Liste_synthèse.Columns["Type"].Visible = true; } else Liste_synthèse.Columns["Type"].Visible = false;
-            if (Chk_Port_Imprimante.Checked == true) { Liste_synthèse.Columns["Port_Imprimante"].Visible = true; } else Liste_synthèse.Columns["Port_Imprimante"].Visible = false;
-            if (Chk_Type_imprimante.Checked == true) { Liste_synthèse.Columns["Type_imprimante"].Visible = true; } else Liste_synthèse.Columns["Type_imprimante"].Visible = false;
-            if (Chk_Vidéoprojecteur.Checked == true) { Liste_synthèse.Columns["Vidéoprojecteur"].Visible = true; } else Liste_synthèse.Columns["Vidéoprojecteur"].Visible = false;
-            if (Chk_Date_Relevé.Checked == true) { Liste_synthèse.Columns["Date_Relevé"].Visible = true; } else Liste_synthèse.Columns["Date_Relevé"].Visible = false;
-            if (Chk_Heures_Lampe.Checked == true) { Liste_synthèse.Columns["Heures_Lampe"].Visible = true; } else Liste_synthèse.Columns["Heures_Lampe"].Visible = false;
-            if (Chk_Observations.Checked == true) { Liste_synthèse.Columns["Observations"].Visible = true; } else Liste_synthèse.Columns["Observations"].Visible = false;
-            if (Chk_Modèle_Lampe.Checked == true) { Liste_synthèse.Columns["Modèle_Lampe"].Visible = true; } else Liste_synthèse.Columns["Modèle_Lampe"].Visible = false;
-            if (Chk_Infos_diverses.Checked == true) { Liste_synthèse.Columns["Infos_diverses"].Visible = true; } else Liste_synthèse.Columns["Infos_diverses"].Visible = false;
+            printPreviewDialog.ShowDialog();
+        }
 
-            Redimensionner_colonnes();
+        private void Voir_Switch_Click(object sender, EventArgs e)
+        {
+            Valeur_passée = ComboBox_Filtrage.Text;
+            SW_OS6450_48 sw_os6450_48 = new SW_OS6450_48();
+            SW_OS6850E_24 sw_os6850e_24 = new SW_OS6850E_24();
+            GS_748T gs_748t = new GS_748T();
+            SW_DLINK_5_PORTS sw_dlink_5_ports = new SW_DLINK_5_PORTS();
+            SW_DES_1228 sw_des_1228 = new SW_DES_1228();
+
+            int i = Liste_synthèse.Rows.Count;
+            if ((i < 40) && (Valeur_passée.Contains("Laurent")) && (i > 10)) { sw_des_1228.Show(); }
+            if ((i < 40) && (Valeur_passée.Contains("SR")) && (i > 10)) { sw_os6850e_24.Show(); }
+            if ((i > 40) && (Valeur_passée.Contains("SR4"))) { gs_748t.Show(); }
+            if ((i > 40) && (Valeur_passée.Contains("SR4")) || (Valeur_passée.Contains("SR5"))) { gs_748t.Show(); }
+            if ((i > 40) && (!Valeur_passée.Contains("SR4")) && (!Valeur_passée.Contains("SR5"))) { sw_os6450_48.Show(); }
+            if (i < 10) { sw_dlink_5_ports.Show(); }
         }
 
         private void RAZ_Filtres_Click(object sender, EventArgs e)
@@ -529,76 +561,19 @@ namespace Réseau_informatique_Saint_Jacques
             if ((Bouton_Ordinateurs.Checked == true)) { Bouton_Ordinateurs_CheckedChanged(null, null); }
             if ((Bouton_Tableau_complet.Checked == true)) { Bouton_Tableau_complet_CheckedChanged(null, null); }
         }
-        private void DrawHeader(Graphics g, ref int y_value)
+
+        private void Liste_synthèse_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int x_value = 0;
-            Font bold = new Font(this.Font, FontStyle.Bold);
-
-            foreach (DataGridViewColumn dc in Liste_synthèse.Columns)
-            {
-                if (dc.Visible == true)
-                {
-
-
-                    g.DrawString(dc.HeaderText, bold, Brushes.Black, (float)x_value, (float)y_value);
-                    x_value += dc.Width + 1;
-                }            }
-        }
-        private void DrawGridBody(Graphics g, int y_value)
-        {
-            int x_value;
-            
-
-            for (int i = 0; (i < 27) && ((i + row) < ((DataTable)résultats).Rows.Count); ++i)
-            {
-                DataRow dr = ((DataTable)résultats).Rows[i + row];
-                x_value = 0;
-
-                // draw a solid line
-                g.DrawLine(Pens.Black, new Point(0, y_value), new Point(this.Width, y_value));
-
-                foreach (DataGridViewColumn dc in Liste_synthèse.Columns)
-                {
-                    if (dc.Visible == true)
-                    { 
-                    string text = dr[dc.DataPropertyName].ToString();
-                    g.DrawString(text, this.Font, Brushes.Black, (float)x_value, (float)y_value + 10f);
-                    x_value += dc.Width + 1;
-                }
-                }
-
-                y_value += 40;
-            }
-
-            row += 27;
-        }
-
-        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            int rowPosition = 25;
-
-            // draw headers
-            DrawHeader(e.Graphics, ref rowPosition);
-
-            rowPosition += 40;
-
-            // draw each row
-            DrawGridBody(e.Graphics, rowPosition);
-
-            // see if there are more pages to print
-            if (((DataTable)résultats).Rows.Count > row)
-                e.HasMorePages = true;
-            else
-                row = 0;
+            Couleurs_ports();
         }
 
         private void Remplir_Combobox_Choix_Modifications(object sender, DataGridViewCellEventArgs e)
         {
             int columnIndex = Liste_synthèse.CurrentCell.ColumnIndex;
-            string columnName = Liste_synthèse.Columns[columnIndex].Name;           
+            string columnName = Liste_synthèse.Columns[columnIndex].Name;
             string requete = "SELECT DISTINCT " + columnName + " from BRASSAGE WHERE " + columnName + " <> ''";
             OleDbDataAdapter adapter1 = new OleDbDataAdapter(new OleDbCommand(requete, database));
-            DataSet dataset1 = new DataSet();            
+            DataSet dataset1 = new DataSet();
             adapter1.Fill(dataset1);
             Combobox_Choix_Modifications.DataSource = dataset1.Tables[0];
             Combobox_Choix_Modifications.DisplayMember = columnName;
@@ -606,12 +581,39 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Choix_Modifications.SelectedValue = "";
         }
 
-        private void Combobox_Choix_Modifications_SelectedIndexChanged(object sender, EventArgs e)
-        {           
-            
-            {
-                Liste_synthèse.CurrentCell.Value = Combobox_Choix_Modifications.SelectedValue.ToString();
-            }
+        private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (Titre.Text.Contains("172.16.7.251")) { System.Diagnostics.Process.Start("http://172.16.7.251"); }
+            if (Titre.Text.Contains("172.16.7.252")) { System.Diagnostics.Process.Start("http://172.16.7.252"); }
+            if (Titre.Text.Contains("172.16.7.253")) { System.Diagnostics.Process.Start("http://172.16.7.253"); }
+            if (Titre.Text.Contains("172.16.7.254")) { System.Diagnostics.Process.Start("http://172.16.7.254"); }
+            if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
+            if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }
+            if (Titre.Text.Contains("172.16.7.242")) { System.Diagnostics.Process.Start("IEXPLORE.EXE", "-nomerge http://172.16.7.242"); }
         }
-    }    
+
+        private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int rowPosition = 25;
+
+            // dessiner titres
+            Dessiner_En_têtes(e.Graphics, ref rowPosition);
+
+            rowPosition += 40;
+
+            // dessiner grille
+            Dessiner_Grille(e.Graphics, rowPosition);
+
+            // vérifier si plusieurs pages à imprimer
+            if (((DataTable)résultats).Rows.Count > Rang)
+                e.HasMorePages = true;
+            else
+                Rang = 0;
+        }
+
+        public string Transfert
+        {
+            get { return Valeur_passée; }
+        }
+    }
 }
