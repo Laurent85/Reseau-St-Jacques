@@ -81,6 +81,7 @@
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.label1 = new System.Windows.Forms.Label();
             this.Combobox_Choix_Modifications = new System.Windows.Forms.ComboBox();
+            this.Pinger_Périphériques = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
@@ -683,12 +684,23 @@
             this.Combobox_Choix_Modifications.TabIndex = 39;
             this.Combobox_Choix_Modifications.SelectionChangeCommitted += new System.EventHandler(this.Combobox_Choix_Modifications_SelectedIndexChanged);
             // 
+            // Pinger_Périphériques
+            // 
+            this.Pinger_Périphériques.Location = new System.Drawing.Point(1144, 488);
+            this.Pinger_Périphériques.Name = "Pinger_Périphériques";
+            this.Pinger_Périphériques.Size = new System.Drawing.Size(131, 23);
+            this.Pinger_Périphériques.TabIndex = 40;
+            this.Pinger_Périphériques.Text = "Pinger les périphériques";
+            this.Pinger_Périphériques.UseVisualStyleBackColor = true;
+            this.Pinger_Périphériques.Click += new System.EventHandler(this.Pinger_Périphériques_Click);
+            // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1306, 686);
+            this.Controls.Add(this.Pinger_Périphériques);
             this.Controls.Add(this.Combobox_Choix_Modifications);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RAZ_Filtres);
@@ -776,5 +788,6 @@
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox Combobox_Choix_Modifications;
+        private System.Windows.Forms.Button Pinger_Périphériques;
     }
 }

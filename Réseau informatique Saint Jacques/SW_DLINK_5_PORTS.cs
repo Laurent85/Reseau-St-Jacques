@@ -6,7 +6,6 @@ using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques

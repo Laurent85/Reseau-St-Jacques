@@ -2,6 +2,8 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.Net.NetworkInformation;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
@@ -30,12 +32,6 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Filtrer_par.SelectedIndex = 13;
             Checkbox_actifs("Switch", "Bandeau", "Port", "Salle", "Périphérique", "VLAN", "Adresse_IP", "Type", "Modèle_périphérique", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");
             Combobox_Filtrage();
-            //ComboBox_Filtrage.SelectedValue = "SW_SR1_1";
-            //Liste_synthèse.AutoGenerateColumns = false;
-            //Liste_synthèse.ColumnHeadersHeight = 30;
-            //Bouton_Tableau_complet.Checked = true;
-            //Combobox_Filtrage();
-            
         }
 
         private void synthèse(string requete)
@@ -499,9 +495,9 @@ namespace Réseau_informatique_Saint_Jacques
         {
             database.Open();
             string requete = "select * from brassage where périphérique like '%" + Recherche.Text + "%' OR salle like '%" + Recherche.Text + "%' OR adresse_ip like '%" + Recherche.Text + "%' OR bandeau like '%" + Recherche.Text + "%'";
-            adapter = new OleDbDataAdapter(requete, connectionString);
+            OleDbDataAdapter adapter1 = new OleDbDataAdapter(requete, connectionString);
             résultats = new DataTable();
-            adapter.Fill(résultats);
+            adapter1.Fill(résultats);
             Liste_synthèse.DataSource = résultats;
             Couleurs_ports();
             int nombre = résultats.Rows.Count;
@@ -512,7 +508,6 @@ namespace Réseau_informatique_Saint_Jacques
         private void Modifier_Click(object sender, EventArgs e)
         {
             Liste_synthèse.EndEdit();
-            //Liste_synthèse.CurrentCell = Liste_synthèse.Rows[0].Cells[1];
             Combobox_Choix_Modifications.SelectedValue = "";
             try { adapter.Update(résultats); }
             catch { MessageBox.Show("Erreur !"); }
@@ -615,6 +610,65 @@ namespace Réseau_informatique_Saint_Jacques
         public string Transfert
         {
             get { return Valeur_passée; }
+        }
+
+        public static bool PingHost(string nameOrAddress)
+        {
+            PingOptions options = new PingOptions();
+            options.DontFragment = true;
+            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            byte[] buffer = Encoding.ASCII.GetBytes(data);
+            int timeout = 120;
+            bool pingable = false;
+            Ping pinger = new Ping();
+            try
+            {
+                PingReply reply = pinger.Send(nameOrAddress, timeout, buffer, options);
+                pingable = reply.Status == IPStatus.Success;
+            }
+            catch (PingException)
+            {
+                return false;
+            }
+            return pingable;
+        }
+
+        private void Pinger_Adresse_IP()
+        {
+            try
+            {
+                foreach (DataGridViewRow row in Liste_synthèse.Rows)
+                {
+                    if ((row.Visible == true) && !(string.IsNullOrEmpty(row.Cells["Adresse_ip"].Value as string)))
+                    {
+                        if (PingHost(row.Cells["adresse_ip"].Value.ToString()) == true)
+                        {
+                            DataGridViewCellStyle style = new DataGridViewCellStyle();
+                            //style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
+                            row.Cells["périphérique"].Style = style;
+                            row.DefaultCellStyle.BackColor = Color.White;
+                            row.Cells["périphérique"].Style.BackColor = Color.White;
+                            Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
+                        }
+                        if (PingHost(row.Cells["adresse_ip"].Value.ToString()) == false)
+                        {
+                            DataGridViewCellStyle style = new DataGridViewCellStyle();
+                            //style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
+                            row.Cells["périphérique"].Style = style;
+                            row.DefaultCellStyle.BackColor = Color.White;
+                            row.Cells["périphérique"].Style.BackColor = Color.Red;
+                            Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
+                        }
+                    }
+                }
+            }
+            catch { }
+            finally { MessageBox.Show("Terminé !"); }
+        }
+
+        private void Pinger_Périphériques_Click(object sender, EventArgs e)
+        {
+            Pinger_Adresse_IP();
         }
     }
 }
