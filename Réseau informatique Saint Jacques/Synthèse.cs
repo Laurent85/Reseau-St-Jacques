@@ -374,6 +374,7 @@ namespace Réseau_informatique_Saint_Jacques
         {
             Liste_synthèse.CurrentCell.Value = Combobox_Choix_Modifications.SelectedValue.ToString();
             Liste_synthèse.BeginEdit(true);
+            Liste_synthèse.EndEdit();
         }
 
         private void Bouton_imprimantes_CheckedChanged(object sender, EventArgs e)
