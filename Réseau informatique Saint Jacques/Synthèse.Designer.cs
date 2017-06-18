@@ -696,7 +696,7 @@
             // 
             // Logo_Collège
             // 
-            this.Logo_Collège.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.logo;
+            this.Logo_Collège.Image = ((System.Drawing.Image)(resources.GetObject("Logo_Collège.Image")));
             this.Logo_Collège.Location = new System.Drawing.Point(1144, 9);
             this.Logo_Collège.Name = "Logo_Collège";
             this.Logo_Collège.Size = new System.Drawing.Size(131, 59);
