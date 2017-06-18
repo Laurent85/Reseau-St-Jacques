@@ -612,7 +612,7 @@ namespace Réseau_informatique_Saint_Jacques
             get { return Valeur_passée; }
         }
 
-        public static bool PingHost(string nameOrAddress)
+        public static bool Ping_Périphérique(string nameOrAddress)
         {
             PingOptions options = new PingOptions();
             options.DontFragment = true;
@@ -641,19 +641,17 @@ namespace Réseau_informatique_Saint_Jacques
                 {
                     if ((row.Visible == true) && !(string.IsNullOrEmpty(row.Cells["Adresse_ip"].Value as string)))
                     {
-                        if (PingHost(row.Cells["adresse_ip"].Value.ToString()) == true)
+                        if (Ping_Périphérique(row.Cells["adresse_ip"].Value.ToString()) == true)
                         {
                             DataGridViewCellStyle style = new DataGridViewCellStyle();
-                            //style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
                             row.Cells["périphérique"].Style = style;
                             row.DefaultCellStyle.BackColor = Color.White;
-                            row.Cells["périphérique"].Style.BackColor = Color.White;
+                            row.Cells["périphérique"].Style.BackColor = Color.LimeGreen;
                             Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                         }
-                        if (PingHost(row.Cells["adresse_ip"].Value.ToString()) == false)
+                        if (Ping_Périphérique(row.Cells["adresse_ip"].Value.ToString()) == false)
                         {
                             DataGridViewCellStyle style = new DataGridViewCellStyle();
-                            //style.Font = new Font(Liste_synthèse.Font, FontStyle.Bold);
                             row.Cells["périphérique"].Style = style;
                             row.DefaultCellStyle.BackColor = Color.White;
                             row.Cells["périphérique"].Style.BackColor = Color.Red;

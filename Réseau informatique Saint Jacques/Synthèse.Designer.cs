@@ -82,11 +82,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Combobox_Choix_Modifications = new System.Windows.Forms.ComboBox();
             this.Pinger_Périphériques = new System.Windows.Forms.Button();
+            this.Logo_Collège = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
             this.Choix_Colonnes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo_Collège)).BeginInit();
             this.SuspendLayout();
             // 
             // Liste_synthèse
@@ -631,12 +633,10 @@
             // 
             // Logo
             // 
-            this.Logo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Logo.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.logo;
-            this.Logo.Location = new System.Drawing.Point(1144, 18);
+            this.Logo.Location = new System.Drawing.Point(0, 0);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(131, 72);
-            this.Logo.TabIndex = 36;
+            this.Logo.Size = new System.Drawing.Size(100, 50);
+            this.Logo.TabIndex = 41;
             this.Logo.TabStop = false;
             // 
             // RAZ_Filtres
@@ -694,12 +694,22 @@
             this.Pinger_Périphériques.UseVisualStyleBackColor = true;
             this.Pinger_Périphériques.Click += new System.EventHandler(this.Pinger_Périphériques_Click);
             // 
+            // Logo_Collège
+            // 
+            this.Logo_Collège.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.logo;
+            this.Logo_Collège.Location = new System.Drawing.Point(1144, 9);
+            this.Logo_Collège.Name = "Logo_Collège";
+            this.Logo_Collège.Size = new System.Drawing.Size(131, 59);
+            this.Logo_Collège.TabIndex = 42;
+            this.Logo_Collège.TabStop = false;
+            // 
             // Synthèse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1306, 686);
+            this.Controls.Add(this.Logo_Collège);
             this.Controls.Add(this.Pinger_Périphériques);
             this.Controls.Add(this.Combobox_Choix_Modifications);
             this.Controls.Add(this.label1);
@@ -732,6 +742,7 @@
             this.Choix_Colonnes.ResumeLayout(false);
             this.Choix_Colonnes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo_Collège)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -789,5 +800,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox Combobox_Choix_Modifications;
         private System.Windows.Forms.Button Pinger_Périphériques;
+        private System.Windows.Forms.PictureBox Logo_Collège;
     }
 }

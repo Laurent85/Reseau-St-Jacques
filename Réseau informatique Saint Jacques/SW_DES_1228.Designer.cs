@@ -93,7 +93,7 @@
             // 
             // Image_switch
             // 
-            this.Image_switch.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.SW_DES_12281;
+            this.Image_switch.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.SW_DES_1228;
             this.Image_switch.Location = new System.Drawing.Point(12, 121);
             this.Image_switch.Name = "Image_switch";
             this.Image_switch.Size = new System.Drawing.Size(1721, 172);

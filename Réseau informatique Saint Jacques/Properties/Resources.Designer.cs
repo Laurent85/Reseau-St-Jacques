@@ -113,36 +113,6 @@ namespace Réseau_informatique_Saint_Jacques.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SW_DES_12281 {
-            get {
-                object obj = ResourceManager.GetObject("SW_DES_12281", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SW_DES_12282 {
-            get {
-                object obj = ResourceManager.GetObject("SW_DES_12282", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SW_DES_12283 {
-            get {
-                object obj = ResourceManager.GetObject("SW_DES_12283", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap SW_DLINK_5_PORTS {
             get {
                 object obj = ResourceManager.GetObject("SW_DLINK_5_PORTS", resourceCulture);
@@ -156,16 +126,6 @@ namespace Réseau_informatique_Saint_Jacques.Properties {
         internal static System.Drawing.Bitmap SW_DLINK_5_PORTS1 {
             get {
                 object obj = ResourceManager.GetObject("SW_DLINK_5_PORTS1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap SW_DLINK_5_PORTS2 {
-            get {
-                object obj = ResourceManager.GetObject("SW_DLINK_5_PORTS2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
