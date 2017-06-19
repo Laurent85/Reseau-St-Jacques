@@ -75,7 +75,6 @@
             this.Chk_Type = new System.Windows.Forms.CheckBox();
             this.Chk_Imprimante = new System.Windows.Forms.CheckBox();
             this.Titre_principal = new System.Windows.Forms.Label();
-            this.Logo = new System.Windows.Forms.PictureBox();
             this.RAZ_Filtres = new System.Windows.Forms.Button();
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
@@ -87,7 +86,6 @@
             this.Panel_choix.SuspendLayout();
             this.Panel_ports.SuspendLayout();
             this.Choix_Colonnes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo_Collège)).BeginInit();
             this.SuspendLayout();
             // 
@@ -631,14 +629,6 @@
             this.Titre_principal.TabIndex = 35;
             this.Titre_principal.Text = "Réseau informatique - Collège Saint Jacques";
             // 
-            // Logo
-            // 
-            this.Logo.Location = new System.Drawing.Point(0, 0);
-            this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(100, 50);
-            this.Logo.TabIndex = 41;
-            this.Logo.TabStop = false;
-            // 
             // RAZ_Filtres
             // 
             this.RAZ_Filtres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -716,7 +706,6 @@
             this.Controls.Add(this.RAZ_Filtres);
             this.Controls.Add(this.Nombre);
             this.Controls.Add(this.Titre);
-            this.Controls.Add(this.Logo);
             this.Controls.Add(this.Titre_principal);
             this.Controls.Add(this.Choix_Colonnes);
             this.Controls.Add(this.Recherche);
@@ -741,7 +730,6 @@
             this.Panel_ports.PerformLayout();
             this.Choix_Colonnes.ResumeLayout(false);
             this.Choix_Colonnes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Logo_Collège)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -793,7 +781,6 @@
         private System.Windows.Forms.CheckBox Chk_Type;
         private System.Windows.Forms.CheckBox Chk_Imprimante;
         private System.Windows.Forms.Label Titre_principal;
-        private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.Button RAZ_Filtres;
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;

@@ -589,7 +589,7 @@
             // 
             // Image_switch
             // 
-            this.Image_switch.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.SW_6450_48;
+            this.Image_switch.Image = ((System.Drawing.Image)(resources.GetObject("Image_switch.Image")));
             this.Image_switch.InitialImage = ((System.Drawing.Image)(resources.GetObject("Image_switch.InitialImage")));
             this.Image_switch.Location = new System.Drawing.Point(-5, 127);
             this.Image_switch.Name = "Image_switch";

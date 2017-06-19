@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SW_OS6850E_24));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Titre = new System.Windows.Forms.LinkLabel();
             this.port_24F = new System.Windows.Forms.PictureBox();
@@ -364,7 +365,7 @@
             // 
             // Image_switch
             // 
-            this.Image_switch.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.SW_6850E_24;
+            this.Image_switch.Image = ((System.Drawing.Image)(resources.GetObject("Image_switch.Image")));
             this.Image_switch.Location = new System.Drawing.Point(-2, 126);
             this.Image_switch.Name = "Image_switch";
             this.Image_switch.Size = new System.Drawing.Size(1369, 136);

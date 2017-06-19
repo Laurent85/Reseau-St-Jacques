@@ -158,5 +158,10 @@ namespace Réseau_informatique_Saint_Jacques
             if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
             if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }
         }
+
+        private void Informations(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

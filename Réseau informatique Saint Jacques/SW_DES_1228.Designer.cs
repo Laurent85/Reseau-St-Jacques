@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SW_DES_1228));
             this.Image_switch = new System.Windows.Forms.PictureBox();
             this.port_01 = new System.Windows.Forms.PictureBox();
             this.port_02 = new System.Windows.Forms.PictureBox();
@@ -93,7 +94,7 @@
             // 
             // Image_switch
             // 
-            this.Image_switch.Image = global::Réseau_informatique_Saint_Jacques.Properties.Resources.SW_DES_1228;
+            this.Image_switch.Image = ((System.Drawing.Image)(resources.GetObject("Image_switch.Image")));
             this.Image_switch.Location = new System.Drawing.Point(12, 121);
             this.Image_switch.Name = "Image_switch";
             this.Image_switch.Size = new System.Drawing.Size(1721, 172);
@@ -358,7 +359,7 @@
             this.Titre.AutoSize = true;
             this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.Titre.Location = new System.Drawing.Point(284, 56);
+            this.Titre.Location = new System.Drawing.Point(211, 56);
             this.Titre.Name = "Titre";
             this.Titre.Size = new System.Drawing.Size(86, 23);
             this.Titre.TabIndex = 55;
@@ -375,7 +376,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(1516, 405);
+            this.ClientSize = new System.Drawing.Size(1370, 405);
             this.Controls.Add(this.Titre);
             this.Controls.Add(this.port_28);
             this.Controls.Add(this.port_27);
