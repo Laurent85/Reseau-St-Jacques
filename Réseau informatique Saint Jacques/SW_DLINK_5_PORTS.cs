@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,14 +13,43 @@ namespace Réseau_informatique_Saint_Jacques
     {
         private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private Synthèse synthèse = new Synthèse();
+
         public SW_DLINK_5_PORTS()
         {
             InitializeComponent();
         }
 
+        public static bool Ping_Périphérique(string nameOrAddress)
+        {
+            PingOptions options = new PingOptions();
+            options.DontFragment = true;
+            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            byte[] buffer = Encoding.ASCII.GetBytes(data);
+            int timeout = 20;
+            bool pingable = false;
+            Ping pinger = new Ping();
+            try
+            {
+                if (nameOrAddress != "")
+                {
+                    PingReply reply = pinger.Send(nameOrAddress, timeout, buffer, options);
+                    pingable = reply.Status == IPStatus.Success;
+                }
+                if (nameOrAddress == "")
+                {
+                    return true;
+                }
+            }
+            catch (PingException)
+            {
+                return false;
+            }
+            return pingable;
+        }
+
         private void SW_DLINK_5_PORTS_Load(object sender, EventArgs e)
         {
-            string requete = "SELECT port, périphérique FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "'";
+            string requete = "SELECT port, périphérique, adresse_ip, bandeau FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
             OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
             DataTable resultat = new DataTable();
             adapter.Fill(resultat);
@@ -30,19 +58,35 @@ namespace Réseau_informatique_Saint_Jacques
             {
                 string nom_du_port = row["port"].ToString().Replace("-", "_");
 
-                if ((row["périphérique"].ToString() == "") || (!row["port"].ToString().Contains("i")))
+                if ((row["périphérique"].ToString() == ""))
                 {
                     PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = false;
                 }
-                if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")))
+                if ((row["périphérique"].ToString() != "") && (Ping_Périphérique(row["adresse_ip"].ToString()) == true))
                 {
                     PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
                     carré_vert.Click += new EventHandler(Informations);
                     ToolTip Infobulle_périphérique = new ToolTip();
                     Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
-                    timer1.Start();
+                }
+                if ((row["périphérique"].ToString() != "") && (Ping_Périphérique(row["adresse_ip"].ToString()) == false))
+                {
+                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
+                    carré_vert.Click += new EventHandler(Informations);
+                    carré_vert.BackColor = Color.Red;
+                    ToolTip Infobulle_périphérique = new ToolTip();
+                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
+                }
+                if ((row["périphérique"].ToString() == "") && (row["bandeau"].ToString() != "nc"))
+                {
+                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
+                    carré_vert.Click += new EventHandler(Informations);
+                    carré_vert.BackColor = Color.LightGray;
+                    ToolTip Infobulle_périphérique = new ToolTip();
+                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["Bandeau"].ToString());
                 }
             }
+            timer1.Start();
             switch (synthèse.Transfert)
             {
                 case "SW_SR1_1":
@@ -98,11 +142,13 @@ namespace Réseau_informatique_Saint_Jacques
                     Titre.Links.Clear();
                     Titre.Links.Add(35, 12, "http://172.16.7.245");
                     break;
+
                 case "SW_Cdi":
                     Titre.Text = "Switch 5 ports - Cdi";
                     Titre.Links.Clear();
                     //Titre.Links.Add(35, 12, "http://172.16.7.245");
                     break;
+
                 case "SW_Laurent":
                     Titre.Text = "Switch 28 ports - Bureau Laurent : 172.16.7.242";
                     Titre.Links.Clear();
@@ -110,6 +156,7 @@ namespace Réseau_informatique_Saint_Jacques
                     break;
             }
         }
+
         private void Informations(object sender, EventArgs e)
         {
             string nom_du_port = ((PictureBox)sender).Name.ToString().Replace("_", "-");
@@ -140,7 +187,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string requete = "SELECT port, périphérique FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "'";
+            string requete = "SELECT port, périphérique, adresse_ip FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
             OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
             DataTable resultat = new DataTable();
             adapter.Fill(resultat);
@@ -148,10 +195,10 @@ namespace Réseau_informatique_Saint_Jacques
             foreach (DataRow row in resultat.Rows)
             {
                 string nom_du_port = row["port"].ToString().Replace("-", "_");
+                PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault();
 
-                if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")))
+                if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")) && (carré_vert.BackColor == Color.LimeGreen) || (carré_vert.BackColor == Color.Black))
                 {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault();
                     if (carré_vert.BackColor == Color.LimeGreen)
 
                         carré_vert.BackColor = Color.Black;

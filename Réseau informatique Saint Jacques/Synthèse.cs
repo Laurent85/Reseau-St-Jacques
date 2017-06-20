@@ -618,7 +618,7 @@ namespace Réseau_informatique_Saint_Jacques
             options.DontFragment = true;
             string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             byte[] buffer = Encoding.ASCII.GetBytes(data);
-            int timeout = 120;
+            int timeout = 20;
             bool pingable = false;
             Ping pinger = new Ping();
             try
