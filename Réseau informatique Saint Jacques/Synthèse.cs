@@ -12,6 +12,7 @@ namespace Réseau_informatique_Saint_Jacques
     {
         private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private OleDbConnection database = new OleDbConnection(connectionString);
+        Pinger_adresse pinger_adresse = new Pinger_adresse();
         private DataSet dataset;
         private DataTable résultats;
         private OleDbDataAdapter adapter;
@@ -612,27 +613,6 @@ namespace Réseau_informatique_Saint_Jacques
             get { return Valeur_passée; }
         }
 
-        public static bool Ping_Périphérique(string nameOrAddress)
-        {
-            PingOptions options = new PingOptions();
-            options.DontFragment = true;
-            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
-            byte[] buffer = Encoding.ASCII.GetBytes(data);
-            int timeout = 20;
-            bool pingable = false;
-            Ping pinger = new Ping();
-            try
-            {
-                PingReply reply = pinger.Send(nameOrAddress, timeout, buffer, options);
-                pingable = reply.Status == IPStatus.Success;
-            }
-            catch (PingException)
-            {
-                return false;
-            }
-            return pingable;
-        }
-
         private void Pinger_Adresse_IP()
         {
             try
@@ -641,7 +621,7 @@ namespace Réseau_informatique_Saint_Jacques
                 {
                     if ((row.Visible == true) && !(string.IsNullOrEmpty(row.Cells["Adresse_ip"].Value as string)))
                     {
-                        if (Ping_Périphérique(row.Cells["adresse_ip"].Value.ToString()) == true)
+                        if (pinger_adresse.Ping_Périphérique(row.Cells["adresse_ip"].Value.ToString()) == true)
                         {
                             DataGridViewCellStyle style = new DataGridViewCellStyle();
                             row.Cells["périphérique"].Style = style;
@@ -649,7 +629,7 @@ namespace Réseau_informatique_Saint_Jacques
                             row.Cells["périphérique"].Style.BackColor = Color.LimeGreen;
                             Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                         }
-                        if (Ping_Périphérique(row.Cells["adresse_ip"].Value.ToString()) == false)
+                        if (pinger_adresse.Ping_Périphérique(row.Cells["adresse_ip"].Value.ToString()) == false)
                         {
                             DataGridViewCellStyle style = new DataGridViewCellStyle();
                             row.Cells["périphérique"].Style = style;

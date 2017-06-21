@@ -657,6 +657,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(1179, 288);
             this.label1.Name = "label1";
@@ -676,6 +677,7 @@
             // 
             // Pinger_Périphériques
             // 
+            this.Pinger_Périphériques.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Pinger_Périphériques.Location = new System.Drawing.Point(1144, 488);
             this.Pinger_Périphériques.Name = "Pinger_Périphériques";
             this.Pinger_Périphériques.Size = new System.Drawing.Size(131, 23);
