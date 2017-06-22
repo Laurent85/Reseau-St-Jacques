@@ -14,14 +14,15 @@ namespace Réseau_informatique_Saint_Jacques
         private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private Synthèse synthèse = new Synthèse();
         Pinger_adresse pinger_adresse = new Pinger_adresse();
-        SW_OS6450_48 toto = new SW_OS6450_48();
+        Titre_Switch titre_switch = new Titre_Switch();
+        Carré_vert_Switch carré_vert = new Carré_vert_Switch();       
 
         public SW_DLINK_5_PORTS()
         {
             InitializeComponent();
         }
 
-        private void SW_DLINK_5_PORTS_Load(object sender1, EventArgs e1)
+        private void SW_DLINK_5_PORTS_Load(object sender, EventArgs e)
         {            
             string requete = "SELECT port, périphérique, adresse_ip, bandeau FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
             OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
@@ -60,75 +61,9 @@ namespace Réseau_informatique_Saint_Jacques
                     Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["Bandeau"].ToString());
                 }
             }
+            //carré_vert.carré_vert();
             timer1.Start();
-            switch (synthèse.Transfert)
-            {
-                case "SW_SR1_1":
-                    Titre.Text = "Switch 48 ports - Local Internet : 172.16.7.251";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(35, 12, "http://172.16.7.251");
-                    break;
-
-                case "SW_SR2_1":
-                    Titre.Text = "Switch N°1 - 24 ports - Bureau Informatique : 172.16.7.254";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(46, 12, "http://172.16.7.254");
-                    break;
-
-                case "SW_SR2_2":
-                    Titre.Text = "Switch N°2 - 24 ports - Bureau Informatique : 172.16.7.254";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(46, 12, "http://172.16.7.254");
-                    break;
-
-                case "SW_SR2_3":
-                    Titre.Text = "Switch N°1 - 48 ports - Bureau Informatique : 172.16.7.253";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(46, 12, "http://172.16.7.253");
-                    break;
-
-                case "SW_SR2_4":
-                    Titre.Text = "Switch N°2 - 48 ports - Bureau Informatique : 172.16.7.253";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(46, 12, "http://172.16.7.253");
-                    break;
-
-                case "SW_SR3_1":
-                    Titre.Text = "Switch N°1 - 48 ports - Salle Informatique : 172.16.7.252";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(45, 12, "http://172.16.7.252");
-                    break;
-
-                case "SW_SR3_2":
-                    Titre.Text = "Switch N°2 - 48 ports - Salle Informatique : 172.16.7.252";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(45, 12, "http://172.16.7.252");
-                    break;
-
-                case "SW_SR4_1":
-                    Titre.Text = "Switch 48 ports - Bureau Vie Scolaire : 172.16.7.244";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(40, 12, "http://172.16.7.244");
-                    break;
-
-                case "SW_SR5_1":
-                    Titre.Text = "Switch 48 ports - Salle de Sport : 172.16.7.245";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(35, 12, "http://172.16.7.245");
-                    break;
-
-                case "SW_Cdi":
-                    Titre.Text = "Switch 5 ports - Cdi";
-                    Titre.Links.Clear();
-                    //Titre.Links.Add(35, 12, "http://172.16.7.245");
-                    break;
-
-                case "SW_Laurent":
-                    Titre.Text = "Switch 28 ports - Bureau Laurent : 172.16.7.242";
-                    Titre.Links.Clear();
-                    Titre.Links.Add(35, 12, "http://172.16.7.242");
-                    break;
-            }
+            titre_switch.titre_switch(Titre);
         }
 
         private void Informations(object sender, EventArgs e)
