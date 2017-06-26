@@ -15,7 +15,8 @@ namespace Réseau_informatique_Saint_Jacques
         private Synthèse synthèse = new Synthèse();
         Pinger_adresse pinger_adresse = new Pinger_adresse();
         Titre_Switch titre_switch = new Titre_Switch();
-        Carré_vert_Switch carré_vert = new Carré_vert_Switch();       
+        Carré_vert_Switch carré_vert = new Carré_vert_Switch();
+      
 
         public SW_DLINK_5_PORTS()
         {
@@ -23,7 +24,8 @@ namespace Réseau_informatique_Saint_Jacques
         }
 
         private void SW_DLINK_5_PORTS_Load(object sender, EventArgs e)
-        {            
+        {
+
             string requete = "SELECT port, périphérique, adresse_ip, bandeau FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
             OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
             DataTable resultat = new DataTable();
@@ -61,9 +63,9 @@ namespace Réseau_informatique_Saint_Jacques
                     Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["Bandeau"].ToString());
                 }
             }
-            //carré_vert.carré_vert();
             timer1.Start();
             titre_switch.titre_switch(Titre);
+
         }
 
         private void Informations(object sender, EventArgs e)
@@ -86,12 +88,22 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            methode(Titre); 
+        }
+
+        public void methode(LinkLabel Titre)
+        {
             if (Titre.Text.Contains("172.16.7.251")) { System.Diagnostics.Process.Start("http://172.16.7.251"); }
             if (Titre.Text.Contains("172.16.7.252")) { System.Diagnostics.Process.Start("http://172.16.7.252"); }
             if (Titre.Text.Contains("172.16.7.253")) { System.Diagnostics.Process.Start("http://172.16.7.253"); }
             if (Titre.Text.Contains("172.16.7.254")) { System.Diagnostics.Process.Start("http://172.16.7.254"); }
             if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
             if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }
+        }
+
+        public void methode1()
+        {
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)

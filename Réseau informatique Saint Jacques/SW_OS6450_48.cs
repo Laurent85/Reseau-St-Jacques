@@ -67,24 +67,8 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string requete = "SELECT port, périphérique, adresse_ip FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
-            OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
-            DataTable resultat = new DataTable();
-            adapter.Fill(resultat);
-
-            foreach (DataRow row in resultat.Rows)
-            {
-                string nom_du_port = row["port"].ToString().Replace("-", "_");
-                PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault();
-
-                if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")) && (carré_vert.BackColor == Color.LimeGreen) || (carré_vert.BackColor == Color.Black))
-                {
-                    if (carré_vert.BackColor == Color.LimeGreen)
-
-                        carré_vert.BackColor = Color.Black;
-                    else carré_vert.BackColor = Color.LimeGreen;
-                }
-            }
+            SW_DLINK_5_PORTS test = new SW_DLINK_5_PORTS();
+            test.methode1();
         }
 
         private void Informations(object sender, EventArgs e)
@@ -105,14 +89,10 @@ namespace Réseau_informatique_Saint_Jacques
             con.Close();
         }
 
-        private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        public void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (Titre.Text.Contains("172.16.7.251")) { System.Diagnostics.Process.Start("http://172.16.7.251"); }
-            if (Titre.Text.Contains("172.16.7.252")) { System.Diagnostics.Process.Start("http://172.16.7.252"); }
-            if (Titre.Text.Contains("172.16.7.253")) { System.Diagnostics.Process.Start("http://172.16.7.253"); }
-            if (Titre.Text.Contains("172.16.7.254")) { System.Diagnostics.Process.Start("http://172.16.7.254"); }
-            if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
-            if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }
+            SW_DLINK_5_PORTS test = new SW_DLINK_5_PORTS();
+            test.methode(Titre);
         }
     }
 }
