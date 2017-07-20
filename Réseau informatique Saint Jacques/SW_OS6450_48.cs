@@ -67,8 +67,24 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            SW_DLINK_5_PORTS test = new SW_DLINK_5_PORTS();
-            test.methode1();
+            string requete = "SELECT port, périphérique, adresse_ip FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
+            OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
+            DataTable resultat = new DataTable();
+            adapter.Fill(resultat);
+
+            foreach (DataRow row in resultat.Rows)
+            {
+                string nom_du_port = row["port"].ToString().Replace("-", "_");
+                PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault();
+
+                if ((row["périphérique"].ToString() != "") && (!row["port"].ToString().Contains("i")) && (carré_vert.BackColor == Color.LimeGreen) || (carré_vert.BackColor == Color.Black))
+                {
+                    if (carré_vert.BackColor == Color.LimeGreen)
+
+                        carré_vert.BackColor = Color.Black;
+                    else carré_vert.BackColor = Color.LimeGreen;
+                }
+            }
         }
 
         private void Informations(object sender, EventArgs e)

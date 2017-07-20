@@ -32,7 +32,7 @@ namespace Réseau_informatique_Saint_Jacques
             Combobox_Filtrer_Par();
             Combobox_Filtrer_par.SelectedIndex = 13;
             Checkbox_actifs("Switch", "Bandeau", "Port", "Salle", "Périphérique", "VLAN", "Adresse_IP", "Type", "Modèle_périphérique", "Imprimante", "Port_imprimante", "Type_imprimante", "Vidéoprojecteur", "Date_relevé", "Heures_lampe", "Observations", "Modèle_lampe", "Infos_diverses");
-            Combobox_Filtrage();
+            //Combobox_Filtrage();
         }
 
         private void synthèse(string requete)

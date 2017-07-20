@@ -36,47 +36,12 @@ namespace Réseau_informatique_Saint_Jacques
 
             con.Close();
         }
-        public void carré_vert(Timer timer, LinkLabel titre)
+        public void carré_vert(DataTable resultat)
         {
             string requete = "SELECT port, périphérique, adresse_ip, bandeau FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
             OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
-            DataTable resultat = new DataTable();
+            //DataTable resultat = new DataTable();
             adapter.Fill(resultat);
-
-            foreach (DataRow row in resultat.Rows)
-            {
-                string nom_du_port = row["port"].ToString().Replace("-", "_");
-
-                if ((row["périphérique"].ToString() == ""))
-                {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = false;
-                }
-                if ((row["périphérique"].ToString() != "") && (pinger_adresse.Ping_Périphérique(row["adresse_ip"].ToString()) == true))
-                {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
-                    carré_vert.Click += new EventHandler(Informations);
-                    ToolTip Infobulle_périphérique = new ToolTip();
-                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
-                }
-                if ((row["périphérique"].ToString() != "") && (pinger_adresse.Ping_Périphérique(row["adresse_ip"].ToString()) == false))
-                {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
-                    carré_vert.Click += new EventHandler(Informations);
-                    carré_vert.BackColor = Color.Red;
-                    ToolTip Infobulle_périphérique = new ToolTip();
-                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
-                }
-                if ((row["périphérique"].ToString() == "") && (row["bandeau"].ToString() != "nc"))
-                {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
-                    carré_vert.Click += new EventHandler(Informations);
-                    carré_vert.BackColor = Color.LightGray;
-                    ToolTip Infobulle_périphérique = new ToolTip();
-                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["Bandeau"].ToString());
-                }
-            }
-            timer.Start();
-            titre_switch.titre_switch(titre);
         }
     }
 }
