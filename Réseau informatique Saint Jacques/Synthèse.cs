@@ -2,8 +2,6 @@
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
-using System.Net.NetworkInformation;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
@@ -12,7 +10,7 @@ namespace Réseau_informatique_Saint_Jacques
     {
         private static string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private OleDbConnection database = new OleDbConnection(connectionString);
-        Pinger_adresse pinger_adresse = new Pinger_adresse();
+        private Pinger_adresse pinger_adresse = new Pinger_adresse();
         private DataSet dataset;
         private DataTable résultats;
         private OleDbDataAdapter adapter;

@@ -38,6 +38,7 @@
             this.port_01 = new System.Windows.Forms.PictureBox();
             this.Titre = new System.Windows.Forms.LinkLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.Prise_bandeau = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Image_switch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_05)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_04)).BeginInit();
@@ -119,12 +120,23 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // Prise_bandeau
+            // 
+            this.Prise_bandeau.AutoSize = true;
+            this.Prise_bandeau.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Prise_bandeau.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.Prise_bandeau.Location = new System.Drawing.Point(298, 316);
+            this.Prise_bandeau.Name = "Prise_bandeau";
+            this.Prise_bandeau.Size = new System.Drawing.Size(0, 23);
+            this.Prise_bandeau.TabIndex = 56;
+            // 
             // SW_DLINK_5_PORTS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(864, 348);
+            this.Controls.Add(this.Prise_bandeau);
             this.Controls.Add(this.Titre);
             this.Controls.Add(this.port_01);
             this.Controls.Add(this.port_02);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.PictureBox port_01;
         private System.Windows.Forms.LinkLabel Titre;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label Prise_bandeau;
     }
 }

@@ -61,6 +61,7 @@
             this.port_02 = new System.Windows.Forms.PictureBox();
             this.port_01 = new System.Windows.Forms.PictureBox();
             this.Image_switch = new System.Windows.Forms.PictureBox();
+            this.Prise_bandeau = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.port_24F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_23F)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.port_22F)).BeginInit();
@@ -372,12 +373,23 @@
             this.Image_switch.TabIndex = 0;
             this.Image_switch.TabStop = false;
             // 
+            // Prise_bandeau
+            // 
+            this.Prise_bandeau.AutoSize = true;
+            this.Prise_bandeau.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Prise_bandeau.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.Prise_bandeau.Location = new System.Drawing.Point(451, 314);
+            this.Prise_bandeau.Name = "Prise_bandeau";
+            this.Prise_bandeau.Size = new System.Drawing.Size(0, 23);
+            this.Prise_bandeau.TabIndex = 57;
+            // 
             // SW_OS6850E_24
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
             this.ClientSize = new System.Drawing.Size(1370, 405);
+            this.Controls.Add(this.Prise_bandeau);
             this.Controls.Add(this.Titre);
             this.Controls.Add(this.port_24F);
             this.Controls.Add(this.port_23F);
@@ -479,5 +491,6 @@
         private System.Windows.Forms.PictureBox port_21F;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.LinkLabel Titre;
+        private System.Windows.Forms.Label Prise_bandeau;
     }
 }

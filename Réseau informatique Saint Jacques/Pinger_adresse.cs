@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.NetworkInformation;
+﻿using System.Net.NetworkInformation;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    class Pinger_adresse
+    internal class Pinger_adresse
     {
         public bool Ping_Périphérique(string nameOrAddress)
         {
@@ -15,7 +11,7 @@ namespace Réseau_informatique_Saint_Jacques
             options.DontFragment = true;
             string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             byte[] buffer = Encoding.ASCII.GetBytes(data);
-            int timeout = 20;
+            int timeout = 1;
             bool pingable = false;
             Ping pinger = new Ping();
             try

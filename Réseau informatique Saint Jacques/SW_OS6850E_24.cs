@@ -3,8 +3,6 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
@@ -13,18 +11,16 @@ namespace Réseau_informatique_Saint_Jacques
     {
         private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private Synthèse synthèse = new Synthèse();
-        Pinger_adresse pinger_adresse = new Pinger_adresse();
-        Titre_Switch titre_switch = new Titre_Switch();
+        private Pinger_adresse pinger_adresse = new Pinger_adresse();
+        private Titre_Switch titre_switch = new Titre_Switch();
 
         public SW_OS6850E_24()
         {
             InitializeComponent();
         }
 
-        
-
         private void SW_OS6850E_24_Load(object sender, EventArgs e)
-        {            
+        {
             string requete = "SELECT port, périphérique, adresse_ip, bandeau FROM BRASSAGE WHERE switch = '" + synthèse.Transfert + "' AND port NOT LIKE '%i%'";
             OleDbDataAdapter adapter = new OleDbDataAdapter(requete, connectionString);
             DataTable resultat = new DataTable();
@@ -33,21 +29,20 @@ namespace Réseau_informatique_Saint_Jacques
             foreach (DataRow row in resultat.Rows)
             {
                 string nom_du_port = row["port"].ToString().Replace("-", "_");
+                PictureBox carré_vert = Controls[nom_du_port] as PictureBox;
 
                 if ((row["périphérique"].ToString() == ""))
                 {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = false;
+                    carré_vert.Visible = false;
                 }
                 if ((row["périphérique"].ToString() != "") && (pinger_adresse.Ping_Périphérique(row["adresse_ip"].ToString()) == true))
                 {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
                     carré_vert.Click += new EventHandler(Informations);
                     ToolTip Infobulle_périphérique = new ToolTip();
                     Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
                 }
                 if ((row["périphérique"].ToString() != "") && (pinger_adresse.Ping_Périphérique(row["adresse_ip"].ToString()) == false))
                 {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
                     carré_vert.Click += new EventHandler(Informations);
                     carré_vert.BackColor = Color.Red;
                     ToolTip Infobulle_périphérique = new ToolTip();
@@ -55,7 +50,6 @@ namespace Réseau_informatique_Saint_Jacques
                 }
                 if ((row["périphérique"].ToString() == "") && (row["bandeau"].ToString() != "nc"))
                 {
-                    PictureBox carré_vert = (PictureBox)Controls.Find((nom_du_port), false).FirstOrDefault(); carré_vert.Visible = true;
                     carré_vert.Click += new EventHandler(Informations);
                     carré_vert.BackColor = Color.LightGray;
                     ToolTip Infobulle_périphérique = new ToolTip();
@@ -92,7 +86,7 @@ namespace Réseau_informatique_Saint_Jacques
         private void Informations(object sender, EventArgs e)
         {
             string nom_du_port = ((PictureBox)sender).Name.ToString().Replace("_", "-");
-            string requete = "SELECT périphérique FROM BRASSAGE WHERE port = '" + nom_du_port + "' AND switch = '" + synthèse.Transfert + "'";
+            string requete = "SELECT port, bandeau, périphérique FROM BRASSAGE WHERE port = '" + nom_du_port + "' AND switch = '" + synthèse.Transfert + "'";
 
             OleDbConnection con = new OleDbConnection(connectionString);
             con.Open();
@@ -102,19 +96,15 @@ namespace Réseau_informatique_Saint_Jacques
 
             while (reader.Read())
 
-            { Titre.Text = reader["périphérique"].ToString(); }
+            { Prise_bandeau.Text = reader["port"].ToString() + " ---> " + reader["bandeau"] + " ---> " + reader["périphérique"]; }
 
             con.Close();
         }
 
         private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (Titre.Text.Contains("172.16.7.251")) { System.Diagnostics.Process.Start("http://172.16.7.251"); }
-            if (Titre.Text.Contains("172.16.7.252")) { System.Diagnostics.Process.Start("http://172.16.7.252"); }
-            if (Titre.Text.Contains("172.16.7.253")) { System.Diagnostics.Process.Start("http://172.16.7.253"); }
-            if (Titre.Text.Contains("172.16.7.254")) { System.Diagnostics.Process.Start("http://172.16.7.254"); }
-            if (Titre.Text.Contains("172.16.7.244")) { System.Diagnostics.Process.Start("http://172.16.7.244"); }
-            if (Titre.Text.Contains("172.16.7.245")) { System.Diagnostics.Process.Start("http://172.16.7.245"); }
+            LienTitre lien = new LienTitre();
+            lien.lienTitre(Titre);
         }
     }
 }
