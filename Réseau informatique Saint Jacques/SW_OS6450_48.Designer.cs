@@ -615,7 +615,7 @@
             this.Titre.TabIndex = 53;
             this.Titre.TabStop = true;
             this.Titre.Text = "linkLabel1";
-            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
+            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ClicSurTitre);
             // 
             // Prise_bandeau
             // 

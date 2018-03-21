@@ -72,9 +72,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Etat_du_carré.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Lien_Titre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,12 +86,6 @@
     </Compile>
     <Compile Include="SW_GS_748T.Designer.cs">
       <DependentUpon>SW_GS_748T.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modifications.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Modifications.Designer.cs">
-      <DependentUpon>Modifications.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -133,9 +124,6 @@
     </Compile>
     <EmbeddedResource Include="SW_GS_748T.resx">
       <DependentUpon>SW_GS_748T.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modifications.resx">
-      <DependentUpon>Modifications.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

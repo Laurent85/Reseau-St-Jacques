@@ -11,7 +11,7 @@ namespace Réseau_informatique_Saint_Jacques
     {
         private string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "Visual Studio 2015\\Projects\\Réseau informatique Saint Jacques\\Réseau informatique Saint Jacques\\Reseau St Jacques.accdb";
         private Synthèse synthèse = new Synthèse();
-        private Pinger_adresse pinger_adresse = new Pinger_adresse();
+        private PingerAdresse pinger_adresse = new PingerAdresse();
         private Titre_Switch titre_switch = new Titre_Switch();
 
         public SW_DES_1228()
@@ -35,13 +35,13 @@ namespace Réseau_informatique_Saint_Jacques
                 {
                     carré_vert.Visible = false;
                 }
-                if ((row["périphérique"].ToString() != "") && (pinger_adresse.Ping_Périphérique(row["adresse_ip"].ToString()) == true))
+                if ((row["périphérique"].ToString() != "") && (pinger_adresse.PingPériphérique(row["adresse_ip"].ToString()) == true))
                 {
                     carré_vert.Click += new EventHandler(Informations);
                     ToolTip Infobulle_périphérique = new ToolTip();
                     Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
                 }
-                if ((row["périphérique"].ToString() != "") && (pinger_adresse.Ping_Périphérique(row["adresse_ip"].ToString()) == false))
+                if ((row["périphérique"].ToString() != "") && (pinger_adresse.PingPériphérique(row["adresse_ip"].ToString()) == false))
                 {
                     carré_vert.Click += new EventHandler(Informations);
                     carré_vert.BackColor = Color.Red;
@@ -100,7 +100,7 @@ namespace Réseau_informatique_Saint_Jacques
             con.Close();
         }
 
-        private void Titre_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void ClicSurTitre(object sender, LinkLabelLinkClickedEventArgs e)
         {
             LienTitre lien = new LienTitre();
             lien.lienTitre(Titre);

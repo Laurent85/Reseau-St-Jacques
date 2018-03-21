@@ -79,7 +79,6 @@
             this.printDocument = new System.Drawing.Printing.PrintDocument();
             this.printPreviewDialog = new System.Windows.Forms.PrintPreviewDialog();
             this.label1 = new System.Windows.Forms.Label();
-            this.Combobox_Choix_Modifications = new System.Windows.Forms.ComboBox();
             this.Pinger_Périphériques = new System.Windows.Forms.Button();
             this.Logo_Collège = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).BeginInit();
@@ -128,8 +127,7 @@
             this.Liste_synthèse.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.Liste_synthèse.Size = new System.Drawing.Size(982, 547);
             this.Liste_synthèse.TabIndex = 0;
-            this.Liste_synthèse.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Remplir_Combobox_Choix_Modifications);
-            this.Liste_synthèse.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.Liste_synthèse_ColumnHeaderMouseClick);
+            this.Liste_synthèse.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.TriColonne);
             // 
             // Bouton_videoprojecteurs
             // 
@@ -141,7 +139,7 @@
             this.Bouton_videoprojecteurs.TabStop = true;
             this.Bouton_videoprojecteurs.Text = "Vidéoprojecteurs";
             this.Bouton_videoprojecteurs.UseVisualStyleBackColor = true;
-            this.Bouton_videoprojecteurs.CheckedChanged += new System.EventHandler(this.Bouton_videoprojecteurs_CheckedChanged);
+            this.Bouton_videoprojecteurs.CheckedChanged += new System.EventHandler(this.RadBtnVideoprojecteurs);
             // 
             // Bouton_imprimantes
             // 
@@ -153,7 +151,7 @@
             this.Bouton_imprimantes.TabStop = true;
             this.Bouton_imprimantes.Text = "Imprimantes";
             this.Bouton_imprimantes.UseVisualStyleBackColor = true;
-            this.Bouton_imprimantes.CheckedChanged += new System.EventHandler(this.Bouton_imprimantes_CheckedChanged);
+            this.Bouton_imprimantes.CheckedChanged += new System.EventHandler(this.RadBtnImprimantes);
             // 
             // Nombre
             // 
@@ -177,7 +175,7 @@
             this.Bouton_Ordinateurs.TabStop = true;
             this.Bouton_Ordinateurs.Text = "Ordinateurs";
             this.Bouton_Ordinateurs.UseVisualStyleBackColor = true;
-            this.Bouton_Ordinateurs.CheckedChanged += new System.EventHandler(this.Bouton_Ordinateurs_CheckedChanged);
+            this.Bouton_Ordinateurs.CheckedChanged += new System.EventHandler(this.RadBtnOrdinateurs);
             // 
             // Bouton_Serveurs
             // 
@@ -189,7 +187,7 @@
             this.Bouton_Serveurs.TabStop = true;
             this.Bouton_Serveurs.Text = "Serveurs";
             this.Bouton_Serveurs.UseVisualStyleBackColor = true;
-            this.Bouton_Serveurs.CheckedChanged += new System.EventHandler(this.Bouton_Serveurs_CheckedChanged);
+            this.Bouton_Serveurs.CheckedChanged += new System.EventHandler(this.RadBtnServeurs);
             // 
             // Bouton_Serveurs_virtuels
             // 
@@ -201,7 +199,7 @@
             this.Bouton_Serveurs_virtuels.TabStop = true;
             this.Bouton_Serveurs_virtuels.Text = "Serveurs virtuels";
             this.Bouton_Serveurs_virtuels.UseVisualStyleBackColor = true;
-            this.Bouton_Serveurs_virtuels.CheckedChanged += new System.EventHandler(this.Bouton_Serveurs_virtuels_CheckedChanged);
+            this.Bouton_Serveurs_virtuels.CheckedChanged += new System.EventHandler(this.RadBtnServeursVirtuels);
             // 
             // Bouton_Liaisons
             // 
@@ -213,7 +211,7 @@
             this.Bouton_Liaisons.TabStop = true;
             this.Bouton_Liaisons.Text = "Liaisons";
             this.Bouton_Liaisons.UseVisualStyleBackColor = true;
-            this.Bouton_Liaisons.CheckedChanged += new System.EventHandler(this.Bouton_Liaisons_CheckedChanged);
+            this.Bouton_Liaisons.CheckedChanged += new System.EventHandler(this.RadBtnLiaisons);
             // 
             // Bouton_Bornes_Wifi
             // 
@@ -225,7 +223,7 @@
             this.Bouton_Bornes_Wifi.TabStop = true;
             this.Bouton_Bornes_Wifi.Text = "Bornes Wifi";
             this.Bouton_Bornes_Wifi.UseVisualStyleBackColor = true;
-            this.Bouton_Bornes_Wifi.CheckedChanged += new System.EventHandler(this.Bouton_Bornes_Wifi_CheckedChanged);
+            this.Bouton_Bornes_Wifi.CheckedChanged += new System.EventHandler(this.RadBtnBornesWifi);
             // 
             // Modifier
             // 
@@ -236,7 +234,7 @@
             this.Modifier.TabIndex = 10;
             this.Modifier.Text = "Valider les modifications";
             this.Modifier.UseVisualStyleBackColor = true;
-            this.Modifier.Click += new System.EventHandler(this.Modifier_Click);
+            this.Modifier.Click += new System.EventHandler(this.BtnModifier);
             // 
             // ComboBox_Filtrage
             // 
@@ -247,7 +245,7 @@
             this.ComboBox_Filtrage.Name = "ComboBox_Filtrage";
             this.ComboBox_Filtrage.Size = new System.Drawing.Size(131, 21);
             this.ComboBox_Filtrage.TabIndex = 11;
-            this.ComboBox_Filtrage.SelectedIndexChanged += new System.EventHandler(this.ComboBox_Filtrage_SelectedIndexChanged);
+            this.ComboBox_Filtrage.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFiltrage);
             // 
             // Suppression_ligne
             // 
@@ -258,7 +256,7 @@
             this.Suppression_ligne.TabIndex = 14;
             this.Suppression_ligne.Text = "Supprimer la ligne";
             this.Suppression_ligne.UseVisualStyleBackColor = true;
-            this.Suppression_ligne.Click += new System.EventHandler(this.Suppression_ligne_Click);
+            this.Suppression_ligne.Click += new System.EventHandler(this.BtnSupprimerLigne);
             // 
             // Imprimer
             // 
@@ -269,7 +267,7 @@
             this.Imprimer.TabIndex = 16;
             this.Imprimer.Text = "Imprimer";
             this.Imprimer.UseVisualStyleBackColor = true;
-            this.Imprimer.Click += new System.EventHandler(this.Imprimer_Click);
+            this.Imprimer.Click += new System.EventHandler(this.BtnImprimer);
             // 
             // Voir_Switch
             // 
@@ -280,7 +278,7 @@
             this.Voir_Switch.TabIndex = 18;
             this.Voir_Switch.Text = "Voir switch";
             this.Voir_Switch.UseVisualStyleBackColor = true;
-            this.Voir_Switch.Click += new System.EventHandler(this.Voir_Switch_Click);
+            this.Voir_Switch.Click += new System.EventHandler(this.BtnVoirSwitch);
             // 
             // Voir_Tous
             // 
@@ -292,7 +290,7 @@
             this.Voir_Tous.TabStop = true;
             this.Voir_Tous.Text = "Tous les ports";
             this.Voir_Tous.UseVisualStyleBackColor = true;
-            this.Voir_Tous.CheckedChanged += new System.EventHandler(this.Voir_Tous_CheckedChanged);
+            this.Voir_Tous.CheckedChanged += new System.EventHandler(this.RadBtnVoirTous);
             // 
             // Voir_utilisés
             // 
@@ -304,7 +302,7 @@
             this.Voir_utilisés.TabStop = true;
             this.Voir_utilisés.Text = "Ports utilisés";
             this.Voir_utilisés.UseVisualStyleBackColor = true;
-            this.Voir_utilisés.CheckedChanged += new System.EventHandler(this.Voir_utilisés_CheckedChanged);
+            this.Voir_utilisés.CheckedChanged += new System.EventHandler(this.RadBtnVoirUtilisés);
             // 
             // Voir_libres
             // 
@@ -316,7 +314,7 @@
             this.Voir_libres.TabStop = true;
             this.Voir_libres.Text = "Ports libres";
             this.Voir_libres.UseVisualStyleBackColor = true;
-            this.Voir_libres.CheckedChanged += new System.EventHandler(this.Voir_libres_CheckedChanged);
+            this.Voir_libres.CheckedChanged += new System.EventHandler(this.RadBtnVoirLibres);
             // 
             // Panel_choix
             // 
@@ -344,7 +342,7 @@
             this.Bouton_Tableau_complet.TabStop = true;
             this.Bouton_Tableau_complet.Text = "Tableau complet";
             this.Bouton_Tableau_complet.UseVisualStyleBackColor = true;
-            this.Bouton_Tableau_complet.CheckedChanged += new System.EventHandler(this.Bouton_Tableau_complet_CheckedChanged);
+            this.Bouton_Tableau_complet.CheckedChanged += new System.EventHandler(this.RadBtnTableauComplet);
             // 
             // Panel_ports
             // 
@@ -366,7 +364,7 @@
             this.Combobox_Filtrer_par.Name = "Combobox_Filtrer_par";
             this.Combobox_Filtrer_par.Size = new System.Drawing.Size(124, 21);
             this.Combobox_Filtrer_par.TabIndex = 24;
-            this.Combobox_Filtrer_par.SelectedIndexChanged += new System.EventHandler(this.Combobox_Filtrer_par_SelectedIndexChanged);
+            this.Combobox_Filtrer_par.SelectedIndexChanged += new System.EventHandler(this.ComboboxFiltrerPar);
             // 
             // Recherche
             // 
@@ -376,7 +374,7 @@
             this.Recherche.Name = "Recherche";
             this.Recherche.Size = new System.Drawing.Size(131, 20);
             this.Recherche.TabIndex = 25;
-            this.Recherche.TextChanged += new System.EventHandler(this.Recherche_TextChanged);
+            this.Recherche.TextChanged += new System.EventHandler(this.TextboxRecherche);
             // 
             // Titre
             // 
@@ -390,7 +388,7 @@
             this.Titre.TabStop = true;
             this.Titre.Text = "Titre";
             this.Titre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Titre_LinkClicked);
+            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LblClicSurTitre);
             // 
             // Chk_Switch
             // 
@@ -401,7 +399,7 @@
             this.Chk_Switch.TabIndex = 27;
             this.Chk_Switch.Text = "Switch";
             this.Chk_Switch.UseVisualStyleBackColor = true;
-            this.Chk_Switch.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Switch.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Port
             // 
@@ -412,7 +410,7 @@
             this.Chk_Port.TabIndex = 29;
             this.Chk_Port.Text = "Port";
             this.Chk_Port.UseVisualStyleBackColor = true;
-            this.Chk_Port.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Port.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Salle
             // 
@@ -423,7 +421,7 @@
             this.Chk_Salle.TabIndex = 28;
             this.Chk_Salle.Text = "Salle";
             this.Chk_Salle.UseVisualStyleBackColor = true;
-            this.Chk_Salle.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Salle.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Bandeau
             // 
@@ -434,7 +432,7 @@
             this.Chk_Bandeau.TabIndex = 30;
             this.Chk_Bandeau.Text = "Bandeau";
             this.Chk_Bandeau.UseVisualStyleBackColor = true;
-            this.Chk_Bandeau.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Bandeau.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_VLAN
             // 
@@ -445,7 +443,7 @@
             this.Chk_VLAN.TabIndex = 31;
             this.Chk_VLAN.Text = "VLAN";
             this.Chk_VLAN.UseVisualStyleBackColor = true;
-            this.Chk_VLAN.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_VLAN.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Périphérique
             // 
@@ -456,7 +454,7 @@
             this.Chk_Périphérique.TabIndex = 32;
             this.Chk_Périphérique.Text = "Périphérique";
             this.Chk_Périphérique.UseVisualStyleBackColor = true;
-            this.Chk_Périphérique.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Périphérique.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Choix_Colonnes
             // 
@@ -493,7 +491,7 @@
             this.Chk_Heures_Lampe.TabIndex = 41;
             this.Chk_Heures_Lampe.Text = "Heures_lampe";
             this.Chk_Heures_Lampe.UseVisualStyleBackColor = true;
-            this.Chk_Heures_Lampe.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Heures_Lampe.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Infos_diverses
             // 
@@ -504,7 +502,7 @@
             this.Chk_Infos_diverses.TabIndex = 44;
             this.Chk_Infos_diverses.Text = "Infos_diverses";
             this.Chk_Infos_diverses.UseVisualStyleBackColor = true;
-            this.Chk_Infos_diverses.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Infos_diverses.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Vidéoprojecteur
             // 
@@ -515,7 +513,7 @@
             this.Chk_Vidéoprojecteur.TabIndex = 39;
             this.Chk_Vidéoprojecteur.Text = "Vidéoprojecteur";
             this.Chk_Vidéoprojecteur.UseVisualStyleBackColor = true;
-            this.Chk_Vidéoprojecteur.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Vidéoprojecteur.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Modèle_Lampe
             // 
@@ -526,7 +524,7 @@
             this.Chk_Modèle_Lampe.TabIndex = 43;
             this.Chk_Modèle_Lampe.Text = "Modèle_lampe";
             this.Chk_Modèle_Lampe.UseVisualStyleBackColor = true;
-            this.Chk_Modèle_Lampe.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Modèle_Lampe.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Date_Relevé
             // 
@@ -537,7 +535,7 @@
             this.Chk_Date_Relevé.TabIndex = 40;
             this.Chk_Date_Relevé.Text = "Date_relevé";
             this.Chk_Date_Relevé.UseVisualStyleBackColor = true;
-            this.Chk_Date_Relevé.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Date_Relevé.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Observations
             // 
@@ -548,7 +546,7 @@
             this.Chk_Observations.TabIndex = 42;
             this.Chk_Observations.Text = "Observations";
             this.Chk_Observations.UseVisualStyleBackColor = true;
-            this.Chk_Observations.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Observations.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Adresse_IP
             // 
@@ -559,7 +557,7 @@
             this.Chk_Adresse_IP.TabIndex = 35;
             this.Chk_Adresse_IP.Text = "Adresse_IP";
             this.Chk_Adresse_IP.UseVisualStyleBackColor = true;
-            this.Chk_Adresse_IP.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Adresse_IP.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Type_imprimante
             // 
@@ -570,7 +568,7 @@
             this.Chk_Type_imprimante.TabIndex = 38;
             this.Chk_Type_imprimante.Text = "Type_imprimante";
             this.Chk_Type_imprimante.UseVisualStyleBackColor = true;
-            this.Chk_Type_imprimante.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Type_imprimante.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Modèle
             // 
@@ -581,7 +579,7 @@
             this.Chk_Modèle.TabIndex = 33;
             this.Chk_Modèle.Text = "Modèle_périphérique";
             this.Chk_Modèle.UseVisualStyleBackColor = true;
-            this.Chk_Modèle.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Modèle.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Port_Imprimante
             // 
@@ -592,7 +590,7 @@
             this.Chk_Port_Imprimante.TabIndex = 37;
             this.Chk_Port_Imprimante.Text = "Port_imprimante";
             this.Chk_Port_Imprimante.UseVisualStyleBackColor = true;
-            this.Chk_Port_Imprimante.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Port_Imprimante.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Type
             // 
@@ -603,7 +601,7 @@
             this.Chk_Type.TabIndex = 34;
             this.Chk_Type.Text = "Type";
             this.Chk_Type.UseVisualStyleBackColor = true;
-            this.Chk_Type.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Type.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Imprimante
             // 
@@ -614,7 +612,7 @@
             this.Chk_Imprimante.TabIndex = 36;
             this.Chk_Imprimante.Text = "Imprimante";
             this.Chk_Imprimante.UseVisualStyleBackColor = true;
-            this.Chk_Imprimante.CheckedChanged += new System.EventHandler(this.Checkbox_CheckedChanged);
+            this.Chk_Imprimante.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Titre_principal
             // 
@@ -638,11 +636,11 @@
             this.RAZ_Filtres.TabIndex = 37;
             this.RAZ_Filtres.Text = "RAZ des filtres";
             this.RAZ_Filtres.UseVisualStyleBackColor = true;
-            this.RAZ_Filtres.Click += new System.EventHandler(this.RAZ_Filtres_Click);
+            this.RAZ_Filtres.Click += new System.EventHandler(this.BtnResetFiltres);
             // 
             // printDocument
             // 
-            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument_PrintPage);
+            this.printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.FonctImprimer);
             // 
             // printPreviewDialog
             // 
@@ -665,16 +663,6 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "Rechercher";
             // 
-            // Combobox_Choix_Modifications
-            // 
-            this.Combobox_Choix_Modifications.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.Combobox_Choix_Modifications.FormattingEnabled = true;
-            this.Combobox_Choix_Modifications.Location = new System.Drawing.Point(12, 89);
-            this.Combobox_Choix_Modifications.Name = "Combobox_Choix_Modifications";
-            this.Combobox_Choix_Modifications.Size = new System.Drawing.Size(121, 21);
-            this.Combobox_Choix_Modifications.TabIndex = 39;
-            this.Combobox_Choix_Modifications.SelectionChangeCommitted += new System.EventHandler(this.Combobox_Choix_Modifications_SelectedIndexChanged);
-            // 
             // Pinger_Périphériques
             // 
             this.Pinger_Périphériques.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -684,7 +672,7 @@
             this.Pinger_Périphériques.TabIndex = 40;
             this.Pinger_Périphériques.Text = "Pinger les périphériques";
             this.Pinger_Périphériques.UseVisualStyleBackColor = true;
-            this.Pinger_Périphériques.Click += new System.EventHandler(this.Pinger_Périphériques_Click);
+            this.Pinger_Périphériques.Click += new System.EventHandler(this.BtnPingerPériphériques);
             // 
             // Logo_Collège
             // 
@@ -703,7 +691,6 @@
             this.ClientSize = new System.Drawing.Size(1306, 686);
             this.Controls.Add(this.Logo_Collège);
             this.Controls.Add(this.Pinger_Périphériques);
-            this.Controls.Add(this.Combobox_Choix_Modifications);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.RAZ_Filtres);
             this.Controls.Add(this.Nombre);
@@ -724,7 +711,7 @@
             this.Name = "Synthèse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Synthèse";
-            this.Load += new System.EventHandler(this.Synthèse_Load);
+            this.Load += new System.EventHandler(this.OvertureSynthèse);
             ((System.ComponentModel.ISupportInitialize)(this.Liste_synthèse)).EndInit();
             this.Panel_choix.ResumeLayout(false);
             this.Panel_choix.PerformLayout();
@@ -787,7 +774,6 @@
         private System.Drawing.Printing.PrintDocument printDocument;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox Combobox_Choix_Modifications;
         private System.Windows.Forms.Button Pinger_Périphériques;
         private System.Windows.Forms.PictureBox Logo_Collège;
     }

@@ -3,9 +3,9 @@ using System.Text;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    internal class Pinger_adresse
+    internal class PingerAdresse
     {
-        public bool Ping_Périphérique(string nameOrAddress)
+        public bool PingPériphérique(string nameOrAddress)
         {
             PingOptions options = new PingOptions();
             options.DontFragment = true;
