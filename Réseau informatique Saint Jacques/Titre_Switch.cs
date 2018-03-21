@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    class Titre_Switch : Form
+    internal class Titre_Switch : Form
     {
-        private Synthèse synthèse = new Synthèse();        
-    
+        private Synthèse synthèse = new Synthèse();
 
-    public void titre_switch(LinkLabel titre)
+        public void titre_switch(LinkLabel titre)
         {
-            
             switch (synthèse.Transfert)
             {
                 case "SW_SR1_1":
@@ -84,9 +76,6 @@ namespace Réseau_informatique_Saint_Jacques
                     titre.Links.Add(35, 12, "http://172.16.7.242");
                     break;
             }
-
         }
-
     }
-    
 }

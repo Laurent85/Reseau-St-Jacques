@@ -16,6 +16,7 @@ namespace Réseau_informatique_Saint_Jacques
         private OleDbDataAdapter adapter;
         private OleDbCommandBuilder cmdBldr;
         public static string Valeur_passée;
+        public static string Valeur_test;
         private int Checkbox_ok = 0;
         public int Rang = 0;
 
@@ -609,6 +610,11 @@ namespace Réseau_informatique_Saint_Jacques
         public string Transfert
         {
             get { return Valeur_passée; }
+        }
+
+        public string Transfert_Test
+        {
+            get { return Valeur_test; }
         }
 
         private void Pinger_Adresse_IP()
