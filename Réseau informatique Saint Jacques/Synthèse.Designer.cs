@@ -676,6 +676,7 @@
             // 
             // Logo_Collège
             // 
+            this.Logo_Collège.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Logo_Collège.Image = ((System.Drawing.Image)(resources.GetObject("Logo_Collège.Image")));
             this.Logo_Collège.Location = new System.Drawing.Point(1144, 9);
             this.Logo_Collège.Name = "Logo_Collège";

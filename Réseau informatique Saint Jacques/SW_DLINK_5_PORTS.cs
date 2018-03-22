@@ -26,41 +26,36 @@ namespace Réseau_informatique_Saint_Jacques
             DataTable resultat = new DataTable();
             adapter.Fill(resultat);
 
-            Etat_du_carré état_carré = new Etat_du_carré();
-            SW_DLINK_5_PORTS sw5 = new SW_DLINK_5_PORTS();
-            string nom_du_port = ((PictureBox)sender).Name.ToString().Replace("_", "-");
-            PictureBox carré_vert = sw5.Controls[nom_du_port] as PictureBox;
-            état_carré.EtatCarré(resultat, timer1, Titre, sw5, nom_du_port, carré_vert);
-            //foreach (DataRow row in resultat.Rows)
-            //{
-            //    string nom_du_port = row["port"].ToString().Replace("-", "_");
-            //    PictureBox carré_vert = Controls[nom_du_port] as PictureBox;
+            foreach (DataRow row in resultat.Rows)
+            {
+                string nom_du_port = row["port"].ToString().Replace("-", "_");
+                PictureBox carré_vert = Controls[nom_du_port] as PictureBox;
 
-            //    if ((row["périphérique"].ToString() == ""))
-            //    {
-            //        carré_vert.Visible = false;
-            //    }
-            //    if ((row["périphérique"].ToString() != "") && (pinger_adresse.PingPériphérique(row["adresse_ip"].ToString()) == true))
-            //    {
-            //        carré_vert.Click += new EventHandler(Informations);
-            //        ToolTip Infobulle_périphérique = new ToolTip();
-            //        Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
-            //    }
-            //    if ((row["périphérique"].ToString() != "") && (pinger_adresse.PingPériphérique(row["adresse_ip"].ToString()) == false))
-            //    {
-            //        carré_vert.Click += new EventHandler(Informations);
-            //        carré_vert.BackColor = Color.Red;
-            //        ToolTip Infobulle_périphérique = new ToolTip();
-            //        Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
-            //    }
-            //    if ((row["périphérique"].ToString() == "") && (row["bandeau"].ToString() != "nc"))
-            //    {
-            //        carré_vert.Click += new EventHandler(Informations);
-            //        carré_vert.BackColor = Color.LightGray;
-            //        ToolTip Infobulle_périphérique = new ToolTip();
-            //        Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["Bandeau"].ToString());
-            //    }
-            //}
+                if ((row["périphérique"].ToString() == ""))
+                {
+                    carré_vert.Visible = false;
+                }
+                if ((row["périphérique"].ToString() != "") && (pinger_adresse.PingPériphérique(row["adresse_ip"].ToString()) == true))
+                {
+                    carré_vert.Click += new EventHandler(Informations);
+                    ToolTip Infobulle_périphérique = new ToolTip();
+                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
+                }
+                if ((row["périphérique"].ToString() != "") && (pinger_adresse.PingPériphérique(row["adresse_ip"].ToString()) == false))
+                {
+                    carré_vert.Click += new EventHandler(Informations);
+                    carré_vert.BackColor = Color.Red;
+                    ToolTip Infobulle_périphérique = new ToolTip();
+                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["périphérique"].ToString());
+                }
+                if ((row["périphérique"].ToString() == "") && (row["bandeau"].ToString() != "nc"))
+                {
+                    carré_vert.Click += new EventHandler(Informations);
+                    carré_vert.BackColor = Color.LightGray;
+                    ToolTip Infobulle_périphérique = new ToolTip();
+                    Infobulle_périphérique.SetToolTip(carré_vert, row["port"].ToString().Replace("port-", "") + " - " + row["Bandeau"].ToString());
+                }
+            }
             timer1.Start();
             titre_switch.titre_switch(Titre);
         }
