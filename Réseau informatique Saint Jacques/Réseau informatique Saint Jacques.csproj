@@ -72,6 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Etat_du_carré.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Lien_Titre.cs">
       <SubType>Form</SubType>
     </Compile>
