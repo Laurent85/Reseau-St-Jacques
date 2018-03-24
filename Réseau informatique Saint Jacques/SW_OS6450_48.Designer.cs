@@ -586,7 +586,6 @@
             this.port_01.Size = new System.Drawing.Size(13, 13);
             this.port_01.TabIndex = 1;
             this.port_01.TabStop = false;
-            this.port_01.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Informations);
             // 
             // Image_switch
             // 
@@ -601,7 +600,6 @@
             // timer1
             // 
             this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Titre
             // 
@@ -615,7 +613,6 @@
             this.Titre.TabIndex = 53;
             this.Titre.TabStop = true;
             this.Titre.Text = "linkLabel1";
-            this.Titre.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ClicSurTitre);
             // 
             // Prise_bandeau
             // 

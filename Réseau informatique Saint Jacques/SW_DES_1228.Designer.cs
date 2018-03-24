@@ -360,7 +360,7 @@
             this.Titre.AutoSize = true;
             this.Titre.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titre.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.Titre.Location = new System.Drawing.Point(490, 55);
+            this.Titre.Location = new System.Drawing.Point(424, 55);
             this.Titre.Name = "Titre";
             this.Titre.Size = new System.Drawing.Size(86, 23);
             this.Titre.TabIndex = 55;
@@ -370,7 +370,6 @@
             // timer1
             // 
             this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Prise_bandeau
             // 
@@ -387,7 +386,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(1503, 405);
+            this.ClientSize = new System.Drawing.Size(1370, 405);
             this.Controls.Add(this.Prise_bandeau);
             this.Controls.Add(this.Titre);
             this.Controls.Add(this.port_28);
