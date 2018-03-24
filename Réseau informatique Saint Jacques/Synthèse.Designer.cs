@@ -70,7 +70,7 @@
             this.Chk_Observations = new System.Windows.Forms.CheckBox();
             this.Chk_Adresse_IP = new System.Windows.Forms.CheckBox();
             this.Chk_Type_imprimante = new System.Windows.Forms.CheckBox();
-            this.Chk_Modèle = new System.Windows.Forms.CheckBox();
+            this.Chk_Modèle_périphérique = new System.Windows.Forms.CheckBox();
             this.Chk_Port_Imprimante = new System.Windows.Forms.CheckBox();
             this.Chk_Type = new System.Windows.Forms.CheckBox();
             this.Chk_Imprimante = new System.Windows.Forms.CheckBox();
@@ -467,7 +467,7 @@
             this.Choix_Colonnes.Controls.Add(this.Chk_Observations);
             this.Choix_Colonnes.Controls.Add(this.Chk_Adresse_IP);
             this.Choix_Colonnes.Controls.Add(this.Chk_Type_imprimante);
-            this.Choix_Colonnes.Controls.Add(this.Chk_Modèle);
+            this.Choix_Colonnes.Controls.Add(this.Chk_Modèle_périphérique);
             this.Choix_Colonnes.Controls.Add(this.Chk_Port_Imprimante);
             this.Choix_Colonnes.Controls.Add(this.Chk_Type);
             this.Choix_Colonnes.Controls.Add(this.Chk_Imprimante);
@@ -570,16 +570,16 @@
             this.Chk_Type_imprimante.UseVisualStyleBackColor = true;
             this.Chk_Type_imprimante.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
-            // Chk_Modèle
+            // Chk_Modèle_périphérique
             // 
-            this.Chk_Modèle.AutoSize = true;
-            this.Chk_Modèle.Location = new System.Drawing.Point(85, 8);
-            this.Chk_Modèle.Name = "Chk_Modèle";
-            this.Chk_Modèle.Size = new System.Drawing.Size(125, 17);
-            this.Chk_Modèle.TabIndex = 33;
-            this.Chk_Modèle.Text = "Modèle_périphérique";
-            this.Chk_Modèle.UseVisualStyleBackColor = true;
-            this.Chk_Modèle.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
+            this.Chk_Modèle_périphérique.AutoSize = true;
+            this.Chk_Modèle_périphérique.Location = new System.Drawing.Point(85, 8);
+            this.Chk_Modèle_périphérique.Name = "Chk_Modèle_périphérique";
+            this.Chk_Modèle_périphérique.Size = new System.Drawing.Size(125, 17);
+            this.Chk_Modèle_périphérique.TabIndex = 33;
+            this.Chk_Modèle_périphérique.Text = "Modèle_périphérique";
+            this.Chk_Modèle_périphérique.UseVisualStyleBackColor = true;
+            this.Chk_Modèle_périphérique.CheckedChanged += new System.EventHandler(this.CheckboxChoixColonnes);
             // 
             // Chk_Port_Imprimante
             // 
@@ -766,7 +766,7 @@
         private System.Windows.Forms.CheckBox Chk_Observations;
         private System.Windows.Forms.CheckBox Chk_Adresse_IP;
         private System.Windows.Forms.CheckBox Chk_Type_imprimante;
-        private System.Windows.Forms.CheckBox Chk_Modèle;
+        private System.Windows.Forms.CheckBox Chk_Modèle_périphérique;
         private System.Windows.Forms.CheckBox Chk_Port_Imprimante;
         private System.Windows.Forms.CheckBox Chk_Type;
         private System.Windows.Forms.CheckBox Chk_Imprimante;

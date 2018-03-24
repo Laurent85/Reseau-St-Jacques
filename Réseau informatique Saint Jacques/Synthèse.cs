@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Data;
 using System.Data.OleDb;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
+    [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
     public partial class Synthèse : Form
     {
         private static readonly string ConnectionString = "Provider=Microsoft.ACE.OLEDB.12.0;data source=" +
@@ -74,7 +76,7 @@ namespace Réseau_informatique_Saint_Jacques
             {
                 foreach (CheckBox chk in Choix_Colonnes.Controls)
                     if (chk.Text == str) chk.Checked = true;
-                Liste_synthèse.Columns[str].DisplayIndex = index;
+                if (Liste_synthèse != null) Liste_synthèse.Columns[str].DisplayIndex = index;
                 index++;
             }
             _checkboxOk = 1;
@@ -187,29 +189,15 @@ namespace Réseau_informatique_Saint_Jacques
                     Liste_synthèse.Rows[Liste_synthèse.RowCount - 1].Cells["port"].Style.BackColor = Color.White;
                 }
             FonctSélectionCheckbox();
-            Liste_synthèse.Columns["ID"].Visible = false;
+            if (Liste_synthèse != null) Liste_synthèse.Columns["ID"].Visible = false;
         }
 
         private void FonctSélectionCheckbox()
         {
-            Liste_synthèse.Columns["switch"].Visible = Chk_Switch.Checked;
-            Liste_synthèse.Columns["VLAN"].Visible = Chk_VLAN.Checked;
-            Liste_synthèse.Columns["Port"].Visible = Chk_Port.Checked;
-            Liste_synthèse.Columns["Salle"].Visible = Chk_Salle.Checked;
-            Liste_synthèse.Columns["Bandeau"].Visible = Chk_Bandeau.Checked;
-            Liste_synthèse.Columns["Périphérique"].Visible = Chk_Périphérique.Checked;
-            Liste_synthèse.Columns["Modèle_périphérique"].Visible = Chk_Modèle.Checked;
-            Liste_synthèse.Columns["Imprimante"].Visible = Chk_Imprimante.Checked;
-            Liste_synthèse.Columns["Adresse_IP"].Visible = Chk_Adresse_IP.Checked;
-            Liste_synthèse.Columns["Type"].Visible = Chk_Type.Checked;
-            Liste_synthèse.Columns["Port_Imprimante"].Visible = Chk_Port_Imprimante.Checked;
-            Liste_synthèse.Columns["Type_imprimante"].Visible = Chk_Type_imprimante.Checked;
-            Liste_synthèse.Columns["Vidéoprojecteur"].Visible = Chk_Vidéoprojecteur.Checked;
-            Liste_synthèse.Columns["Date_Relevé"].Visible = Chk_Date_Relevé.Checked;
-            Liste_synthèse.Columns["Heures_Lampe"].Visible = Chk_Heures_Lampe.Checked;
-            Liste_synthèse.Columns["Observations"].Visible = Chk_Observations.Checked;
-            Liste_synthèse.Columns["Modèle_Lampe"].Visible = Chk_Modèle_Lampe.Checked;
-            Liste_synthèse.Columns["Infos_diverses"].Visible = Chk_Infos_diverses.Checked;
+            foreach (CheckBox chk in Choix_Colonnes.Controls)
+            {
+                if (Liste_synthèse != null) Liste_synthèse.Columns[chk.Text].Visible = chk.Checked;
+            }
 
             FonctRedimensionnerColonnes();
         }
@@ -229,12 +217,12 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void FonctDessinerGrille(Graphics g, int yValue)
         {
-            int x_value;
+            int xValue;
 
             for (var i = 0; i < 27 && i + Rang < _résultats.Rows.Count; ++i)
             {
                 var dr = _résultats.Rows[i + Rang];
-                x_value = 0;
+                xValue = 0;
 
                 // dessiner une ligne
                 g.DrawLine(Pens.Black, new Point(0, yValue), new Point(Width, yValue));
@@ -243,8 +231,8 @@ namespace Réseau_informatique_Saint_Jacques
                     if (dc.Visible)
                     {
                         var text = dr[dc.DataPropertyName].ToString();
-                        g.DrawString(text, Font, Brushes.Black, x_value, yValue + 10f);
-                        x_value += dc.Width + 1;
+                        g.DrawString(text, Font, Brushes.Black, xValue, yValue + 10f);
+                        xValue += dc.Width + 1;
                     }
 
                 yValue += 40;
@@ -253,7 +241,7 @@ namespace Réseau_informatique_Saint_Jacques
             Rang += 27;
         }
 
-        private void FonctPingerAdresseIP()
+        private void FonctPingerAdresseIp()
         {
             try
             {
@@ -597,7 +585,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private void BtnPingerPériphériques(object sender, EventArgs e)
         {
-            FonctPingerAdresseIP();
+            FonctPingerAdresseIp();
         }
 
         private void CheckboxChoixColonnes(object sender, EventArgs e)
