@@ -286,7 +286,7 @@ namespace Réseau_informatique_Saint_Jacques
             }
             finally
             {
-                MessageBox.Show(@"Modifications effectuées !");
+                MessageBox.Show(@"Terminé !");
             }
         }
 
