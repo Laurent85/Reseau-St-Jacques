@@ -568,11 +568,11 @@ namespace Réseau_informatique_Saint_Jacques
         private void BtnVoirSwitch(object sender, EventArgs e)
         {
             ValeurPassée = ComboBox_Filtrage.Text;
-            var swOs645048 = new SW_OS6450_48();
-            var swOs6850E24 = new SW_OS6850E_24();
-            var gs748T = new GS_748T();
-            var swDlink5Ports = new SW_DLINK_5_PORTS();
-            var swDes1228 = new SW_DES_1228();
+            var swOs645048 = new SwOs645048();
+            var swOs6850E24 = new SwOs6850E24();
+            var gs748T = new Gs748T();
+            var swDlink5Ports = new SwDlink5Ports();
+            var swDes1228 = new SwDes1228();
 
             var i = Liste_synthèse.Rows.Count;
             if (i < 40 && ValeurPassée.Contains("Laurent") && i > 10) swDes1228.Show();

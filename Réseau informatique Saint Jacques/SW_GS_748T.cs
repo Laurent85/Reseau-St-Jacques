@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    public partial class GS_748T : Form
+    public partial class Gs748T : Form
     {
-        public GS_748T()
+        public Gs748T()
         {
             InitializeComponent();
         }

@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    public partial class SW_DLINK_5_PORTS : Form
+    public partial class SwDlink5Ports : Form
     {
-        public SW_DLINK_5_PORTS()
+        public SwDlink5Ports()
         {
             InitializeComponent();
         }

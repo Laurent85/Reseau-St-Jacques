@@ -16,7 +16,7 @@ namespace Réseau_informatique_Saint_Jacques
 
         private readonly Synthèse _synthèse = new Synthèse();
         private readonly PingerAdresse _pingerAdresse = new PingerAdresse();
-        private readonly Titre_Switch _titreSwitch = new Titre_Switch();
+        private readonly TitreSwitch _titreSwitch = new TitreSwitch();
         public Label CopieVariableLabel;
         public LinkLabel CopieVariableTitre;
         public Form CopieVariableForm;

@@ -1,6 +1,6 @@
 ﻿namespace Réseau_informatique_Saint_Jacques
 {
-    partial class SW_OS6850E_24
+    partial class SwOs6850E24
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SW_OS6850E_24));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwOs6850E24));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Titre = new System.Windows.Forms.LinkLabel();
             this.port_24F = new System.Windows.Forms.PictureBox();
@@ -418,7 +418,7 @@
             this.Controls.Add(this.port_02);
             this.Controls.Add(this.port_01);
             this.Controls.Add(this.Image_switch);
-            this.Name = "SW_OS6850E_24";
+            this.Name = "SwOs6850E24";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SW_OS6850E_24";
             this.Load += new System.EventHandler(this.SW_OS6850E_24_Load);

@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    public partial class SW_DES_1228 : Form
+    public partial class SwDes1228 : Form
     {
-        public SW_DES_1228()
+        public SwDes1228()
         {
             InitializeComponent();
         }

@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace Réseau_informatique_Saint_Jacques
 {
-    public partial class SW_OS6450_48 : Form
+    public partial class SwOs645048 : Form
     {
-        public SW_OS6450_48()
+        public SwOs645048()
         {
             InitializeComponent();
         }

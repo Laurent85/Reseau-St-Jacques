@@ -1,6 +1,6 @@
 ﻿namespace Réseau_informatique_Saint_Jacques
 {
-    partial class GS_748T
+    partial class Gs748T
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GS_748T));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Gs748T));
             this.Image_switch = new System.Windows.Forms.PictureBox();
             this.port_12 = new System.Windows.Forms.PictureBox();
             this.port_11 = new System.Windows.Forms.PictureBox();
@@ -707,7 +707,7 @@
             this.Controls.Add(this.port_02);
             this.Controls.Add(this.port_01);
             this.Controls.Add(this.Image_switch);
-            this.Name = "GS_748T";
+            this.Name = "Gs748T";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GS_748T";
             this.Load += new System.EventHandler(this.GS_748T_Load);

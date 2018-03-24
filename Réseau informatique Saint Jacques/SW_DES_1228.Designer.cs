@@ -1,6 +1,6 @@
 ﻿namespace Réseau_informatique_Saint_Jacques
 {
-    partial class SW_DES_1228
+    partial class SwDes1228
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SW_DES_1228));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwDes1228));
             this.Image_switch = new System.Windows.Forms.PictureBox();
             this.port_01 = new System.Windows.Forms.PictureBox();
             this.port_02 = new System.Windows.Forms.PictureBox();
@@ -381,7 +381,7 @@
             this.Prise_bandeau.Size = new System.Drawing.Size(0, 23);
             this.Prise_bandeau.TabIndex = 57;
             // 
-            // SW_DES_1228
+            // SwDes1228
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -418,7 +418,7 @@
             this.Controls.Add(this.port_02);
             this.Controls.Add(this.port_01);
             this.Controls.Add(this.Image_switch);
-            this.Name = "SW_DES_1228";
+            this.Name = "SwDes1228";
             this.Text = "SW_DES_1228";
             this.Load += new System.EventHandler(this.SW_DES_1228_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Image_switch)).EndInit();

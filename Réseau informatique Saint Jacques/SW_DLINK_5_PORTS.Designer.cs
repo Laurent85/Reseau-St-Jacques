@@ -1,6 +1,6 @@
 ﻿namespace Réseau_informatique_Saint_Jacques
 {
-    partial class SW_DLINK_5_PORTS
+    partial class SwDlink5Ports
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SW_DLINK_5_PORTS));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwDlink5Ports));
             this.Image_switch = new System.Windows.Forms.PictureBox();
             this.port_05 = new System.Windows.Forms.PictureBox();
             this.port_04 = new System.Windows.Forms.PictureBox();
@@ -142,7 +142,7 @@
             this.Controls.Add(this.port_04);
             this.Controls.Add(this.port_05);
             this.Controls.Add(this.Image_switch);
-            this.Name = "SW_DLINK_5_PORTS";
+            this.Name = "SwDlink5Ports";
             this.Text = "SW_DLINK_5_PORTS";
             this.Load += new System.EventHandler(this.SW_DLINK_5_PORTS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Image_switch)).EndInit();

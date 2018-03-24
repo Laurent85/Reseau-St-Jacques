@@ -1,6 +1,6 @@
 ﻿namespace Réseau_informatique_Saint_Jacques
 {
-    partial class SW_OS6450_48
+    partial class SwOs645048
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SW_OS6450_48));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SwOs645048));
             this.port_49F = new System.Windows.Forms.PictureBox();
             this.port_50F = new System.Windows.Forms.PictureBox();
             this.port_48 = new System.Windows.Forms.PictureBox();
@@ -683,7 +683,7 @@
             this.Controls.Add(this.port_02);
             this.Controls.Add(this.port_01);
             this.Controls.Add(this.Image_switch);
-            this.Name = "SW_OS6450_48";
+            this.Name = "SwOs645048";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SW_OS6450_48";
             this.Load += new System.EventHandler(this.SW_OS6450_48_Load);
