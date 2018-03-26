@@ -19,6 +19,7 @@ namespace Réseau_informatique_Saint_Jacques
                 if (nameOrAddress != "")
                 {
                     PingReply reply;
+                    pinger.Send(nameOrAddress, timeout, buffer, options);
                     reply = pinger.Send(nameOrAddress, timeout, buffer, options);
                     if (reply != null) pingable = reply.Status == IPStatus.Success;
                 }
